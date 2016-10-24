@@ -1,16 +1,17 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {BasicTablesService} from '../../basicTables.service';
+import { BasicTablesService } from '../../basicTables.service';
 
 @Component({
-  selector: 'condensed-table',
-  template: require('./condensedTable.html')
+  	moduleId: module.id,
+  	selector: 'condensed-table',
+  	templateUrl: 'condensedTable.html'
 })
 export class CondensedTable {
 
-  peopleTableData:Array<any>;
+  	peopleTableData:Array<any>;
 
-  constructor(private _basicTablesService: BasicTablesService) {
-    this.peopleTableData = _basicTablesService.peopleTableData;
-  }
+  	constructor(private basicTablesService: BasicTablesService) {
+    	this.peopleTableData = basicTablesService.peopleTableData;
+  	}
 }

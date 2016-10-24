@@ -13,7 +13,7 @@ import { TreeView } from './components/treeView/treeView.component';
   imports: [
     CommonModule,
     FormsModule,
-    NgaModule,
+    NgaModule.forRoot(),
     routing
   ],
   declarations: [

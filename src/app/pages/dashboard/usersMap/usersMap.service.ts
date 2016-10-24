@@ -1,14 +1,14 @@
 import {Injectable} from '@angular/core';
-import {BaThemeConfigProvider, layoutPaths} from '../../../theme';
+import {ThemeConfigService, layoutPaths} from '../../../theme';
 
 @Injectable()
 export class UsersMapService {
 
-  constructor(private _baConfig:BaThemeConfigProvider) {
+  constructor(private _config:ThemeConfigService) {
   }
 
   getData() {
-    var layoutColors = this._baConfig.get().colors;
+    var layoutColors = this._config.get().colors;
 
     return {
       type: 'map',

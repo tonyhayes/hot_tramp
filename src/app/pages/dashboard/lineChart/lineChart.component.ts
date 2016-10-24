@@ -1,31 +1,32 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
-import {LineChartService} from './lineChart.service';
+import { LineChartService } from './lineChart.service';
 
 @Component({
-  selector: 'line-chart',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('./lineChart.scss')],
-  template: require('./lineChart.html')
+  	moduleId: module.id,
+	selector: 'line-chart',
+  	encapsulation: ViewEncapsulation.None,
+  	styleUrls: ['lineChart.scss'],
+  	templateUrl: 'lineChart.html'
 })
 export class LineChart {
 
-  chartData:Object;
+  	chartData:Object;
 
-  constructor(private _lineChartService:LineChartService) {
-    this.chartData = this._lineChartService.getData();
-  }
+  	constructor(private lineChartService:LineChartService) {
+		this.chartData = this.lineChartService.getData();
+  	}
 
-  initChart(chart:any) {
-    let zoomChart = () => {
-      chart.zoomToDates(new Date(2013, 3), new Date(2014, 0));
-    };
+  	initChart(chart:any) {
+		let zoomChart = () => {
+	  		chart.zoomToDates(new Date(2013, 3), new Date(2014, 0));
+		};
 
-    chart.addListener('rendered', zoomChart);
-    zoomChart();
+		chart.addListener('rendered', zoomChart);
+		zoomChart();
 
-    if (chart.zoomChart) {
-      chart.zoomChart();
-    }
-  }
+		if (chart.zoomChart) {
+	  		chart.zoomChart();
+		}
+  	}
 }

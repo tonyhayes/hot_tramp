@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'icon-buttons',
-  template: require('./iconButtons.html'),
+  	moduleId: module.id,
+  	selector: 'icon-buttons',
+  	templateUrl: 'iconButtons.html',
 })
 export class IconButtons {
 
-  constructor() {
-  }
+  	constructor() {}
 }

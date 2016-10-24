@@ -23,31 +23,31 @@ import { IconsService } from './components/icons/icons.service';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    NgaModule,
-    DropdownModule,
-    routing
-  ],
-  declarations: [
-    Buttons,
-    Grid,
-    Icons,
-    Typography,
-    Ui,
-    FlatButtons,
-    RaisedButtons,
-    SizedButtons,
-    DisabledButtons,
-    IconButtons,
-    LargeButtons,
-    DropdownButtons,
-    GroupButtons
-  ],
-  providers: [
-    IconsService
-  ]
+	imports: [
+		CommonModule,
+		FormsModule,
+		NgaModule.forRoot(),
+		DropdownModule,
+		routing
+	],
+	declarations: [
+		Buttons,
+		Grid,
+		Icons,
+		Typography,
+		Ui,
+		FlatButtons,
+		RaisedButtons,
+		SizedButtons,
+		DisabledButtons,
+		IconButtons,
+		LargeButtons,
+		DropdownButtons,
+		GroupButtons
+	],
+	providers: [
+		IconsService
+	]
 })
 export default class UiModule {
 }

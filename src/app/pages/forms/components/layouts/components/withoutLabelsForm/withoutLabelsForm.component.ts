@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'without-labels-form',
-  template: require('./withoutLabelsForm.html'),
+  	moduleId: module.id,
+  	selector: 'without-labels-form',
+  	templateUrl: 'withoutLabelsForm.html',
 })
 export class WithoutLabelsForm {
 
-  constructor() {
-  }
+  	constructor() {}
 }

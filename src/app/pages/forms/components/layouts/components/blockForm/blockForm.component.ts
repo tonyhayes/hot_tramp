@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'block-form',
-  template: require('./blockForm.html'),
+  	moduleId: module.id,
+  	selector: 'block-form',
+  	templateUrl: 'blockForm.html',
 })
 export class BlockForm {
 
-  constructor() {
-  }
+  	constructor() {}
 }

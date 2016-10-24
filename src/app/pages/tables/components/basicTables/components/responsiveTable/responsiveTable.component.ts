@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'responsive-table',
-  template: require('./responsiveTable.html'),
+  	moduleId: module.id,
+  	selector: 'responsive-table',
+  	templateUrl: 'responsiveTable.html',
 })
 export class ResponsiveTable {
 
-  constructor() {
-  }
+  	constructor() {}
 }

@@ -1,16 +1,17 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
-import {BasicTablesService} from '../../basicTables.service';
+import { BasicTablesService } from '../../basicTables.service';
 
 @Component({
-  selector: 'striped-table',
-  template: require('./stripedTable.html')
+  	moduleId: module.id,
+  	selector: 'striped-table',
+  	templateUrl: 'stripedTable.html'
 })
 export class StripedTable {
 
-  smartTableData:Array<any>;
+  	smartTableData:Array<any>;
 
-  constructor(private _basicTablesService: BasicTablesService) {
-    this.smartTableData = _basicTablesService.smartTableData;
-  }
+  	constructor(private basicTablesService: BasicTablesService) {
+    	this.smartTableData = basicTablesService.smartTableData;
+  	}
 }

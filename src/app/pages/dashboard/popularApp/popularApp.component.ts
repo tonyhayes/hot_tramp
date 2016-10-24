@@ -1,13 +1,13 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'popular-app',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('./popularApp.scss')],
-  template: require('./popularApp.html')
+  	moduleId: module.id,
+  	selector: 'popular-app',
+  	encapsulation: ViewEncapsulation.None,
+  	styleUrls: ['popularApp.scss'],
+  	templateUrl: 'popularApp.html'
 })
 export class PopularApp {
 
-  ngOnInit() {
-  }
+  	ngOnInit() {}
 }

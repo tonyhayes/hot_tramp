@@ -17,7 +17,7 @@ import { LineMapsService } from './components/lineMaps/lineMaps.service';
   imports: [
     CommonModule,
     FormsModule,
-    NgaModule,
+    NgaModule.forRoot(),
     routing
   ],
   declarations: [

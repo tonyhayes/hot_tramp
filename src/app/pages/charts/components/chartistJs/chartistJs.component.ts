@@ -1,26 +1,26 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
-import {ChartistJsService} from './chartistJs.service';
+import { ChartistJsService } from './chartistJs.service';
 
 @Component({
-  selector: 'chartist-js',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('chartist/dist/chartist.css'), require('./chartistJs.scss')],
-  template: require('./chartistJs.html'),
+	moduleId: module.id,
+	selector: 'chartist-js',
+	encapsulation: ViewEncapsulation.None,
+	styles: [require('chartist/dist/chartist.css'), require('./chartistjs.scss')],
+	templateUrl: 'chartistJs.html',
 })
 
 export class ChartistJs {
 
-  data:any;
+	data:any;
 
-  constructor(private _chartistJsService:ChartistJsService) {
-  }
+	constructor(private chartistJsService:ChartistJsService) {}
 
-  ngOnInit() {
-    this.data = this._chartistJsService.getAll();
-  }
+	ngOnInit() {
+		this.data = this.chartistJsService.getAll();
+	}
 
-  getResponsive(padding, offset) {
-    return this._chartistJsService.getResponsive(padding, offset);
-  }
+	getResponsive(padding, offset) {
+		return this.chartistJsService.getResponsive(padding, offset);
+	}
 }

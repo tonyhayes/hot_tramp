@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'standard-inputs',
-  template: require('./standardInputs.html'),
+  	moduleId: module.id,
+  	selector: 'standard-inputs',
+  	templateUrl: 'standardInputs.html',
 })
 export class StandardInputs {
 
-  constructor() {
-  }
+  	constructor() {}
 }

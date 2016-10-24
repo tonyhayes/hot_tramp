@@ -10,17 +10,16 @@ import { Ckeditor } from './components/ckeditor/ckeditor.component';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    NgaModule,
-    CKEditorModule,
-    routing
-  ],
-  declarations: [
-    Editors,
-    Ckeditor
-  ]
+  	imports: [
+		CommonModule,
+		FormsModule,
+		NgaModule.forRoot(),
+		CKEditorModule,
+		routing
+  	],
+  	declarations: [
+		Editors,
+		Ckeditor
+  	]
 })
-export default class EditorsModule {
-}
+export default class EditorsModule {}

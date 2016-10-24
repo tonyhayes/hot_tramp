@@ -1,10 +1,10 @@
 <div class="feed-messages-container">
   <div class="feed-message" *ngFor="let message of feed" (click)="expandMessage(message)">
     <div class="message-icon" *ngIf="message.type == 'text-message'">
-      <img class="photo-icon" src="{{ ( message.author | baProfilePicture ) }}">
+      <img class="photo-icon" src="{{ ( message.author | profilePicture ) }}">
     </div>
     <div class="message-icon" *ngIf="message.type != 'text-message'">
-      <img class="photo-icon" src="{{ ( message.author | baProfilePicture ) }}">
+      <img class="photo-icon" src="{{ ( message.author | profilePicture ) }}">
       <span class="sub-photo-icon" [ngClass]="message.type"></span>
     </div>
     <div class="text-block text-message">
@@ -16,7 +16,7 @@
       </div>
       <div class="preview" [ngClass]="{'hidden': !message.expanded}" *ngIf="message.preview">
         <a href="{{ message.link }}" target="_blank">
-          <img src="{{ ( message.preview | baAppPicture )}}">
+          <img src="{{ ( message.preview | appPicture )}}">
         </a>
       </div>
       <div [ngClass]="{'hidden': !message.expanded}" class="message-time">

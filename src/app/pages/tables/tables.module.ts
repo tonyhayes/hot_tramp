@@ -1,12 +1,18 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { NgaModule } from '../../theme/nga.module';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AgGridModule } from 'ag-grid-ng2/main';
+
 
 import { routing }       from './tables.routing';
 import { Tables } from './tables.component';
 import { BasicTables } from './components/basicTables/basicTables.component';
 import { SmartTables } from './components/smartTables/smartTables.component';
+import { AgGrid } from './components/ag-grid/ag-grid.component';
+import { RichGridComponent } from './components/ag-grid/components/rich-grid/rich-grid.component';
+import { EditorComponent } from './components/ag-grid/components/editor/editor.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { BasicTablesService } from './components/basicTables/basicTables.service';
 import { ResponsiveTable } from './components/basicTables/components/responsiveTable';
@@ -18,13 +24,18 @@ import { ContextualTable } from './components/basicTables/components/contextualT
 import { SmartTablesService } from './components/smartTables/smartTables.service';
 
 
+
+
 @NgModule({
   imports: [
     CommonModule,
+    NgaModule.forRoot(),
+    routing,
     FormsModule,
-    NgaModule,
+    HttpModule,
     Ng2SmartTableModule,
-    routing
+    AgGridModule.withNg2ComponentSupport(),
+
   ],
   declarations: [
     Tables,
@@ -35,11 +46,14 @@ import { SmartTablesService } from './components/smartTables/smartTables.service
     CondensedTable,
     StripedTable,
     ContextualTable,
-    ResponsiveTable
+    ResponsiveTable,
+    AgGrid,
+    RichGridComponent,
+    EditorComponent
   ],
   providers: [
     BasicTablesService,
-    SmartTablesService
+    SmartTablesService,
   ]
 })
 export default class TablesModule {}

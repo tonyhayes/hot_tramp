@@ -1,0 +1,13 @@
+@import '../../sass/conf/conf';
+
+
+.al-navbar {
+	color: $content-text;
+	display: block;
+	@media screen and (max-width: 950px)  {
+		display: none;
+	}
+}
+
+
+

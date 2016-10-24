@@ -1,0 +1,52 @@
+@import '../../sass/conf/conf';
+
+.external-app-link { 
+    .dropdown-toggle::after {
+        display: none;
+    }
+
+    a {
+        font-size: 23px;
+        cursor: pointer;
+        display: block;
+        text-decoration: none;
+        line-height: 43px;
+        color: $headerbar-text;
+        padding: 0;
+        float: left;
+        margin: 11px 0 0 15px;
+
+        &:hover {
+            text-decoration: none;
+            color: $warning;
+        }
+
+        @media screen and (min-width: 950px)  {
+            display:  none;
+        }
+    }
+    .external-link-dropdown-menu {
+        position: relative;
+        top: 52px;
+        left: -72px;
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        .dropdown-item {
+            font-size: 13px;
+            line-height: 25px;
+            color: $navbar-text;
+        }
+        @media (max-width: $resMS) {
+            position: absolute;
+            left: 250px;
+    
+        }
+        @media (max-width: $resS) {
+            position: absolute;
+            left: 0;
+    
+        }
+
+    }
+}

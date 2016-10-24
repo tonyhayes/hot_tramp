@@ -12,7 +12,7 @@ import { routing }       from './login.routing';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    NgaModule,
+    NgaModule.forRoot(),
     routing
   ],
   declarations: [

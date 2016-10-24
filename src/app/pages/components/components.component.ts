@@ -1,13 +1,12 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'components',
-  styles: [],
-  template: `<router-outlet></router-outlet>`
+  	selector: 'components',
+  	styles: [],
+  	template: `<router-outlet></router-outlet>`
 })
 export class Components {
 
-  constructor() {
-  }
+  	constructor() {}
 
 }

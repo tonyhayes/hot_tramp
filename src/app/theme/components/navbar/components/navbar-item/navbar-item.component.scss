@@ -1,0 +1,52 @@
+@import '../../../../sass/conf/conf';
+
+.al-navbar-item-container {
+	position: relative;
+	padding: 0 15px;
+	float: left;
+	box-sizing: border-box;
+	box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5);
+	height: 50px;
+
+	.al-navbar-item {
+		line-height: 48px;
+		padding:	10px;
+		color: $navbar-text;
+	}
+}
+@media screen and (min-width: 1325px) {
+	.al-navbar-item-container {
+		width: 10%;
+		flex: 0 0 10%;
+	}
+}
+@media screen and (min-width: 700px) and (max-width: 1325px)  {
+	.al-navbar-item-container {
+		width: 15%;
+		flex: 0 0 15%;      
+		font-size: 12px;
+	}
+}
+@media screen and (max-width: 700px)  {
+	.al-navbar-item-container {
+		width: 50%;
+		flex: 0 0 50%;
+	}
+}
+.al-navbar-item {
+	position: relative;
+	.al-navbar-icon {
+		position: absolute;
+		right: 0;
+		top: 3px;
+	}
+}
+@media screen and
+(min-width: 1325px) and (max-width: 1650px),
+(min-width: 700px) and (max-width: 830px),
+(max-width: 400px) {
+	.al-navbar-icon {
+		display: none;
+	}
+}
+

@@ -1,37 +1,30 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
-  selector: 'pages',
-  encapsulation: ViewEncapsulation.None,
-  styles: [],
-  template: `
-    <ba-sidebar></ba-sidebar>
-    <ba-page-top></ba-page-top>
-    <div class="al-main">
-      <div class="al-content">
-        <ba-content-top></ba-content-top>
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-    <footer class="al-footer clearfix">
-      <div class="al-footer-right">Created with <i class="ion-heart"></i></div>
-      <div class="al-footer-main clearfix">
-        <div class="al-copy">&copy; <a href="http://akveo.com">Akveo</a> 2016</div>
-        <ul class="al-share clearfix">
-          <li><i class="socicon socicon-facebook"></i></li>
-          <li><i class="socicon socicon-twitter"></i></li>
-          <li><i class="socicon socicon-google"></i></li>
-          <li><i class="socicon socicon-github"></i></li>
-        </ul>
-      </div>
-    </footer>
-    <ba-back-top position="200"></ba-back-top>
-    `
+	selector: 'pages',
+	encapsulation: ViewEncapsulation.None,
+	styles: [],
+	template: `
+		<dc-sidebar></dc-sidebar>
+		<dc-page-top></dc-page-top>
+		<dc-navbar-top></dc-navbar-top>
+		<div class="al-main" >
+			<div class="al-content">
+				<dc-content-top></dc-content-top>
+				<router-outlet></router-outlet>
+			</div>
+		</div>
+		<footer class="al-footer clearfix">
+			<div class="al-footer-right">Created with <i class="ion-social-angular"></i><i class="ion-social-html5"></i></div>
+			<div class="al-footer-main clearfix">
+				<div class="al-copy">&copy; <a href="http://dexterchaney.com">Dexter+Chaney</a> 2016</div>
+			</div>
+		</footer>
+		<dc-back-top position="200"></dc-back-top>
+		`
 })
 export class Pages {
 
-  constructor() {
-  }
+	constructor() {}
 
-  ngOnInit() {
-  }
+	ngOnInit() {}
 }

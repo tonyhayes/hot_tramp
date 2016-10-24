@@ -1,6 +1,6 @@
 <div class="checkbox-demo-row">
   <div class="input-demo checkbox-demo row">
-    <ba-multi-checkbox [(ngModel)]="checkboxModel" [propertiesMapping]="checkboxPropertiesMapping"></ba-multi-checkbox>
+    <dc-multi-checkbox [(ngModel)]="checkboxModel" [propertiesMapping]="checkboxPropertiesMapping"></dc-multi-checkbox>
   </div>
   <div class="input-demo radio-demo row">
     <div class="col-md-4">
@@ -24,7 +24,7 @@
   </div>
 </div>
 <div>
-  <ba-checkbox [(ngModel)]="isDisabled" [baCheckboxClass]="'disabled'" [label]="'Disabled checkbox'" [disabled]="true"></ba-checkbox>
+  <dc-checkbox [(ngModel)]="isDisabled" [checkboxClass]="'disabled'" [label]="'Disabled checkbox'" [disabled]="true"></dc-checkbox>
   <div class="radio disabled">
     <label class="custom-radio nowrap">
       <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>

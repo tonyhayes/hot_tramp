@@ -1,14 +1,14 @@
-import {Injectable} from '@angular/core';
-import {BaThemeConfigProvider, layoutPaths} from '../../../../theme';
+import { Injectable } from '@angular/core';
+import { ThemeConfigService, layoutPaths } from '../../../../theme';
 
 @Injectable()
 export class BubbleMapsService {
 
-  constructor(private _baConfig:BaThemeConfigProvider) {
+  constructor(private _config:ThemeConfigService) {
   }
 
   getData() {
-    let layoutColors = this._baConfig.get().colors;
+    let layoutColors = this._config.get().colors;
     let latlong = {};
 
     latlong['AD'] = {'latitude': 42.5, 'longitude': 1.5};

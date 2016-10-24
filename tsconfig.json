@@ -10,15 +10,18 @@
     "noEmitHelpers": true,
     "strictNullChecks": false,
     "baseUrl": "./src",
-    "paths": [
-    ],
+    "paths": {
+    },
     "lib": [
       "dom",
       "es6"
     ],
     "types": [
       "hammerjs",
+      "jasmine",
       "node",
+      "protractor",
+      "selenium-webdriver",
       "source-map",
       "uglify-js",
       "webpack"

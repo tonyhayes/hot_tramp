@@ -1,41 +1,42 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
-import {CalendarService} from './calendar.service';
+import { CalendarService } from './calendar.service';
 
 @Component({
-  selector: 'calendar',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('./calendar.scss')],
-  template: require('./calendar.html')
+  	moduleId: module.id,
+  	selector: 'calendar',
+  	encapsulation: ViewEncapsulation.None,
+  	styleUrls: ['calendar.scss'],
+  	templateUrl: 'calendar.html'
 })
 export class Calendar {
 
-  public calendarConfiguration:any;
-  private _calendar:Object;
+  	public calendarConfiguration:any;
+  	private calendar:Object;
 
-  constructor(private _calendarService:CalendarService) {
-    this.calendarConfiguration = this._calendarService.getData();
-    this.calendarConfiguration.select = (start, end) => this._onSelect(start, end);
-  }
+  	constructor(private calendarService:CalendarService) {
+		this.calendarConfiguration = this.calendarService.getData();
+		this.calendarConfiguration.select = (start, end) => this.onSelect(start, end);
+  	}
 
-  public onCalendarReady(calendar):void {
-    this._calendar = calendar;
-  }
+  	public onCalendarReady(calendar):void {
+		this.calendar = calendar;
+  	}
 
-  private _onSelect(start, end):void {
+  	private onSelect(start, end):void {
 
-    if (this._calendar != null) {
-      let title = prompt('Event Title:');
-      let eventData;
-      if (title) {
-        eventData = {
-          title: title,
-          start: start,
-          end: end
-        };
-        jQuery(this._calendar).fullCalendar('renderEvent', eventData, true);
-      }
-      jQuery(this._calendar).fullCalendar('unselect');
-    }
-  }
+		if (this.calendar != null) {
+	  		let title = prompt('Event Title:');
+	  		let eventData;
+	  		if (title) {
+					eventData = {
+		  			title: title,
+		  			start: start,
+		  			end: end
+				};
+				jQuery(this.calendar).fullCalendar('renderEvent', eventData, true);
+	  		}
+	  		jQuery(this.calendar).fullCalendar('unselect');
+		}
+  	}
 }

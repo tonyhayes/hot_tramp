@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'large-buttons',
-  template: require('./largeButtons.html'),
+  	moduleId: module.id,
+  	selector: 'large-buttons',
+  	templateUrl: 'largeButtons.html',
 })
 export class LargeButtons {
 
-  constructor() {
-  }
+  	constructor() {}
 }

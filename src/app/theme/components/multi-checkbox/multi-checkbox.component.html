@@ -1,0 +1,10 @@
+<div class="{{multiCheckboxClass}}">
+  <dc-checkbox *ngFor="let item of state"
+               [(ngModel)]="item[propertiesMapping.model]"
+               [checkboxClass]="getProp(item, 'checkboxClass')"
+               [label]="getProp(item, 'label')"
+               [disabled]="getProp(item, 'disabled')"
+               [value]="getProp(item, 'value')"
+               id="{{getProp(item, 'id')}}">
+  </dc-checkbox>
+</div>

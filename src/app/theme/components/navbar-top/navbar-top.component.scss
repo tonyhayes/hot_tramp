@@ -1,0 +1,29 @@
+
+@import '../../sass/conf/conf';
+
+.navbar-top {
+	flex-wrap: wrap;
+	background-color: $navbar;
+	z-index: 903;
+//  height: 40px;
+	width: 100%;
+	min-width: $resMin;
+	position: fixed;
+	top: $top-nav-bar-position;
+	> * {
+			padding: 0;
+	}
+
+	> .flex-container-column {
+			> * {
+					margin: auto 8px;
+					padding: 2px 0;
+			}
+	}
+
+
+}
+
+
+
+

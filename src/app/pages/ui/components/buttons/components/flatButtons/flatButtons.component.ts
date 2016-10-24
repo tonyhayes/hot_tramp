@@ -2,11 +2,11 @@ import {Component} from '@angular/core';
 
 
 @Component({
-  selector: 'flat-buttons',
-  template: require('./flatButtons.html'),
+  	moduleId: module.id,
+  	selector: 'flat-buttons',
+  	templateUrl: 'flatButtons.html',
 })
 export class FlatButtons {
 
-  constructor() {
-  }
+  	constructor() {}
 }

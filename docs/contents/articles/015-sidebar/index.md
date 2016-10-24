@@ -12,10 +12,10 @@ This means that the sidebar is basically a singleton object.
  
 The Sidebar can be added to the page using the `BaSidebar` component:
 ```html
-<ba-sidebar></ba-sidebar>
+<dc-sidebar></dc-sidebar>
 ```
 
-The sidebar contains a `<ba-menu></ba-menu>` component which defines and renders the application menu based on routes provided. Generally the `ba-menu` component can be used separately from `ba-sidebar`.
+The sidebar contains a `<dc-menu></dc-menu>` component which defines and renders the application menu based on routes provided. Generally the `dc-menu` component can be used separately from `dc-sidebar`.
 All menu items information is defined inside the `data` property of a route.
 
 ## Menu Configuration

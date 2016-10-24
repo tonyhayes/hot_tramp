@@ -1,29 +1,29 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
-import {FeedService} from './feed.service';
+import { FeedService } from './feed.service';
 
 @Component({
-  selector: 'feed',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('./feed.scss')],
-  template: require('./feed.html')
+	moduleId: module.id,
+	selector: 'feed',
+	encapsulation: ViewEncapsulation.None,
+	styleUrls: ['feed.scss'],
+	templateUrl: 'feed.html'
 })
 export class Feed {
 
-  public feed:Array<Object>;
+	public feed:Array<Object>;
 
-  constructor(private _feedService:FeedService) {
-  }
+	constructor(private feedService:FeedService) {}
 
-  ngOnInit() {
-    this._loadFeed();
-  }
+	ngOnInit() {
+		this.loadFeed();
+	}
 
-  expandMessage (message){
-    message.expanded = !message.expanded;
-  }
+	expandMessage (message){
+		message.expanded = !message.expanded;
+	}
 
-  private _loadFeed() {
-    this.feed = this._feedService.getData();
-  }
+	private loadFeed() {
+		this.feed = this.feedService.getData();
+	}
 }

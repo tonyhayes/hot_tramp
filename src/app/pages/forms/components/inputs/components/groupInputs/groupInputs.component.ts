@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'group-inputs',
-  template: require('./groupInputs.html'),
+  	moduleId: module.id,
+  	selector: 'group-inputs',
+  	templateUrl: 'groupInputs.html',
 })
 export class GroupInputs {
 
-  constructor() {
-  }
+  	constructor() {}
 }

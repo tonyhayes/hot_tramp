@@ -1,21 +1,21 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
-import {BubbleMapsService} from './bubbleMaps.service';
+import { BubbleMapsService } from './bubbleMaps.service';
 
 @Component({
-  selector: 'bubble-maps',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('./bubbleMaps.scss')],
-  template: require('./bubbleMaps.html'),
+	moduleId: module.id,
+	selector: 'bubble-maps',
+	encapsulation: ViewEncapsulation.None,
+	styleUrls: ['bubbleMaps.scss'],
+	templateUrl: 'bubbleMaps.html',
 })
 export class BubbleMaps {
 
-  chartData:Object;
+  	chartData:Object;
 
-  constructor(private _bubbleMapsService:BubbleMapsService) {
-  }
+  	constructor(private bubbleMapsService:BubbleMapsService) {}
 
-  ngOnInit() {
-    this.chartData = this._bubbleMapsService.getData();
-  }
+  	ngOnInit() {
+		this.chartData = this.bubbleMapsService.getData();
+  	}
 }

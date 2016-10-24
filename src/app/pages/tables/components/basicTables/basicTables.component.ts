@@ -1,13 +1,13 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'basic-tables',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('./basicTables.scss')],
-  template: require('./basicTables.html')
+  	moduleId: module.id,
+  	selector: 'basic-tables',
+  	encapsulation: ViewEncapsulation.None,
+  	styleUrls: ['basicTables.scss'],
+  	templateUrl: 'basicTables.html'
 })
 export class BasicTables {
 
-  constructor() {
-  }
+  	constructor() {}
 }

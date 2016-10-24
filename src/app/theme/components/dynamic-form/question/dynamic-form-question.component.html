@@ -1,0 +1,47 @@
+<div [formGroup]="form">
+	<label class="col-sm-12 control-label" [attr.for]="question.key">{{question.label}}</label>
+	<div class="col-sm-12" [ngSwitch]="question.controlType">
+		<input class="form-control" *ngSwitchCase="'textbox'" [formControlName]="question.key"
+		[id]="question.key" [type]="question.type">
+		<div class="custom-select" *ngSwitchCase="'dropdown'">
+			<select [id]="question.key" [formControlName]="question.key">
+				<option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+			</select>
+		</div>
+		<div class="form-control radio-control row" *ngSwitchCase="'radio'">
+			<div class="col-md-4" *ngFor="let opt of question.options">
+      			<label class="radio-inline custom-radio nowrap">
+					<input [type]="'radio'" [id]="question.key" [formControlName]="question.key" [value]="opt.key" [name]="question.key" (click)="dynamicFormOptionSelection(question.key, opt.key)">
+        			<span>{{opt.value}}</span>
+      			</label>
+			</div>
+		</div>
+		<div>
+			<input class="form-control" *ngSwitchCase="'input'" [formControlName]="question.key"
+			[id]="question.key" [type]="question.type">
+		</div>
+		<div class="checkbox-control" *ngSwitchCase="'checkbox'">
+			<input class="checkbox-input-control" [formControlName]="question.key"
+			[id]="question.key" [type]="question.type" (click)="dynamicFormOptionSelection(question.key, $event.target.checked)">
+		</div>
+		<div class="checkbox-control" *ngSwitchCase="'checkboxes'">
+      		<label class="checkbox-label-control" [attr.for]="question.key">
+				<input class="checkbox-input-control" [formControlName]="question.key"
+				[id]="question.key" [type]="question.type" (click)="dynamicFormOptionSelection(question.key, $event.target.checked)">
+      		{{question.label}}</label>
+		</div>
+		<div>
+			<textarea class="form-control" *ngSwitchCase="'textarea'" [formControlName]="question.key"
+			[id]="question.key"></textarea>
+		</div>
+
+    	<div ngbDropdown class="form-control" *ngSwitchCase="'bs-dropdown'">
+      		<div class="btn btn-outline-primary" [id]="question.key"  ngbDropdownToggle>{{dynamicFormOptionSelected(question)}}</div>
+  			<div class="dropdown-menu" aria-labelledby="question.key">
+        		<div class="dropdown-item" *ngFor="let opt of question.options" (click)="dynamicFormOptionSelection(question.key, opt.value)">{{opt.value}}</div>
+      		</div>
+  		</div>
+
+	</div> 
+	<div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+</div>

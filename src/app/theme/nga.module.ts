@@ -1,122 +1,151 @@
-import { NgModule }      from '@angular/core';
+import { NgModule, ModuleWithProviders  }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+import { HttpModule }  from '@angular/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {
-  BaThemeConfig
+	ThemeConfig
 } from './theme.config';
 
 import {
-  BaThemeConfigProvider
-} from './theme.configProvider';
+	ThemeConfigService
+} from './theme.config.service';
 
 import {
-  BaAmChart,
-  BaBackTop,
-  BaCard,
-  BaChartistChart,
-  BaCheckbox,
-  BaContentTop,
-  BaFullCalendar,
-  BaMenuItem,
-  BaMenu,
-  BaMsgCenter,
-  BaMultiCheckbox,
-  BaPageTop,
-  BaPictureUploader,
-  BaSidebar
+	AppsDropdown,
+	AmChart,
+	BackTop,
+	Card,
+	ChartistChart,
+	Checkbox,
+	ContentTop,
+	DynamicFormComponent,
+	DynamicFormQuestionComponent,
+	FullCalendar,
+	MenuItem,
+	Menu,
+	MsgCenter,
+	MultiCheckbox,
+	Navbar,
+	NavbarItem,
+	NavbarTop,
+	PageTop,
+	PictureUploader,
+	Sidebar
 } from './components';
 
-import { BaCardBlur } from './components/baCard/baCardBlur.directive';
+import { CardBlur } from './components/card/card-blur.directive';
 
 import {
-  BaScrollPosition,
-  BaSlimScroll,
-  BaThemeRun
+	ScrollPosition,
+	SlimScroll,
+	ThemeRun,
 } from './directives';
 
 import {
-  BaAppPicturePipe,
-  BaKameleonPicturePipe,
-  BaProfilePicturePipe
+	AppLogoPipe,
+	AppPicturePipe,
+	KameleonPicturePipe,
+	ProfilePicturePipe
 } from './pipes';
 
 import {
-  BaImageLoaderService,
-  BaThemePreloader,
-  BaThemeSpinner
+	ImageLoaderService,
+	ThemePreloader,
+	ThemeSpinner,
+	HeartbeatService
 } from './services';
 
 import {
-  EmailValidator,
-  EqualPasswordsValidator
+	EmailValidator,
+	EqualPasswordsValidator
 } from './validators';
 
 const NGA_COMPONENTS = [
-  BaAmChart,
-  BaBackTop,
-  BaCard,
-  BaChartistChart,
-  BaCheckbox,
-  BaContentTop,
-  BaFullCalendar,
-  BaMenuItem,
-  BaMenu,
-  BaMsgCenter,
-  BaMultiCheckbox,
-  BaPageTop,
-  BaPictureUploader,
-  BaSidebar
+	AppsDropdown,
+	AmChart,
+	BackTop,
+	Card,
+	ChartistChart,
+	Checkbox,
+	ContentTop,
+	DynamicFormComponent,
+	DynamicFormQuestionComponent,
+	FullCalendar,
+	MenuItem,
+	Menu,
+	MsgCenter,
+	MultiCheckbox,
+	Navbar,
+	NavbarItem,
+	NavbarTop,
+	PageTop,
+	PictureUploader,
+	Sidebar
 ];
 
 const NGA_DIRECTIVES = [
-  BaScrollPosition,
-  BaSlimScroll,
-  BaThemeRun,
-  BaCardBlur
+	ScrollPosition,
+	SlimScroll,
+	ThemeRun,
+	CardBlur,
 ];
 
 const NGA_PIPES = [
-  BaAppPicturePipe,
-  BaKameleonPicturePipe,
-  BaProfilePicturePipe
+	AppLogoPipe,
+	AppPicturePipe,
+	KameleonPicturePipe,
+	ProfilePicturePipe
 ];
 
 const NGA_SERVICES = [
-  BaImageLoaderService,
-  BaThemePreloader,
-  BaThemeSpinner
+	ImageLoaderService,
+	ThemePreloader,
+	ThemeSpinner,
+	HeartbeatService
 ];
 
 const NGA_VALIDATORS = [
-  EmailValidator,
-  EqualPasswordsValidator
+	EmailValidator,
+	EqualPasswordsValidator
 ];
 
 @NgModule({
-  declarations: [
-    ...NGA_PIPES,
-    ...NGA_DIRECTIVES,
-    ...NGA_COMPONENTS
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
-  providers: [
-    BaThemeConfigProvider,
-    BaThemeConfig,
-    ...NGA_VALIDATORS,
-    ...NGA_SERVICES
-  ],
-  exports: [
-    ...NGA_PIPES,
-    ...NGA_DIRECTIVES,
-    ...NGA_COMPONENTS
-  ]
+	declarations: [
+		...NGA_PIPES,
+		...NGA_DIRECTIVES,
+		...NGA_COMPONENTS
+	],
+	imports: [
+		CommonModule,
+		RouterModule,
+		FormsModule,
+		ReactiveFormsModule,
+		ModalModule.forRoot(),
+		BootstrapModalModule,
+		HttpModule,
+		NgbModule,
+	],
+	exports: [
+		...NGA_PIPES,
+		...NGA_DIRECTIVES,
+		...NGA_COMPONENTS
+	]
 })
 export class NgaModule {
-}
+  	static forRoot(): ModuleWithProviders {
+     	return <ModuleWithProviders> {
+      		ngModule: NgaModule,
+       		providers: [
+         		ThemeConfigService,
+         		ThemeConfig,
+         		...NGA_VALIDATORS,
+         		...NGA_SERVICES
+       		],
+     	};
+   	}
+}		

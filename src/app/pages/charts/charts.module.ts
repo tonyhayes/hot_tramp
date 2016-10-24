@@ -13,7 +13,7 @@ import { ChartistJsService } from './components/chartistJs/chartistJs.service';
   imports: [
     CommonModule,
     FormsModule,
-    NgaModule,
+    NgaModule.forRoot(),
     routing
   ],
   declarations: [

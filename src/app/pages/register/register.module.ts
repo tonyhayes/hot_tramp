@@ -12,7 +12,7 @@ import { routing }       from './register.routing';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    NgaModule,
+    NgaModule.forRoot(),
     routing
   ],
   declarations: [

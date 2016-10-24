@@ -1,18 +1,19 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
-import {UsersMapService} from './usersMap.service';
+import { UsersMapService } from './usersMap.service';
 
 @Component({
-  selector: 'users-map',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('./usersMap.scss')],
-  template: require('./usersMap.html')
+  	moduleId: module.id,
+  	selector: 'users-map',
+  	encapsulation: ViewEncapsulation.None,
+  	styleUrls: ['usersMap.scss'],
+  	templateUrl: 'usersMap.html'
 })
 export class UsersMap {
 
-  mapData:Object;
+  	mapData:Object;
 
-  constructor(private _usersMapService:UsersMapService) {
-    this.mapData = this._usersMapService.getData();
-  }
+  	constructor(private usersMapService:UsersMapService) {
+    	this.mapData = this.usersMapService.getData();
+  	}
 }

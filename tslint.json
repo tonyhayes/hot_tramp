@@ -78,7 +78,7 @@
     "eofline": true,
     "indent": [
       true,
-      "spaces"
+      "tabs"
     ],
     "max-line-length": [
       true,

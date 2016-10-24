@@ -1,48 +1,67 @@
 import './app.loader.ts';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { GlobalState } from './global.state';
-import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
+import { ImageLoaderService, ThemePreloader, ThemeSpinner } from './theme/services';
 import { layoutPaths } from './theme/theme.constants';
-
+import { HeartbeatService } from './theme/services/http-api/heartbeat.service';
+import { ThemeConfig } from './theme/theme.config';
 /*
  * App Component
  * Top Level Component
  */
 @Component({
-  selector: 'app',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('normalize.css'), require('./app.scss')],
-  template: `
-    <main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
-      <div class="additional-bg"></div>
-      <router-outlet></router-outlet>
-    </main>
-  `
+	selector: 'app',
+	encapsulation: ViewEncapsulation.None,
+	styleUrls: ['./app.component.scss'],
+	template: `
+		<main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
+			<div class="additional-bg"></div>
+			<router-outlet></router-outlet>
+		</main>
+	`
 })
 export class App {
 
-  isMenuCollapsed: boolean = false;
+	isMenuCollapsed: boolean = false;
 
-  constructor(private _state: GlobalState,
-              private _imageLoader: BaImageLoaderService,
-              private _spinner: BaThemeSpinner) {
+	constructor(private state: GlobalState,
+							private imageLoader: ImageLoaderService,
+							private spinner: ThemeSpinner,
+							private config: ThemeConfig,
+							private heartbeat:HeartbeatService) {}
 
-    this._loadImages();
+	public ngOnInit():void {
+		this.loadImages();
 
-    this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
-      this.isMenuCollapsed = isCollapsed;
-    });
-  }
+		this.state.subscribe('menu.isCollapsed', (isCollapsed) => {
+			this.isMenuCollapsed = isCollapsed;
+		});
+		this.heartbeat.monitor();
 
-  public ngAfterViewInit(): void {
-    // hide spinner once all loaders are completed
-    BaThemePreloader.load().then((values) => {
-      this._spinner.hide();
-    });
-  }
+	}
 
-  private _loadImages(): void {
-    // register some loaders
-    BaThemePreloader.registerLoader(this._imageLoader.load(layoutPaths.images.root + 'sky-bg.jpg'));
-  }
+	public ngAfterViewInit(): void {
+		// hide spinner once all loaders are completed
+		ThemePreloader.load().then((values) => {
+			this.spinner.hide();
+		});
+	}
+
+	private ngOnDestroy():void {
+		this.heartbeat.monitor('exit');
+
+	}
+
+	private loadImages(): void {
+		// register some loaders
+		ThemePreloader.registerLoader(this.imageLoader.load(layoutPaths.images.root + 'sky-bg.jpg'));
+	}
 }
+
+// if('serviceWorker' in navigator){
+//     // Handler for messages coming from the service worker
+//     navigator.serviceWorker.addEventListener('message', function(event){
+//         console.log("Client Received Message: " + event.data);
+//         event.ports[0].postMessage("Client Received Message: " + event.data);
+//     });
+// }

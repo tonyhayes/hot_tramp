@@ -1,3 +1,3 @@
-export * from './baScrollPosition';
-export * from './baThemeRun';
-export * from './baSlimScroll';
+export * from './scroll-position';
+export * from './slim-scroll';
+export * from './theme-run';

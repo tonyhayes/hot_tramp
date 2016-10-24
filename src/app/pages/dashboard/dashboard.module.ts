@@ -23,31 +23,31 @@ import { TrafficChartService } from './trafficChart/trafficChart.service';
 import { UsersMapService } from './usersMap/usersMap.service';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    NgaModule,
-    routing
-  ],
-  declarations: [
-    PopularApp,
-    PieChart,
-    TrafficChart,
-    UsersMap,
-    LineChart,
-    Feed,
-    Todo,
-    Calendar,
-    Dashboard
-  ],
-  providers: [
-    CalendarService,
-    FeedService,
-    LineChartService,
-    PieChartService,
-    TodoService,
-    TrafficChartService,
-    UsersMapService
-  ]
+	imports: [
+		CommonModule,
+		FormsModule,
+		NgaModule.forRoot(),
+		routing
+	],
+	declarations: [
+		PopularApp,
+		PieChart,
+		TrafficChart,
+		UsersMap,
+		LineChart,
+		Feed,
+		Todo,
+		Calendar,
+		Dashboard
+	],
+	providers: [
+		CalendarService,
+		FeedService,
+		LineChartService,
+		PieChartService,
+		TodoService,
+		TrafficChartService,
+		UsersMapService
+	]
 })
 export default class DashboardModule {}

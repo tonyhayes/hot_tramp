@@ -1,0 +1,13 @@
+<div class="auth-main">
+	<div class="auth-block">
+		<h1>Profile</h1>
+      	<dynamic-form [questions]="questions" (submitForm)="onSubmit($event)"></dynamic-form>
+
+        <rx-hero-list
+            [heroes]="heroes | async"
+            [selectedHero]="selectedHero"
+            (onSelect)="select($event)"
+            (onDelete)="delete($event)"
+        ></rx-hero-list>
+	</div>
+</div>

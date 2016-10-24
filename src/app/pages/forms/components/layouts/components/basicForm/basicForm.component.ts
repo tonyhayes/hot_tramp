@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'basic-form',
-  template: require('./basicForm.html'),
+  	moduleId: module.id,
+  	selector: 'basic-form',
+  	templateUrl: 'basicForm.html',
 })
 export class BasicForm {
 
-  constructor() {
-  }
+  	constructor() {}
 }

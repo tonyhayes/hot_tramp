@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'inputs',
@@ -7,6 +7,5 @@ import {Component, ViewEncapsulation} from '@angular/core';
 })
 export class Inputs {
 
-  constructor() {
-  }
+  constructor() {}
 }

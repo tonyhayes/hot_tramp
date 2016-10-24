@@ -1,16 +1,16 @@
 import {Injectable} from '@angular/core';
-import {BaThemeConfigProvider, colorHelper, layoutPaths} from '../../../theme';
+import {ThemeConfigService, colorHelper, layoutPaths} from '../../../theme';
 
 @Injectable()
 export class LineChartService {
 
-  constructor(private _baConfig:BaThemeConfigProvider) {
+  constructor(private _config:ThemeConfigService) {
   }
 
   getData() {
 
-    var layoutColors = this._baConfig.get().colors;
-    var graphColor = this._baConfig.get().colors.custom.dashboardLineChart;
+    var layoutColors = this._config.get().colors;
+    var graphColor = this._config.get().colors.custom.dashboardLineChart;
 
     return {
       type: 'serial',

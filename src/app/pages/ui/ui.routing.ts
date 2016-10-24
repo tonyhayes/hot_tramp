@@ -8,16 +8,16 @@ import { Typography } from './components/typography/typography.component';
 
 // noinspection TypeScriptValidateTypes
 const routes: Routes = [
-  {
-    path: '',
-    component: Ui,
-    children: [
-      { path: 'buttons', component: Buttons },
-      { path: 'grid', component: Grid },
-      { path: 'icons', component: Icons },
-      { path: 'typography', component: Typography }
-    ]
-  }
+	{
+		path: '',
+		component: Ui,
+		children: [
+			{ path: 'buttons', component: Buttons },
+			{ path: 'grid', component: Grid },
+			{ path: 'icons', component: Icons },
+			{ path: 'typography', component: Typography }
+		]
+	}
 ];
 
 export const routing = RouterModule.forChild(routes);

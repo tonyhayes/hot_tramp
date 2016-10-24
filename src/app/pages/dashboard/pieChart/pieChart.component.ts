@@ -1,58 +1,59 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
-import {PieChartService} from './pieChart.service';
+import { PieChartService } from './pieChart.service';
 
 import './pieChart.loader.ts';
 
 @Component({
-  selector: 'pie-chart',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('./pieChart.scss')],
-  template: require('./pieChart.html')
+	moduleId: module.id,
+	selector: 'pie-chart',
+	encapsulation: ViewEncapsulation.None,
+	styleUrls: ['pieChart.scss'],
+	templateUrl: 'pieChart.html'
 })
 // TODO: move easypiechart to component
 export class PieChart {
 
-  public charts: Array<Object>;
-  private _init = false;
+	public charts: Array<Object>;
+	private init = false;
 
-  constructor(private _pieChartService: PieChartService) {
-    this.charts = this._pieChartService.getData();
-  }
+  	constructor(private pieChartService: PieChartService) {
+		this.charts = this.pieChartService.getData();
+  	}
 
-  ngAfterViewInit() {
-    if (!this._init) {
-      this._loadPieCharts();
-      this._updatePieCharts();
-      this._init = true;
-    }
-  }
+  	ngAfterViewInit() {
+		if (!this.init) {
+	  		this.loadPieCharts();
+	  		this.updatePieCharts();
+	  		this.init = true;
+		}
+  	}
 
-  private _loadPieCharts() {
+  	private loadPieCharts() {
 
-    jQuery('.chart').each(function () {
-      let chart = jQuery(this);
-      chart.easyPieChart({
-        easing: 'easeOutBounce',
-        onStep: function (from, to, percent) {
-          jQuery(this.el).find('.percent').text(Math.round(percent));
-        },
-        barColor: jQuery(this).attr('data-rel'),
-        trackColor: 'rgba(0,0,0,0)',
-        size: 84,
-        scaleLength: 0,
-        animation: 2000,
-        lineWidth: 9,
-        lineCap: 'round',
-      });
-    });
-  }
+		jQuery('.chart').each(function () {
+	  		let chart = jQuery(this);
+	  		chart.easyPieChart({
+				easing: 'easeOutBounce',
+				onStep: function (from, to, percent) {
+		  		jQuery(this.el).find('.percent').text(Math.round(percent));
+			},
+			barColor: jQuery(this).attr('data-rel'),
+			trackColor: 'rgba(0,0,0,0)',
+			size: 84,
+			scaleLength: 0,
+			animation: 2000,
+			lineWidth: 9,
+			lineCap: 'round',
+	  		});
+		});
+  	}
 
-  private _updatePieCharts() {
-    let getRandomArbitrary = (min, max) => { return Math.random() * (max - min) + min; };
+  	private updatePieCharts() {
+		let getRandomArbitrary = (min, max) => { return Math.random() * (max - min) + min; };
 
-    jQuery('.pie-charts .chart').each(function(index, chart) {
-      jQuery(chart).data('easyPieChart').update(getRandomArbitrary(55, 90));
-    });
-  }
+		jQuery('.pie-charts .chart').each(function(index, chart) {
+	  		jQuery(chart).data('easyPieChart').update(getRandomArbitrary(55, 90));
+		});
+  	}
 }

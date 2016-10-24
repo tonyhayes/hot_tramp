@@ -1,0 +1,7 @@
+<aside class="al-sidebar" (mouseleave)="hoverElemTop=outOfArea" sidebarResize>
+  <dc-menu [menuRoutes]="routes"
+           [menuHeight]="menuHeight"
+           [sidebarCollapsed]="isMenuCollapsed"
+           (expandMenu)="menuExpand()"
+           (collapseMenu)="menuCollapse()"></dc-menu>
+</aside>

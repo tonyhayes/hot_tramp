@@ -1,18 +1,19 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
-import {LineMapsService} from './lineMaps.service';
+import { LineMapsService } from './lineMaps.service';
 
 @Component({
-  selector: 'line-maps',
-  encapsulation: ViewEncapsulation.None,
-  styles: [require('./lineMaps.scss')],
-  template: require('./lineMaps.html')
+  	moduleId: module.id,
+  	selector: 'line-maps',
+  	encapsulation: ViewEncapsulation.None,
+  	styleUrls: ['lineMaps.scss'],
+  	templateUrl: 'lineMaps.html'
 })
 export class LineMaps {
 
-  chartData:Object;
+  	chartData:Object;
 
-  constructor(private _lineMapsService:LineMapsService) {
-    this.chartData = this._lineMapsService.getData();
-  }
+  	constructor(private lineMapsService:LineMapsService) {
+    	this.chartData = this.lineMapsService.getData();
+  	}
 }
