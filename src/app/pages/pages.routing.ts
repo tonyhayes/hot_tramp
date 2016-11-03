@@ -15,12 +15,17 @@ const routes: Routes = [
 		loadChildren: () => System.import('./profile/profile.module')
 	},
 	{
+		path: 'project-management',
+		loadChildren: () => System.import('./project-management/project-management.module')
+	},
+	{
 		path: 'pages',
 		component: Pages,
 		children: [
 			{ path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 			{ path: 'dashboard', loadChildren: () => System.import('./dashboard/dashboard.module') },
 			{ path: 'editors', loadChildren: () => System.import('./editors/editors.module') },
+			{ path: 'project-management', loadChildren: () => System.import('./project-management/project-management.module') },
 			//{ path: 'components', loadChildren: () => System.import('./components/components.module') }
 			{ path: 'charts', loadChildren: () => System.import('./charts/charts.module') },
 			{ path: 'ui', loadChildren: () => System.import('./ui/ui.module') },

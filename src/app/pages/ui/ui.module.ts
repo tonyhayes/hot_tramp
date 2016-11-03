@@ -26,7 +26,7 @@ import { IconsService } from './components/icons/icons.service';
 	imports: [
 		CommonModule,
 		FormsModule,
-		NgaModule.forRoot(),
+		NgaModule,
 		DropdownModule,
 		routing
 	],
@@ -49,5 +49,4 @@ import { IconsService } from './components/icons/icons.service';
 		IconsService
 	]
 })
-export default class UiModule {
-}
+export default class UiModule {}

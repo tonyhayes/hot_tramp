@@ -47,7 +47,10 @@ export class Menu {
 	public selectMenuAndNotify():void {
 		if (this.menuItems) {
 			this.menuItems = this.service.selectMenuItem(this.menuItems);
-			this.state.notifyDataChanged('menu.activeLink', this.service.getCurrentItem());
+			const item = this.service.getCurrentItem();
+			if(item.selected){
+				this.state.notifyDataChanged('menu.activeLink', item);				
+			}
 			this.closeMenu();
 		}
 	}

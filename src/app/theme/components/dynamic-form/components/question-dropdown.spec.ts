@@ -26,6 +26,21 @@ describe('DropdownQuestion', () => {
     	expect(ddq.key).toEqual('brave');
     	expect(ddq.label).toEqual('Bravery Rating');
   	});
+  	it('should be a formatted dropdown', () => {
+	  	const ddq = new DropdownQuestion({
+	  		key: 'brave',
+	  		label: 'Bravery Rating',
+	  		options: [
+	  		{key: 'solid',  value: 'Solid'},
+	  		{key: 'great',  value: 'Great'},
+	  		{key: 'good',   value: 'Good'},
+	  		{key: 'unproven', value: 'Unproven'}
+	  		],
+	  		order: 3
+	  	});
+    	expect(ddq.key).toEqual('brave');
+    	expect(ddq.label).toEqual('Bravery Rating');
+  	});
   	it('should be a formatted dropdown, with options', () => {
 	  	const ddq = new DropdownQuestion({
 	  		key: 'brave',

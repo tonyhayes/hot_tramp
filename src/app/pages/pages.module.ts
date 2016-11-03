@@ -6,8 +6,7 @@ import { NgaModule } from '../theme/nga.module';
 import { Pages } from './pages.component';
 
 @NgModule({
-  imports: [NgaModule.forRoot(), routing],
-  declarations: [Pages]
+  	imports: [ NgaModule, routing ],
+  	declarations: [ Pages ]
 })
-export class PagesModule {
-}
+export class PagesModule {}

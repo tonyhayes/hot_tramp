@@ -14,6 +14,17 @@ export const PAGES_NAVBAR = [
 				}
 			},
 			{
+				path: 'project-management',
+				data: {
+					navbar: {
+						title: 'Project Management',
+						icon: 'ion-android-options',
+						selected: true,
+						order: 10
+					}
+				}
+			},
+			{
 				path: '',
 				data: {
 					navbar: {

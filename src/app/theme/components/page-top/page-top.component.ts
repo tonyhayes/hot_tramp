@@ -23,6 +23,7 @@ export class PageTop {
 	public toggleMenu() {
 		this.isMenuCollapsed = !this.isMenuCollapsed;
 		this.state.notifyDataChanged('menu.isCollapsed', this.isMenuCollapsed);
+		return false;
 	}
 
 	public scrolledChanged(isScrolled) {

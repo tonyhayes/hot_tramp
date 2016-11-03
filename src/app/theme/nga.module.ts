@@ -6,6 +6,8 @@ import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import { HttpModule }  from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SelectModule } from 'ng2-select/ng2-select';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import {
 	ThemeConfig
@@ -25,6 +27,11 @@ import {
 	ContentTop,
 	DynamicFormComponent,
 	DynamicFormQuestionComponent,
+	CounterInputComponent,
+	DropdownSelectComponent,
+	DatalistSelectComponent,
+	GridComponent,
+	TagSelectComponent,
 	FullCalendar,
 	MenuItem,
 	Menu,
@@ -75,6 +82,11 @@ const NGA_COMPONENTS = [
 	ContentTop,
 	DynamicFormComponent,
 	DynamicFormQuestionComponent,
+	CounterInputComponent,
+	DropdownSelectComponent,
+	GridComponent,
+	DatalistSelectComponent,
+	TagSelectComponent,
 	FullCalendar,
 	MenuItem,
 	Menu,
@@ -85,7 +97,7 @@ const NGA_COMPONENTS = [
 	NavbarTop,
 	PageTop,
 	PictureUploader,
-	Sidebar
+	Sidebar,
 ];
 
 const NGA_DIRECTIVES = [
@@ -129,6 +141,9 @@ const NGA_VALIDATORS = [
 		BootstrapModalModule,
 		HttpModule,
 		NgbModule,
+		SelectModule,
+		Ng2SmartTableModule
+
 	],
 	exports: [
 		...NGA_PIPES,

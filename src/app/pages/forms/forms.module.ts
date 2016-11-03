@@ -24,29 +24,28 @@ import { BasicForm } from './components/layouts/components/basicForm';
 import { WithoutLabelsForm } from './components/layouts/components/withoutLabelsForm';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AngularFormsModule,
-    NgaModule.forRoot(),
-    RatingModule,
-    routing
-  ],
-  declarations: [
-    Layouts,
-    Inputs,
-    Forms,
-    StandardInputs,
-    ValidationInputs,
-    GroupInputs,
-    CheckboxInputs,
-    Rating,
-    SelectInputs,
-    InlineForm,
-    BlockForm,
-    HorizontalForm,
-    BasicForm,
-    WithoutLabelsForm
-  ]
+	imports: [
+		CommonModule,
+		AngularFormsModule,
+		NgaModule,
+		RatingModule,
+		routing
+  	],
+  	declarations: [
+		Layouts,
+		Inputs,
+		Forms,
+		StandardInputs,
+		ValidationInputs,
+		GroupInputs,
+		CheckboxInputs,
+		Rating,
+		SelectInputs,
+		InlineForm,
+		BlockForm,
+		HorizontalForm,
+		BasicForm,
+		WithoutLabelsForm
+  	]
 })
-export default class FormsModule {
-}
+export default class FormsModule {}

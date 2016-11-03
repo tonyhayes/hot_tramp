@@ -27,33 +27,33 @@ import { SmartTablesService } from './components/smartTables/smartTables.service
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NgaModule.forRoot(),
-    routing,
-    FormsModule,
-    HttpModule,
-    Ng2SmartTableModule,
-    AgGridModule.withNg2ComponentSupport(),
+  	imports: [
+		CommonModule,
+		NgaModule	,
+		routing,
+		FormsModule,
+		HttpModule,
+		Ng2SmartTableModule,
+		AgGridModule.withNg2ComponentSupport(),
 
-  ],
-  declarations: [
-    Tables,
-    BasicTables,
-    SmartTables,
-    HoverTable,
-    BorderedTable,
-    CondensedTable,
-    StripedTable,
-    ContextualTable,
-    ResponsiveTable,
-    AgGrid,
-    RichGridComponent,
-    EditorComponent
-  ],
-  providers: [
-    BasicTablesService,
-    SmartTablesService,
-  ]
+  	],
+  	declarations: [
+		Tables,
+		BasicTables,
+		SmartTables,
+		HoverTable,
+		BorderedTable,
+		CondensedTable,
+		StripedTable,
+		ContextualTable,
+		ResponsiveTable,
+		AgGrid,
+		RichGridComponent,
+		EditorComponent
+  	],
+  	providers: [
+		BasicTablesService,
+		SmartTablesService,
+  	]
 })
 export default class TablesModule {}

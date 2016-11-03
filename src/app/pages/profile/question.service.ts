@@ -14,9 +14,13 @@ import { QuestionBase,
 	DropdownQuestion, 
 	TextboxQuestion, 
 	TextareaQuestion, 
+	TextlineQuestion, 
 	InputQuestion, 
 	RadioQuestion,
-	CheckboxQuestion
+	CheckboxQuestion,
+	DateQuestion,
+	DatalistQuestion,
+	TagSelectQuestion
 } from '../../theme/components/dynamic-form';
 
 @Injectable()
@@ -32,10 +36,10 @@ export class QuestionService {
 			key: 'brave',
 			label: 'Bravery Rating',
 			options: [
-			{key: 'solid',  value: 'Solid'},
-			{key: 'great',  value: 'Great'},
-			{key: 'good',   value: 'Good'},
-			{key: 'unproven', value: 'Unproven'}
+				{key: 'solid',  value: 'Solid'},
+				{key: 'great',  value: 'Great'},
+				{key: 'good',   value: 'Good'},
+				{key: 'unproven', value: 'Unproven'}
 			],
 			order: 1
 		}),
@@ -43,10 +47,10 @@ export class QuestionService {
 			key: 'brave7',
 			label: 'Bravery Rating7',
 			options: [
-			{key: 'solid7',  value: 'Solid77'},
-			{key: 'great7',  value: 'Great77'},
-			{key: 'good7',   value: 'Good77'},
-			{key: 'unproven7', value: 'Unproven77'}
+				{key: 'solid7',  value: 'Solid77'},
+				{key: 'great7',  value: 'Great77'},
+				{key: 'good7',   value: 'Good77'},
+				{key: 'unproven7', value: 'Unproven77'}
 			],
 			order: 2
 		}),
@@ -55,10 +59,10 @@ export class QuestionService {
 			label: 'Bravery Rating Radio',
 			type: 'radio',
 			options: [
-			{key: 'solid7',  value: 'Solid77'},
-			{key: 'great7',  value: 'Great77'},
-			{key: 'good7',   value: 'Good77'},
-			{key: 'unproven7', value: 'Unproven77'}
+				{key: 'solid7',  value: 'Solid77'},
+				{key: 'great7',  value: 'Great77'},
+				{key: 'good7',   value: 'Good77'},
+				{key: 'unproven7', value: 'Unproven77'}
 			],
 			order: 3
 		}),
@@ -69,17 +73,45 @@ export class QuestionService {
 			required: true,
 			order: 4
 		}),
+		new DateQuestion({
+			key: 'date',
+			label: 'Date',
+			value: '2016-12-12',
+			required: true,
+			order: 5
+		}),
 		new CheckboxQuestion({
 			key: 'emailOptIn',
 			label: 'Send emails',
 			type: 'checkbox',
-			order: 5
+			order: 6
 		}),
 		new InputQuestion({
 			key: 'emailAddress',
 			label: 'Email',
 			type: 'email',
-			order: 6
+			order: 7
+		}),
+		new DatalistQuestion({
+			key: 'cars',
+			label: 'Cars',
+			options: [
+				{key: 'Volvo',  value: 'Volvo'},
+				{key: 'Saab',  value: 'Saab'},
+				{key: 'Mercedes',   value: 'Mercedes'},
+				{key: 'Audi', value: 'Audi'}
+			],
+			order: 8
+		}),
+		new TagSelectQuestion({
+			key: 'city',
+			label: 'City',
+			options: [
+				{key: 'sea',  value: 'Seattle'},
+				{key: 'sf',  value: 'San Francisco'},
+				{key: 'austin',   value: 'Austin'},
+			],
+			order: 9
 		})
 		];
 		return questions.sort((a, b) => a.order - b.order);

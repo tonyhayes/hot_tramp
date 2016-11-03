@@ -80,7 +80,9 @@ export class MenuService {
 	      	item.route.paths = item.route.path;
 	    } else {
 	      	item.route.paths = parent && parent.route && parent.route.paths ? parent.route.paths.slice(0) : ['/'];
-	      	item.route.paths.push(item.route.path);
+	      	if (!!item.route.path){
+	      		item.route.paths.push(item.route.path);
+	      	}
 	    }
 
 
@@ -111,7 +113,7 @@ export class MenuService {
 	}
 
 	protected selectItem(object:any):any {
-  		object.selected = this.router.isActive(this.router.createUrlTree(object.route.paths), object.pathMatch !== 'full');
+  		object.selected = this.router.isActive(this.router.createUrlTree(object.route.paths), object.pathMatch === 'full');
       	return object;				
 	}
 }

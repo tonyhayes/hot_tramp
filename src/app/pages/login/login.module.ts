@@ -8,15 +8,15 @@ import { routing }       from './login.routing';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgaModule.forRoot(),
-    routing
-  ],
-  declarations: [
-    Login
-  ]
+  	imports: [
+		CommonModule,
+		ReactiveFormsModule,
+		FormsModule,
+		NgaModule,
+		routing
+  	],
+  	declarations: [
+		Login
+  	]
 })
 export default class LoginModule {}

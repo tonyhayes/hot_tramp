@@ -13,7 +13,7 @@ import { Ckeditor } from './components/ckeditor/ckeditor.component';
   	imports: [
 		CommonModule,
 		FormsModule,
-		NgaModule.forRoot(),
+		NgaModule,
 		CKEditorModule,
 		routing
   	],

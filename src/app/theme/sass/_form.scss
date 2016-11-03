@@ -1,3 +1,42 @@
+@import 'conf/conf';
+
+.form-main {
+	display: flex;
+	align-items: center;
+}
+
+.form-block {
+	margin: 0 auto;
+	border-radius: 5px;
+	color: #fff;
+	padding: 32px;
+	h1 {
+		font-weight: $font-light;
+		margin-bottom: 28px;
+		text-align: center;
+		color:  $content-text;
+	}
+	p {
+		font-size: 16px;
+		color: $content-text
+	}
+	th, fieldset, h3, tr, td {
+		color: $content-text
+	}
+	a {
+		text-decoration: none;
+		outline: none;
+		transition: all 0.2s ease;
+		color: $primary;
+		&:hover {
+			color: $primary-dark;
+		}
+	}
+
+
+}
+
+
 .label {
 	border-radius: 0;
 }
@@ -378,13 +417,18 @@ label.custom-input-danger {
 	}
 }
 
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+.form-control[disabled], fieldset[disabled] .form-control {
 	background-color: $input-background;
 	color: $disabled;
 	border-color: $disabled-bg;
 	@include placeholderStyle($default-text, 0.5);
 }
-
+.form-control[readonly] {
+	background-color: $input-background;
+	color: $info;
+	border-color: $disabled-bg;
+	@include placeholderStyle($default-text, 0.5);
+}
 .form-control-rounded {
 	border-radius: 16px;
 }

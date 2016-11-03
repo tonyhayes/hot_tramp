@@ -26,7 +26,7 @@ import { UsersMapService } from './usersMap/usersMap.service';
 	imports: [
 		CommonModule,
 		FormsModule,
-		NgaModule.forRoot(),
+		NgaModule,
 		routing
 	],
 	declarations: [

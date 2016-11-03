@@ -10,16 +10,16 @@ import { TreeView } from './components/treeView/treeView.component';
 
 // TODO: tree component?
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    NgaModule.forRoot(),
-    routing
-  ],
-  declarations: [
-    Components,
-    TreeView,
-    TreeComponent
-  ]
+  	imports: [
+		CommonModule,
+		FormsModule,
+		NgaModule,
+		routing
+  	],
+  	declarations: [
+		Components,
+		TreeView,
+		TreeComponent
+  	]
 })
 export default class ComponentsModule {}

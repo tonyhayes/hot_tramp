@@ -29,6 +29,10 @@ export class Profile implements OnInit {
 	public submitted:boolean = false;
 	public errorMessage:string;
 	public questions: any[];
+  public counterValue = 3;
+  public minValue = 0;
+  public maxValue = 12;
+
 	constructor(private service: QuestionService, private heroActions: HeroActions, private heroStore: Store<AppState>) {}
 	ngOnInit() { 
 		this.getQuestions();
@@ -55,4 +59,8 @@ export class Profile implements OnInit {
 	public onSubmit(values:FormGroup):void {
 		console.log(JSON.stringify(values));
 	}
+
+
+
+
 }

@@ -1,5 +1,6 @@
 import { Injectable }   from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { createCounterRangeValidator } from './componenets/custom-form-control-components/counter-input.component';
 
 import { QuestionBase } from './model/question-base';
 

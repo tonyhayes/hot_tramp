@@ -24,10 +24,10 @@ import { HeroList } from './hero-list.component';
 		ReactiveFormsModule,
 		FormsModule,
     	HttpModule,
-		NgaModule.forRoot(),
+		NgaModule,
 		routing,
     	StoreModule.provideStore(reducer),
-    	EffectsModule.run(HeroEffects)
+    	EffectsModule.run(HeroEffects),
 	],
   	providers: [
 		QuestionService,

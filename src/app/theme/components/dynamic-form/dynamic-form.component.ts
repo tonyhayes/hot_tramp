@@ -11,6 +11,7 @@ import { QuestionControlService }    from './question-control.service';
 })
 export class DynamicFormComponent implements OnInit {
 	@Input() questions: QuestionBase<any>[] = [];
+	@Input() isMultiColumn: boolean = false;
 	@Output() submitForm = new EventEmitter<any>();
 	form: FormGroup;
 	payLoad = '';

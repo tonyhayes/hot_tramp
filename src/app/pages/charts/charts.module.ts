@@ -10,18 +10,18 @@ import { ChartistJsService } from './components/chartistJs/chartistJs.service';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    NgaModule.forRoot(),
-    routing
-  ],
-  declarations: [
-    Charts,
-    ChartistJs
-  ],
-  providers: [
-    ChartistJsService
-  ]
+  	imports: [
+		CommonModule,
+		FormsModule,
+		NgaModule,
+		routing
+  	],
+  	declarations: [
+		Charts,
+		ChartistJs
+  	],
+  	providers: [
+		ChartistJsService
+  	]
 })
 export default class ChartsModule {}

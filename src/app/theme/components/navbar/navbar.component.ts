@@ -39,7 +39,10 @@ export class Navbar {
 	public selectNavbarItemAndNotify():void {
 		if (this.navbarItems) {
 			this.navbarItems = this.service.selectNavbarItem(this.navbarItems);
-			this.state.notifyDataChanged('navbar.activeLink', this.service.getCurrentItem());
+			const item = this.service.getCurrentItem();
+			if(item.selected){
+				this.state.notifyDataChanged('menu.activeLink', item);				
+			}
 		}
 	}
 

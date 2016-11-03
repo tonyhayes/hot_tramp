@@ -14,22 +14,22 @@ import { LineMapsService } from './components/lineMaps/lineMaps.service';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    NgaModule.forRoot(),
-    routing
-  ],
-  declarations: [
-    Maps,
-    BubbleMaps,
-    GoogleMaps,
-    LeafletMaps,
-    LineMaps
-  ],
-  providers: [
-    BubbleMapsService,
-    LineMapsService
-  ]
+  	imports: [
+		CommonModule,
+		FormsModule,
+		NgaModule,
+		routing
+  	],
+  	declarations: [
+		Maps,
+		BubbleMaps,
+		GoogleMaps,
+		LeafletMaps,
+		LineMaps
+  	],
+  	providers: [
+		BubbleMapsService,
+		LineMapsService
+  	]
 })
 export default class MapsModule {}
