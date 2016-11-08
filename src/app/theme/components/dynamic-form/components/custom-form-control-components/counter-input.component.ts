@@ -3,74 +3,76 @@ import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS } f
 
 
 export function createCounterRangeValidator(maxValue, minValue) {
-  	return (c: FormControl) => {
+	return (c: FormControl) => {
 		let err = {
-	  		rangeError: {
+			rangeError: {
 				given: c.value,
 				max: maxValue || 10,
 				min: minValue || 0
-	  		}
+			}
 		};
 
-  		return (c.value > +maxValue || c.value < +minValue) ? err: null;
-  	}
+		return (c.value > +maxValue || c.value < +minValue) ? err: null;
+	}
 }
 
 @Component({
-  	selector: 'counter-input',
-  	template: `
+	selector: 'counter-input',
+	template: `
 		<button (click)="increase()">+</button> {{counterValue}} <button (click)="decrease()">-</button>
-  	`,
-  	providers: [
+	`,
+	providers: [
 		{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CounterInputComponent), multi: true },
 		{ provide: NG_VALIDATORS, useExisting: forwardRef(() => CounterInputComponent), multi: true }
-  	]
+	]
 })
 export class CounterInputComponent implements ControlValueAccessor, OnChanges {
 
-  	propagateChange:any = () => {};
-  	validateFn:any = () => {};
+	propagateChange:any = () => {};
+	validateFn:any = () => {};
   
-  	@Input('counterValue') _counterValue = 0;
-  	@Input() counterRangeMax;
-  	@Input() counterRangeMin;
+	@Input('counterValue') _counterValue = 0;
+	@Input() counterRangeMax;
+	@Input() counterRangeMin;
 
-  	get counterValue() {
+	get counterValue() {
 		return this._counterValue;
-  	}
+	}
   
-  	set counterValue(val) {
+	set counterValue(val) {
 		this._counterValue = val;
 		this.propagateChange(val);
-  	}
+	}
 
-  	ngOnChanges(inputs) {
+	ngOnChanges(inputs) {
 		if (inputs.counterRangeMax || inputs.counterRangeMin) {
-	  		this.validateFn = createCounterRangeValidator(this.counterRangeMax, this.counterRangeMin);
+			this.validateFn = createCounterRangeValidator(this.counterRangeMax, this.counterRangeMin);
 		}
-  	}
+	}
 
-  	writeValue(value) {
+	writeValue(value) {
 		if (value) {
-	  		this.counterValue = value;
+			this.counterValue = value;
 		}
-  	}
+	}
 
-  	registerOnChange(fn) {
+	registerOnChange(fn) {
 		this.propagateChange = fn;
-  	}
+	}
 
-  	registerOnTouched() {}
+	registerOnTouched(fn) {
+		this.propagateChange = fn;		
+	}
 
-  	increase() {
+	increase() {
 		this.counterValue++;
-  	}
+	}
 
-  	decrease() {
+	decrease() {
 		this.counterValue--;
-  	}
+	}
 
-  	validate(c: FormControl) {
+	validate(c: FormControl) {
 		return this.validateFn(c);
-  	}
+	}
 }

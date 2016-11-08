@@ -16,11 +16,11 @@ describe('App', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
-      AppState,
-      App,
-      GlobalState,
-      ImageLoaderService, ThemePreloader, ThemeSpinner,
-      HeartbeatService, ThemeConfig, ThemeConfigService
+      	AppState,
+      	App,
+      	GlobalState,
+      	ImageLoaderService, ThemePreloader, ThemeSpinner,
+      	HeartbeatService, ThemeConfig, ThemeConfigService
     ]}));
 
 	it('should maintain a global state', inject([ App, GlobalState,  ImageLoaderService, ThemeSpinner, ThemeConfig, HeartbeatService], (app) => {

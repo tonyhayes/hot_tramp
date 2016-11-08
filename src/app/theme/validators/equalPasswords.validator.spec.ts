@@ -5,7 +5,7 @@ import { EqualPasswordsValidator } from './equalPasswords.validator';
 describe('EqualPasswordsValidator', () => {
 	let b;
 	// provide our implementations or mocks to the dependency injector
-		beforeEach(() => { b = new FormBuilder(); });
+	beforeEach(() => { b = new FormBuilder(); });
 
 	it('should define EqualPasswordsValidator', () => {
 	  	expect(EqualPasswordsValidator).toBeDefined();

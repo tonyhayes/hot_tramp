@@ -9,50 +9,50 @@ describe('DynamicFormComponent', () => {
 	// provide our implementations or mocks to the dependency injector
 	const qcs = new QuestionControlService();
 	const dfc = new DynamicFormComponent(qcs);
-  	let qb:QuestionBase<any>[] = [
-  	new DropdownQuestion({
-  		key: 'brave',
-  		label: 'Bravery Rating',
-  		options: [
-  		{key: 'solid',  value: 'Solid'},
-  		{key: 'great',  value: 'Great'},
-  		{key: 'good',   value: 'Good'},
-  		{key: 'unproven', value: 'Unproven'}
-  		],
-  		order: 3
-  	}),
-  	new TextboxQuestion({
-  		key: 'firstName',
-  		label: 'First name',
-  		value: 'tony',
-  		required: true,
-  		order: 1
-  	}),
-  	new TextboxQuestion({
-  		key: 'emailAddress',
-  		label: 'Email',
-  		type: 'email',
-  		order: 2
-  	})
-  	];
+	let qb:QuestionBase<any>[] = [
+	new DropdownQuestion({
+		key: 'brave',
+		label: 'Bravery Rating',
+		options: [
+		{key: 'solid',  value: 'Solid'},
+		{key: 'great',  value: 'Great'},
+		{key: 'good',   value: 'Good'},
+		{key: 'unproven', value: 'Unproven'}
+		],
+		order: 3
+	}),
+	new TextboxQuestion({
+		key: 'firstName',
+		label: 'First name',
+		value: 'tony',
+		required: true,
+		order: 1
+	}),
+	new TextboxQuestion({
+		key: 'emailAddress',
+		label: 'Email',
+		type: 'email',
+		order: 2
+	})
+	];
 
 	it('should define DynamicFormComponent', () => {
-	  	expect(DynamicFormComponent).toBeDefined();
+		expect(DynamicFormComponent).toBeDefined();
 	});
 	it('should create DynamicFormComponent', () => {
-	  	expect(dfc).toBeDefined();
+		expect(dfc).toBeDefined();
 	});
 	it('should create DynamicFormComponent on ngOnInit', () => {
 		dfc.questions = qb;
 		dfc.ngOnInit();
-	  	expect(dfc.form).toBeDefined();
+		expect(dfc.form).toBeDefined();
 	});
 	it('should create DynamicFormComponent on onSubmit', () => {
 		dfc.questions = qb;
 		dfc.ngOnInit();
-	  	expect(dfc.form).toBeDefined();
+		expect(dfc.form).toBeDefined();
 		dfc.onSubmit();
-	  	expect(dfc.payLoad).toEqual('{"brave":"","firstName":"tony","emailAddress":""}');
+		expect(dfc.payLoad).toEqual('{"brave":"","firstName":"tony","emailAddress":""}');
 	});
 
 

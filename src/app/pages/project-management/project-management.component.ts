@@ -21,12 +21,20 @@ export class ProjectManagement implements OnInit {
 	public submitted:boolean = false;
 	public errorMessage:string;
 	public questions: any[];
+	public formData: {};
 
 	constructor(private service: QuestionService) {}
 	ngOnInit() {
 		this.getQuestions();		
+		this.getForm();		
 	}
 
+	public getForm():void {
+		this.service.getForm()
+						.subscribe(
+							formData => this.formData = formData,
+							error =>  this.errorMessage = <any>error);
+	}
 	public getQuestions():void {
 		this.service.getQuestions()
 						.subscribe(

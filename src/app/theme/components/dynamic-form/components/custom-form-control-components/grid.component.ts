@@ -7,8 +7,6 @@ import * as toastr from 'toastr';
 import { SmartTablesService } from './smartTables.service';
 import { LocalDataSource } from 'ng2-smart-table';
 
-
-
 @Component({
 	selector: 'dc-grid',
 	encapsulation: ViewEncapsulation.None,
@@ -132,6 +130,4 @@ export class GridComponent implements ControlValueAccessor, OnInit {
 							});
 		});
 	}
-
-
 }

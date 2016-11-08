@@ -28,7 +28,7 @@ describe('NavbarTop', () => {
 	});
 	it('should have a routes object with 10 children',() => {
 		const navbarTop = new NavbarTop();
-	    expect(navbarTop.routes[0].children.length).toEqual(2);
+	    expect(navbarTop.routes[0].children.length).toEqual(3);
 	});
 	it('should have a routes object with children and a path of dashboard',() => {
 		const navbarTop = new NavbarTop();

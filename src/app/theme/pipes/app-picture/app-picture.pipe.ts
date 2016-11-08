@@ -5,10 +5,10 @@ import Util from '../../helpers/util';
 @Pipe({name: 'appPicture'})
 export class AppPicturePipe implements PipeTransform {
 
-  transform(input:string):string {
-    if (!Util.isString(input)){
-    	throw new Error('Requires a String as input');    	
-    } 
-    return layoutPaths.images.root + input;
-  }
+  	transform(input:string):string {
+    	if (!Util.isString(input)){
+    		throw new Error('Requires a String as input');    	
+    	} 
+    	return layoutPaths.images.root + input;
+  	}
 }

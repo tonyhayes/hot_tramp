@@ -7,6 +7,7 @@ export class QuestionBase<T>{
 	placeholder: string;
 	order: number;
 	controlType: string;
+	class: string;
 	constructor(options: {
 		value?: T,
 		key?: string,
@@ -16,11 +17,11 @@ export class QuestionBase<T>{
 		placeholder?: string,
 		order?: number,
 		controlType?: string
+		class?: string
 	} = {}, 
 	columns: {
 		key?: string,
 		label?: string,
-		controlType?: string
 	} = {}, 
 	data: {
 	} = {}) {
@@ -32,5 +33,6 @@ export class QuestionBase<T>{
 		this.placeholder = options.placeholder || 'Select...';
 		this.order = options.order === undefined ? 1 : options.order ;
 		this.controlType = options.controlType || '';
+		this.class = options.class || '';
 	}
 }

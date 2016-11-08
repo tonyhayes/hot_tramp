@@ -51,9 +51,11 @@ export class DatalistSelectComponent implements ControlValueAccessor {
 	selectValue(questionId, datalist) {
 		if (questionId) {
 			const inputSelector = document.getElementById(datalist);
-			this.datalistSelectValue = inputSelector.value;
-			this.form.patchValue({ [questionId]: this.datalistSelectValue });
-			this.propagateChange(this.datalistSelectValue);
+			if(inputSelector){
+				this.datalistSelectValue = inputSelector.value;
+				this.form.patchValue({ [questionId]: this.datalistSelectValue });
+				this.propagateChange(this.datalistSelectValue);				
+			}
 		}
 	}
 

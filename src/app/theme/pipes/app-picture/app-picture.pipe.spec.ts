@@ -8,9 +8,9 @@ import { AppPicturePipe } from './app-picture.pipe';
 describe('Pipe: AppPicturePipe', () => {
   
 	//setup
-  let pipe = new AppPicturePipe();
+  	let pipe = new AppPicturePipe();
   
-  //specs
+  	//specs
 	it('should throw if not used with a string', () => {
 		//must use arrow function for expect to capture exception
 		expect(()=>pipe.transform(null)).toThrow();
@@ -19,7 +19,7 @@ describe('Pipe: AppPicturePipe', () => {
 		expect(()=>pipe.transform()).toThrowError('Requires a String as input');
 		expect(()=>pipe.transform()).toThrowError(Error);
 		expect(()=>pipe.transform()).toThrowError(Error, 'Requires a String as input');
-	  });
+  	});
   
 	it('should work with empty string', () => {
 		expect(pipe.transform('')).toEqual('assets/img/');
