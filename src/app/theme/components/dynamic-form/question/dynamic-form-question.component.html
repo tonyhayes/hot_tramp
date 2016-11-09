@@ -26,26 +26,22 @@
 	  		</datalist-select>
 		</div>
 		<div class="form-control" *ngSwitchCase="'date'">
- 				<div class="input-group">
-        			<input class="form-control" 
-        			 	[formControlName]="question.key" 
-        			 	[id]="question.key"
-        			 	[value]="question.value"
-        			 	[readonly]="question.readonly"  
-        			 	[type]="'date'"
-        			 	#d1="ngbDatepicker"
-        			 	ngbDatepicker 
-        			 	>
-        			<div class="input-group-addon">
-        				<span *ngIf="!question.readonly" 
-        					(click)="d1.toggle()" >
-	            			<i class="fa fa-calendar" aria-hidden="true"></i>     
-            			</span> 
-        				<span *ngIf="question.readonly"> 
-	            			<i class="fa fa-calendar" aria-hidden="true"></i>     
-            			</span> 
-        			</div>
-    			</div>
+			<div class="input-group">
+    			<input class="form-control" 
+    			 	[formControlName]="question.key" 
+    			 	[id]="question.key"
+    			 	[value]="question.value"
+    			 	[readonly]="question.readonly"  
+    			 	[type]="'date'"
+    			 	#d1="ngbDatepicker"
+    			 	ngbDatepicker 
+    			 	>
+    			<div class="input-group-addon" 
+    				*ngIf="!question.readonly"
+					(click)="d1.toggle()" >
+        			<i class="fa fa-calendar" aria-hidden="true"></i>     
+				</div>
+			</div>
 		</div>
 		<div class="form-control" *ngSwitchCase="'tag'">
 	    	<tag-select 
