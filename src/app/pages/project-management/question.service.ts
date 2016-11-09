@@ -32,6 +32,8 @@ export class QuestionService {
   	constructor ( private http: Http, private heartbeatService: HeartbeatService ) {}
 
 	getQuestionsInMemory() {
+		const value = new Date(); 
+
 		let questions: QuestionBase<any>[] = [
 			new InputQuestion({
 				key: 'referenceNumber',
@@ -43,7 +45,7 @@ export class QuestionService {
 			new DateQuestion({
 				key: 'issuedDate',
 				label: 'Issued Date',
-				value: '2016-09-12',
+				value: value,
 				readonly: true,
 				order: 2
 			}),

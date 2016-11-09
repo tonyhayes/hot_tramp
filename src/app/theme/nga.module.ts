@@ -8,6 +8,7 @@ import { HttpModule }  from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SelectModule } from 'ng2-select/ng2-select';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { AgGridModule } from 'ag-grid-ng2/main';
 
 import {
 	ThemeConfig
@@ -142,7 +143,8 @@ const NGA_VALIDATORS = [
 		HttpModule,
 		NgbModule,
 		SelectModule,
-		Ng2SmartTableModule
+		Ng2SmartTableModule,
+		AgGridModule
 
 	],
 	exports: [
