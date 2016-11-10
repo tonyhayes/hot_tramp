@@ -6,7 +6,7 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { ProjectManagement } from './project-management.component';
 import { routing } from './project-management.routing';
-import { QuestionService } 						from './question.service';
+import { QuestionService } 	from './question.service';
 
 @NgModule({
 	imports: [

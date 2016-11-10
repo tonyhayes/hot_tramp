@@ -1,5 +1,5 @@
 import { DropdownSelectComponent } from './dropdown-select.component';
-import { DropdownQuestion } from '../question-dropdown';
+import { DropdownQuestion } from '../../question-dropdown';
 
 describe('DropdownSelectComponent', () => {
   

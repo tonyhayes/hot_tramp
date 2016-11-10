@@ -50,11 +50,13 @@
 	  		</tag-select>
 		</div>
 		<div class="form-control row" *ngSwitchCase="'grid'">
-	    	<dc-grid 
+			<rich-grid></rich-grid>
+
+<!-- 	    	<dc-grid 
 	    		[form]="form" 
 	    		[question]="question">
 	  		</dc-grid>
-		</div>
+ -->		</div>
 		<div class="form-control radio-control row" *ngSwitchCase="'radio'">
 			<div class="col-md-4" *ngFor="let opt of question.options">
       			<label class="radio-inline custom-radio nowrap">

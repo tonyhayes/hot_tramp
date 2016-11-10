@@ -33,6 +33,8 @@ import {
 	DatalistSelectComponent,
 	GridComponent,
 	TagSelectComponent,
+	AgGrid,
+	RichGridComponent,
 	FullCalendar,
 	MenuItem,
 	Menu,
@@ -86,6 +88,8 @@ const NGA_COMPONENTS = [
 	CounterInputComponent,
 	DropdownSelectComponent,
 	GridComponent,
+	AgGrid,
+	RichGridComponent,
 	DatalistSelectComponent,
 	TagSelectComponent,
 	FullCalendar,
@@ -144,7 +148,7 @@ const NGA_VALIDATORS = [
 		NgbModule,
 		SelectModule,
 		Ng2SmartTableModule,
-		AgGridModule
+		AgGridModule.withNg2ComponentSupport(),
 
 	],
 	exports: [

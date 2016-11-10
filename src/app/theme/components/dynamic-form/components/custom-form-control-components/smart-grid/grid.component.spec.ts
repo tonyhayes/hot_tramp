@@ -1,5 +1,5 @@
 import { GridComponent } from './grid.component';
-import { GridQuestion } from '../question-grid';
+import { GridQuestion } from '../../question-grid';
 import { ViewContainerRef } from '@angular/core';
 import { FormGroup, FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Overlay } from 'angular2-modal';

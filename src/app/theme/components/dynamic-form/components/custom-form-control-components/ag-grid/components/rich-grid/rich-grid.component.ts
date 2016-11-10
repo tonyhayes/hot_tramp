@@ -11,10 +11,10 @@ import RefData from '../refData';
 
 @Component({
 	moduleId: module.id,
-	selector: 'rich-grid2',
+	selector: 'rich-grid',
 	templateUrl: 'rich-grid.component.html'
 })
-export class RichGridComponent2 {
+export class RichGridComponent {
 
 	private gridOptions:GridOptions;
 	private showGrid:boolean;
@@ -33,7 +33,7 @@ export class RichGridComponent2 {
 	private createRowData() {
 		var rowData:any[] = [];
 
-		for (var i = 0; i < 10000; i++) {
+		for (var i = 0; i < 100; i++) {
 			var countryData = RefData.countries[i % RefData.countries.length];
 			rowData.push({
 				name: RefData.firstNames[i % RefData.firstNames.length] + ' ' + RefData.lastNames[i % RefData.lastNames.length],
@@ -204,14 +204,14 @@ function skillsCellRenderer(params) {
 	var skills = [];
 	RefData.IT_SKILLS.forEach(function (skill) {
 		if (data && data.skills && data.skills[skill]) {
-			skills.push('<img src="app/pages/tables/components/ag-grid/images/skills/' + skill + '.png" width="16px" title="' + skill + '" />');
+			skills.push('<img src="app/theme/components/dynamic-form/components/custom-form-control-components/ag-grid/images/skills/' + skill + '.png" width="16px" title="' + skill + '" />');
 		}
 	});
 	return skills.join(' ');
 }
 
 function countryCellRenderer(params) {
-	var flag = "<img border='0' width='15' height='10' style='margin-bottom: 2px' src='app/pages/tables/components/ag-grid/images/flags/" + RefData.COUNTRY_CODES[params.value] + ".png'>";
+	var flag = "<img border='0' width='15' height='10' style='margin-bottom: 2px' src='app/theme/components/dynamic-form/components/custom-form-control-components/ag-grid/images/flags/" + RefData.COUNTRY_CODES[params.value] + ".png'>";
 	return flag + " " + params.value;
 }
 

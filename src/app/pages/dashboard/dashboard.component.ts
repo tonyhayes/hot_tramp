@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Auth }              from '../../auth.service';
 
 @Component({
   	moduleId: module.id,
@@ -9,6 +10,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class Dashboard {
 
-  	constructor() {}
+  	constructor(private auth: Auth) {}
 
 }

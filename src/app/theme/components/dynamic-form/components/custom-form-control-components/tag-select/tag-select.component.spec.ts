@@ -1,5 +1,5 @@
 import { TagSelectComponent } from './tag-select.component';
-import { TagSelectQuestion } from '../question-tag-select';
+import { TagSelectQuestion } from '../../question-tag-select';
 
 describe('TagSelectComponent', () => {
 	const propagateChange:any = () => {

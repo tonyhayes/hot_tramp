@@ -1,6 +1,7 @@
 import './app.loader.ts';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { GlobalState } from './global.state';
+import { Auth } from './auth.service';
 import { ImageLoaderService, ThemePreloader, ThemeSpinner } from './theme/services';
 import { layoutPaths } from './theme/theme.constants';
 import { HeartbeatService } from './theme/services/http-api/heartbeat.service';
@@ -28,7 +29,8 @@ export class App {
 							private imageLoader: ImageLoaderService,
 							private spinner: ThemeSpinner,
 							private config: ThemeConfig,
-							private heartbeat:HeartbeatService) {}
+							private heartbeat:HeartbeatService,
+							private auth: Auth) {}
 
 	public ngOnInit():void {
 		this.loadImages();

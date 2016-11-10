@@ -10,8 +10,8 @@ import { routing }       from './tables.routing';
 import { Tables } from './tables.component';
 import { BasicTables } from './components/basicTables/basicTables.component';
 import { SmartTables } from './components/smartTables/smartTables.component';
-import { AgGrid } from './components/ag-grid/ag-grid.component';
-import { RichGridComponent } from './components/ag-grid/components/rich-grid/rich-grid.component';
+import { AgGrid2 } from './components/ag-grid/ag-grid.component';
+import { RichGridComponent2 } from './components/ag-grid/components/rich-grid/rich-grid.component';
 import { EditorComponent } from './components/ag-grid/components/editor/editor.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { BasicTablesService } from './components/basicTables/basicTables.service';
@@ -47,8 +47,8 @@ import { SmartTablesService } from './components/smartTables/smartTables.service
 		StripedTable,
 		ContextualTable,
 		ResponsiveTable,
-		AgGrid,
-		RichGridComponent,
+		AgGrid2,
+		RichGridComponent2,
 		EditorComponent
   	],
   	providers: [

@@ -1,5 +1,5 @@
 import { DatalistSelectComponent } from './datalist-select.component';
-import { DatalistQuestion } from '../question-datalist';
+import { DatalistQuestion } from '../../question-datalist';
 
 describe('DatalistSelectComponent', () => {
 	const propagateChange:any = () => {

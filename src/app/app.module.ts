@@ -3,7 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpModule }  from '@angular/http';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
-
+import { Auth }              from './auth.service';
+/*
+ * Auth0 helper library
+ */
+import { AUTH_PROVIDERS }      from 'angular2-jwt';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -23,7 +27,8 @@ import { PagesModule } from './pages/pages.module';
 // Application wide providers
 const APP_PROVIDERS = [
 	AppState,
-	GlobalState
+	GlobalState,
+	Auth
 ];
 
 type StoreType = {
@@ -50,7 +55,8 @@ type StoreType = {
 	 ],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,
-		APP_PROVIDERS
+		APP_PROVIDERS,
+		AUTH_PROVIDERS
 	]
 })
 
