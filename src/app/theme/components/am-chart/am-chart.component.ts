@@ -4,7 +4,7 @@ import {
 
 import { ThemePreloader } from '../../../theme/services';
 
-import './am-chart.component.loader.ts';
+import './am-chart.component.loader';
 import { AmChartThemeService } from './am-chart-theme.service';
 
 @Component({

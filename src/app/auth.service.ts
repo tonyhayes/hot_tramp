@@ -7,7 +7,9 @@ import Auth0Lock from 'auth0-lock';
 @Injectable()
 export class Auth {
   	// Configure Auth0
-  	lock = new Auth0Lock('YOUR_CLIENT_ID', 'YOUR_AUTH0_DOMAIN', {});
+	cid = "yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih";
+	domain = "mdocs.auth0.com";
+  	lock = new Auth0Lock(this.cid, this.domain, {});
 
   	constructor() {
 		// Add callback for lock `authenticated` event

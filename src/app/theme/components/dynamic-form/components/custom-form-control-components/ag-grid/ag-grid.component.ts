@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import './ag-grid.component.loader.ts';
+import './ag-grid.component.loader';
 @Component({
   	moduleId: module.id,
   	selector: 'd-ag-grid',
