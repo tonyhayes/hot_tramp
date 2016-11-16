@@ -7,8 +7,8 @@ import Auth0Lock from 'auth0-lock';
 @Injectable()
 export class Auth {
   	// Configure Auth0
-	cid = "cJFdv8DnIcpezEpKqYWmLNMPm7hTEwaR";
-	domain = "dexchadev.auth0.com";
+	cid = "YOUR-AUTH0-CLIENTID";
+	domain = "YOUR-AUTH0-DOMAIN.auth0.com";
   	lock = new Auth0Lock(this.cid, this.domain, {
 			auth: {
 				params: {
