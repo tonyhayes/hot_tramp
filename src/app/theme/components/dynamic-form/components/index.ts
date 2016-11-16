@@ -8,6 +8,7 @@ export * from './question-radio-group';
 export * from './question-checkbox';
 export * from './question-datalist';
 export * from './question-tag-select';
-export * from './question-grid';
+export * from './question-grid-smart';
+export * from './question-documents-grid';
 export * from './question-datepicker';
 export * from './custom-form-control-components';

@@ -19,7 +19,8 @@ import { QuestionBase,
 	RadioQuestion,
 	CheckboxQuestion,
 	DateQuestion,
-	GridQuestion,
+	GridSmartQuestion,
+	DocumentsGridQuestion,
 	DatalistQuestion,
 	TagSelectQuestion
 } from '../../theme/components/dynamic-form';
@@ -260,7 +261,7 @@ export class QuestionService {
 				label: 'Responded By Date',
 				order: 26
 			}),
-			new GridQuestion({
+			new GridSmartQuestion({
 				options: {
 					key: 'relatedDocuments',
 					order: 27,
@@ -550,7 +551,37 @@ export class QuestionService {
 								label: 'Responded By Date',
 								order: 26
 							}),
-							new GridQuestion({
+							new GridSmartQuestion({
+								options: {
+									key: 'relatedDocuments',
+									order: 27,
+									label: 'Related Documents'
+								},
+								columns: [
+									{ key: 'date',  label: 'Date' },
+									{ key: 'logEntry',  label: 'Log Entry' },
+									{ key: 'topic',   label: 'Topic' },
+									{ key: 'direction', label: 'Direction' },
+									{ key: 'status', label: 'Status' },
+								],
+								data: [
+									{ 
+										'date': '10/11/2016',
+										'logEntry': 'This is a Log Entry',
+										'topic': 'A Really Long Topic',
+										'direction': 'Some Sort of Direction',
+										'status': 'Need another meeting' 
+									},
+									{ 
+										'date': '10/17/2016',
+										'logEntry': 'This is another Log Entry',
+										'topic': 'A Topic',
+										'direction': 'Pleave evaluate',
+										'status': 'still considering' 
+									},
+								]
+							}),
+							new DocumentsGridQuestion({
 								options: {
 									key: 'relatedDocuments',
 									order: 27,

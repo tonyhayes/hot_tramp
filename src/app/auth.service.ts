@@ -7,9 +7,15 @@ import Auth0Lock from 'auth0-lock';
 @Injectable()
 export class Auth {
   	// Configure Auth0
-	cid = "yKJO1ckwuY1X8gPEhTRfhJXyObfiLxih";
-	domain = "mdocs.auth0.com";
-  	lock = new Auth0Lock(this.cid, this.domain, {});
+	cid = "cJFdv8DnIcpezEpKqYWmLNMPm7hTEwaR";
+	domain = "dexchadev.auth0.com";
+  	lock = new Auth0Lock(this.cid, this.domain, {
+			auth: {
+				params: {
+					scope: 'openid name app_metadata'
+				}
+			}
+		});
 
   	constructor() {
 		// Add callback for lock `authenticated` event

@@ -49,14 +49,18 @@
 	    		[question]="question">
 	  		</tag-select>
 		</div>
-		<div class="form-control row" *ngSwitchCase="'grid'">
-			<rich-grid></rich-grid>
-
-<!-- 	    	<dc-grid 
+		<div class="form-control row" *ngSwitchCase="'smart-grid'">
+	    	<dc-smart-grid 
 	    		[form]="form" 
 	    		[question]="question">
-	  		</dc-grid>
- -->		</div>
+	  		</dc-smart-grid>
+		</div>
+		<div class="form-control row" *ngSwitchCase="'documents-grid'">
+			<documents-grid
+	    		[form]="form" 
+	    		[question]="question">				
+			</documents-grid>
+		</div>
 		<div class="form-control radio-control row" *ngSwitchCase="'radio'">
 			<div class="col-md-4" *ngFor="let opt of question.options">
       			<label class="radio-inline custom-radio nowrap">

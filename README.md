@@ -3,23 +3,20 @@
 
 Admin template - taken from angularClass and ng2-Admin.
 
+# Project setup #
 
-Download the repo
+1. Download the repo
 
-Navigate to the folder
+2. Navigate to the folder
 
+3. npm install
 
+4. npm start
 
-Npm install
-
-Npm start
-
-From the browser - http://localhost:8080/
-
+5. From the browser - http://localhost:8080/
 
 
 Note the following is expected to be installed globally
-
 
 
 Download and install nodejs 
@@ -37,3 +34,8 @@ Once you have those, you should install these globals with npm install --global:
 * protractor (npm install --global protractor)
 
 * typescript (npm install --global typescript)
+
+
+
+## Windows Notes ##
+To update npm on Windows, [follow this link](http://stackoverflow.com/questions/18412129/how-do-i-update-node-and-npm-on-windows)

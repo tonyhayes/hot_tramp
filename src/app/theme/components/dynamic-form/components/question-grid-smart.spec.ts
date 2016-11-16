@@ -1,18 +1,18 @@
-import { GridQuestion } from './question-grid';
+import { GridSmartQuestion } from './question-grid-smart';
 
-describe('GridQuestion', () => {
+describe('GridSmartQuestion', () => {
   
   //specs
-  	it('should be a controlType of grid', () => {
-  		const grid = new GridQuestion();
-    	expect(grid.controlType).toEqual('grid');
+  	it('should be a controlType of smart-grid', () => {
+  		const grid = new GridSmartQuestion();
+    	expect(grid.controlType).toEqual('smart-grid');
   	});
   	it('should return empty columns array', () => {
-  		const grid = new GridQuestion();
+  		const grid = new GridSmartQuestion();
     	expect(grid.columns.length).toEqual(0);
   	});
   	it('should be a formatted grid', () => {
-		const grid =	new GridQuestion({
+		const grid =	new GridSmartQuestion({
 				options: {
 					key: 'relatedDocuments',
 					order: 27,
@@ -38,7 +38,7 @@ describe('GridQuestion', () => {
     	expect(grid.label).toEqual('Related Documents');
   	});
   	it('should be a formatted grid, with options', () => {
-		const grid =	new GridQuestion({
+		const grid =	new GridSmartQuestion({
 				options: {
 					key: 'relatedDocuments',
 					order: 27,

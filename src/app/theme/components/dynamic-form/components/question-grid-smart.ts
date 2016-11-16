@@ -1,7 +1,7 @@
 import { QuestionBase } from '../model/question-base';
 
-export class GridQuestion extends QuestionBase<string> {
-	controlType = 'grid';
+export class GridSmartQuestion extends QuestionBase<string> {
+	controlType = 'smart-grid';
 	columns: {key: string, label: string}[] = [];
 	data: {}[] = [];
 	options: {} = {};

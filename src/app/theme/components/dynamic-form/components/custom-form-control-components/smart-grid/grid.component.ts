@@ -8,7 +8,7 @@ import { SmartTablesService } from './smartTables.service';
 import { LocalDataSource } from 'ng2-smart-table';
 
 @Component({
-	selector: 'dc-grid',
+	selector: 'dc-smart-grid',
 	encapsulation: ViewEncapsulation.None,
 	styleUrls: ['grid.component.scss'],
 	template: `
@@ -19,11 +19,11 @@ import { LocalDataSource } from 'ng2-smart-table';
       	</ng2-smart-table>
 	`,
 	providers: [
-		{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => GridComponent), multi: true },
+		{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => GridSmartComponent), multi: true },
 	]
 })
 
-export class GridComponent implements ControlValueAccessor, OnInit {
+export class GridSmartComponent implements ControlValueAccessor, OnInit {
 
 	propagateChange:any = () => {};
   
