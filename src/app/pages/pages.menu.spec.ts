@@ -4,7 +4,6 @@ import { PAGES_MENU } from './pages.menu';
 describe('PAGES_MENU', () => {
 
 	it('should have a menu object',() => {
-		console.log(PAGES_MENU);
 		expect(PAGES_MENU).toBeDefined();
 	});
 	it('should have a PAGES_menu object with a path',() => {

@@ -7,17 +7,11 @@ describe('GridSmartQuestion', () => {
   		const grid = new GridSmartQuestion();
     	expect(grid.controlType).toEqual('smart-grid');
   	});
-  	it('should return empty columns array', () => {
-  		const grid = new GridSmartQuestion();
-    	expect(grid.columns.length).toEqual(0);
-  	});
   	it('should be a formatted grid', () => {
 		const grid =	new GridSmartQuestion({
-				options: {
-					key: 'relatedDocuments',
-					order: 27,
-					label: 'Related Documents'
-				},
+				key: 'relatedDocuments',
+				order: 27,
+				label: 'Related Documents',
 				columns: [
 					{ key: 'date',  label: 'Date' },
 					{ key: 'logEntry',  label: 'Log Entry' },
@@ -33,17 +27,14 @@ describe('GridSmartQuestion', () => {
 					'status': 'Need another meeting' },
 				]
 			});
-		console.log(grid)
     	expect(grid.key).toEqual('relatedDocuments');
     	expect(grid.label).toEqual('Related Documents');
   	});
   	it('should be a formatted grid, with options', () => {
 		const grid =	new GridSmartQuestion({
-				options: {
-					key: 'relatedDocuments',
-					order: 27,
-					label: 'Related Documents'
-				},
+				key: 'relatedDocuments',
+				order: 27,
+				label: 'Related Documents',
 				columns: [
 					{ key: 'date',  label: 'Date' },
 					{ key: 'logEntry',  label: 'Log Entry' },
@@ -60,8 +51,8 @@ describe('GridSmartQuestion', () => {
 				]
 			});
     	expect(grid.columns.length).toEqual(5);
-    	expect(grid.options.key).toEqual('relatedDocuments');
-    	expect(grid.options.order).toEqual(27);
+    	expect(grid.key).toEqual('relatedDocuments');
+    	expect(grid.order).toEqual(27);
   	});
 }) 
 

@@ -20,7 +20,7 @@ const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
   	title: 'Dashboard',
   	description: 'Angular 2 and Bootstrap 4 Template',
-  	baseUrl: '/',
+  	baseUrl: '/', 
   	isDevServer: helpers.isWebpackDevServer()
 };
 

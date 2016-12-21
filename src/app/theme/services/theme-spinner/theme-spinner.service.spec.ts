@@ -7,7 +7,6 @@ describe('ThemeSpinner', () => {
 	  
   	//specs
 	it('should have a ThemeSpinner', () => {
-		console.log(sp)
 		expect(sp).toBeDefined();
 	});
 

@@ -25,6 +25,17 @@ export const PAGES_NAVBAR = [
 				}
 			},
 			{
+				path: 'user-administration',
+				data: {
+					navbar: {
+						title: 'User Administration',
+						icon: 'ion-person-stalker',
+						selected: true,
+						order: 20
+					}
+				}
+			},
+			{
 				path: '',
 				data: {
 					navbar: {

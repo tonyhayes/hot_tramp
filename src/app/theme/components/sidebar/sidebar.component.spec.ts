@@ -71,30 +71,7 @@ describe('Sidebar', () => {
 
 	it('should have a routes object with a path',() => {
 		const sidebar = new Sidebar(el, gs);
-		expect(sidebar.routes[0].path).toBeDefined();
+		expect(sidebar.routes).toBeDefined();
 	});
-	it('should have a routes object with a page',() => {
-		const sidebar = new Sidebar(el, gs);
-		expect(sidebar.routes[0].path).toEqual('pages');
-	});
-	it('should have a routes object with children',() => {
-		const sidebar = new Sidebar(el, gs);
-		expect(sidebar.routes[0].children).toBeDefined();
-	});
-	it('should have a routes object with 10 children',() => {
-		const sidebar = new Sidebar(el, gs);
-	    expect(sidebar.routes[0].children.length).toEqual(10);
-	});
-	it('should have a routes object with children and a path of dashboard',() => {
-		const sidebar = new Sidebar(el, gs);
-	    expect(sidebar.routes[0].children[0]).toEqual(jasmine.objectContaining({
-	      	path: "dashboard"
-	    }));
-	});
-	it('should have a routes object with children and a path of tables',() => {
-		const sidebar = new Sidebar(el, gs);
-	    expect(sidebar.routes[0].children[5]).toEqual(jasmine.objectContaining({
-	      	path: "tables"
-	    }));
-	});
+
 });

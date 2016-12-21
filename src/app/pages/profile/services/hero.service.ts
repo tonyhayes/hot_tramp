@@ -10,7 +10,11 @@ export class HeroService {
 
     getHeroes(): Observable<Hero[]> {
         return this.http.get('/api/heroes')
-        .map(res => res.json());
+        .map(res => res.json())
+        .map((data)=>{
+            data.push({id: 7, name: 'tony7'})
+            return data
+        });
     }
 
     getHero(id): Observable<Hero> {

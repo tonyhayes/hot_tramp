@@ -1,0 +1,39 @@
+<div *ngIf="isAdminPage">
+		<dc-sidebar [menu]="menu"></dc-sidebar>
+		<dc-page-top [navbar]="navbar"></dc-page-top>
+		<dc-navbar-top [navbar]="navbar"></dc-navbar-top>
+		<div class="al-main" >
+			<div class="al-content">
+				<dc-content-top [homeRoute]="homeRoute"></dc-content-top>
+				<div *ngIf="finished">
+					<dynamic-form  
+						[title]="'Request For Information'" 
+						[formData]="questionList | async" 
+						[questions]="componentQuestions | async" 
+						[isMultiColumn]=false 
+						(submitForm)="onSubmit($event)"	      		
+						(questionsChanged)="questionsChanged($event)">	      		
+					</dynamic-form>
+				</div>
+			</div>
+		</div>
+		<footer class="al-footer clearfix">
+			<div class="al-footer-right">Created with <i class="ion-social-angular"></i><i class="ion-social-html5"></i></div>
+			<div class="al-footer-main clearfix">
+				<div class="al-copy">&copy; <a href="http://dexterchaney.com">Dexter+Chaney</a> 2016</div>
+			</div>
+		</footer>
+		<dc-back-top position="200"></dc-back-top>
+</div>
+<div *ngIf="!isAdminPage">
+	<div *ngIf="finished">
+		<dynamic-form  
+			[title]="'Request For Information'" 
+			[formData]="questionList | async" 
+			[questions]="componentQuestions | async" 
+			[isMultiColumn]=false 
+			(submitForm)="onSubmit($event)"	      		
+			(questionsChanged)="questionsChanged($event)">	      		
+		</dynamic-form>
+	</div>
+</div>

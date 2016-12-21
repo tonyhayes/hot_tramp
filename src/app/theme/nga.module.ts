@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SelectModule } from 'ng2-select/ng2-select';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { AgGridModule } from 'ag-grid-ng2/main';
+import { DragulaModule } from 'ng2-dragula';
 
 import {
 	ThemeConfig
@@ -34,6 +35,7 @@ import {
 	GridSmartComponent,
 	TagSelectComponent,
 	DocumentsGridComponent,
+	FormDesignerComponent,
 	FullCalendar,
 	MenuItem,
 	Menu,
@@ -66,7 +68,9 @@ import {
 	ImageLoaderService,
 	ThemePreloader,
 	ThemeSpinner,
-	HeartbeatService
+	HeartbeatService,
+	SpeechRecognitionService
+
 } from './services';
 
 import {
@@ -90,6 +94,7 @@ const NGA_COMPONENTS = [
 	DocumentsGridComponent,
 	DatalistSelectComponent,
 	TagSelectComponent,
+	FormDesignerComponent,
 	FullCalendar,
 	MenuItem,
 	Menu,
@@ -121,7 +126,8 @@ const NGA_SERVICES = [
 	ImageLoaderService,
 	ThemePreloader,
 	ThemeSpinner,
-	HeartbeatService
+	HeartbeatService,
+	SpeechRecognitionService
 ];
 
 const NGA_VALIDATORS = [
@@ -146,7 +152,8 @@ const NGA_VALIDATORS = [
 		NgbModule,
 		SelectModule,
 		Ng2SmartTableModule,
-		AgGridModule.withNg2ComponentSupport(),
+		AgGridModule.withComponents(),
+		DragulaModule
 
 	],
 	exports: [

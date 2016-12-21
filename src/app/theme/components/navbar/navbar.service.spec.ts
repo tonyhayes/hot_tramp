@@ -1,6 +1,6 @@
 import { Router, Routes } from '@angular/router';
 
-import { NAVBAR } from '../../../../app/app.navbar';
+import { PAGES_NAVBAR } from '../../../pages/pages.navbar';
 import { NavbarService } from './navbar.service';
 
 describe('NavbarService', () => {
@@ -81,7 +81,6 @@ describe('NavbarService', () => {
 	});
 	it('should get items from convertRoutesToMenus', () => {
 		const testObjReturn = ns.convertRoutesToNavbarItems(navbarItems);
-		console.log(testObjReturn)
 	  	expect(testObjReturn.length).toEqual(0);
 
 	});
@@ -104,19 +103,17 @@ describe('NavbarService', () => {
 
 	});
 	it('should get items from skipEmpty', () => {
-		const testObjReturn = ns.skipEmpty(NAVBAR);
+		const testObjReturn = ns.skipEmpty(PAGES_NAVBAR);
 	  	expect(testObjReturn.length).toEqual(1);
 
 	});
 	it('should get items from convertArrayToItems', () => {
 		const testObjReturn = ns.convertArrayToItems(navbarItems);
-		console.log(testObjReturn)
 	  	expect(testObjReturn.length).toEqual(2);
 
 	});
 	it('should get items from convertObjectToItem', () => {
-		const testObjReturn = ns.convertObjectToItem(NAVBAR);
-		console.log(testObjReturn)
+		const testObjReturn = ns.convertObjectToItem(PAGES_NAVBAR);
 	  	expect(testObjReturn.route[0].path).toEqual('pages');
 
 	});

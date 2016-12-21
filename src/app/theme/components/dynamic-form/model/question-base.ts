@@ -7,7 +7,12 @@ export class QuestionBase<T>{
 	placeholder: string;
 	order: number;
 	controlType: string;
-	class: string;
+	className: string;
+	group: number;
+	groupColumns: string;
+	columns: Array<any>;
+	data: Array<any>;
+	hidden: boolean;
 	constructor(options: {
 		value?: T,
 		key?: string,
@@ -16,23 +21,27 @@ export class QuestionBase<T>{
 		readonly?: boolean,
 		placeholder?: string,
 		order?: number,
-		controlType?: string
-		class?: string
-	} = {}, 
-	columns: {
-		key?: string,
-		label?: string,
-	} = {}, 
-	data: {
+		controlType?: string,
+		className?: string,
+		group?: number,
+		groupColumns?: string,
+		columns?: Array<any>,
+		data?: Array<any>,
+		hidden?: boolean;
 	} = {}) {
 		this.value = options.value;
-		this.key = options.key || columns.key || '';
-		this.label = options.label || columns.label || '';
+		this.key = options.key || '';
+		this.label = options.label || '';
 		this.required = !!options.required;
 		this.readonly = !!options.readonly;
 		this.placeholder = options.placeholder || 'Select...';
 		this.order = options.order === undefined ? 1 : options.order ;
 		this.controlType = options.controlType || '';
-		this.class = options.class || '';
+		this.className = options.className || '';
+		this.group = options.group || 0;
+		this.groupColumns = options.groupColumns || '';
+		this.hidden = !!options.hidden;
+		this.columns = options.columns || [];
+		this.data = options.data || [];
 	}
 }

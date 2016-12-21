@@ -34,7 +34,7 @@ import { SmartTablesService } from './components/smartTables/smartTables.service
 		FormsModule,
 		HttpModule,
 		Ng2SmartTableModule,
-		AgGridModule.withNg2ComponentSupport(),
+		AgGridModule.withComponents([EditorComponent]),
 
   	],
   	declarations: [

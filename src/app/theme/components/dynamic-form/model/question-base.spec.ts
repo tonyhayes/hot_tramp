@@ -44,7 +44,6 @@ describe('QuestionBase', () => {
 	  		order: 2
 	  	})
 	  	];
-	  	console.log(qb[0])
  		expect(qb[0].value).toEqual(undefined);
 		expect(qb[0].key).toEqual('brave');
 		expect(qb[0].label).toEqual('Bravery Rating');

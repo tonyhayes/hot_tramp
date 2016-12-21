@@ -15,6 +15,7 @@ import { ThemeConfig } from './theme/theme.config';
 	encapsulation: ViewEncapsulation.None,
 	styleUrls: ['./app.component.scss'],
 	template: `
+
 		<main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
 			<div class="additional-bg"></div>
 			<router-outlet></router-outlet>
@@ -37,6 +38,9 @@ export class App {
 
 		this.state.subscribe('menu.isCollapsed', (isCollapsed) => {
 			this.isMenuCollapsed = isCollapsed;
+		});
+		this.state.subscribe('logout', (isOff) => {
+			this.auth.logout();
 		});
 		this.heartbeat.monitor();
 

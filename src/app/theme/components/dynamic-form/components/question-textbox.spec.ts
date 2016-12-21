@@ -32,7 +32,6 @@ describe('TextboxQuestion', () => {
 				type: 'email',
 				order: 2
 			})
-			console.log(ddq)
 			expect(ddq.key).toEqual('emailAddress');
 			expect(ddq.label).toEqual('Email');
 			expect(ddq.required).toEqual(false);

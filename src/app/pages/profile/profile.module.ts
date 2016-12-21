@@ -6,7 +6,7 @@ import { NgaModule } from '../../theme/nga.module';
 
 import { Profile } from './profile.component';
 import { routing } from './profile.routing';
-import { QuestionService } 						from './question.service';
+import { QuestionService } from './question.service';
 
 import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -17,6 +17,7 @@ import { HeroService } from './services';
 import { HeroEffects } from './effects';
 
 import { HeroList } from './hero-list.component';
+import { SpeechRecognitionService } from '../../theme/services/speech-recognition/speech-recognition.service';
 
 @NgModule({
 	imports: [
@@ -31,7 +32,8 @@ import { HeroList } from './hero-list.component';
 	],
   	providers: [
 		QuestionService,
-		HeroActions, HeroService
+		HeroActions, HeroService,
+		SpeechRecognitionService
   	],
 	declarations: [
 		Profile,

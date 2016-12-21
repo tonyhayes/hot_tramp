@@ -1,7 +1,40 @@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">&nbsp;&nbsp; Web Speech API in Chrome</h4>
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label></label>
+                                <input type="text" class="form-control border-input" name="txtSpeech" id="txtSpeech" value=""
+                                       placeholder="Click below button and then say something!!!" [(ngModel)]="speechData">
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    <br />
+                    <div class="text-center">
+                        <button class="btn btn-info btn-fill btn-wd" name="btnActivateSpeech" id="btnActivateSpeech" (click)="activateSpeech()"
+                                [disabled]="!showSearchButton">
+                            Start Speech
+                        </button>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="form-main">
-	<div class="form-block">
-		<h1>Profile</h1>
-      	<dynamic-form [questions]="questions" (submitForm)="onSubmit($event)"></dynamic-form>
+    <div class="form-block">
+        <h1>Profile</h1>
 
         <rx-hero-list
             [heroes]="heroes | async"

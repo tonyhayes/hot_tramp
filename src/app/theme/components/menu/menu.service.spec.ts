@@ -1,6 +1,6 @@
 import { Router, Routes } from '@angular/router';
 
-import { MENU } from '../../../../app/app.menu';
+import { PAGES_MENU } from '../../../pages/pages.menu';
 import { MenuService } from './menu.service';
 
 describe('MenuService', () => {
@@ -81,7 +81,6 @@ describe('MenuService', () => {
 	});
 	it('should get items from convertRoutesToMenus', () => {
 		const testObjReturn = ms.convertRoutesToMenus(menuItems);
-		console.log(testObjReturn)
 	  	expect(testObjReturn.length).toEqual(0);
 
 	});
@@ -104,19 +103,17 @@ describe('MenuService', () => {
 
 	});
 	it('should get items from skipEmpty', () => {
-		const testObjReturn = ms.skipEmpty(MENU);
+		const testObjReturn = ms.skipEmpty(PAGES_MENU);
 	  	expect(testObjReturn.length).toEqual(1);
 
 	});
 	it('should get items from convertArrayToItems', () => {
 		const testObjReturn = ms.convertArrayToItems(menuItems);
-		console.log(testObjReturn)
 	  	expect(testObjReturn.length).toEqual(2);
 
 	});
 	it('should get items from convertObjectToItem', () => {
-		const testObjReturn = ms.convertObjectToItem(MENU);
-		console.log(testObjReturn)
+		const testObjReturn = ms.convertObjectToItem(PAGES_MENU);
 	  	expect(testObjReturn.route[0].path).toEqual('pages');
 
 	});

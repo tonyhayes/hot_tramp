@@ -1,5 +1,4 @@
 // Load the implementations that should be tested
-import { NAVBAR } from '../../../../app/app.navbar';
 import { Router, Routes, NavigationEnd } from '@angular/router';
 
 import { AppsDropdown } from './apps-dropdown.component';

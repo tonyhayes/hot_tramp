@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { GlobalState } from '../../../global.state';
 
@@ -10,6 +10,7 @@ import { GlobalState } from '../../../global.state';
 })
 export class ContentTop {
 
+	@Input() homeRoute: string;
 	public activePageTitle:string = '';
 
 	constructor(private state:GlobalState) {

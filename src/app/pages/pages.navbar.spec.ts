@@ -4,7 +4,6 @@ import { PAGES_NAVBAR } from './pages.navbar';
 describe('PAGES_NAVBAR', () => {
 
 	it('should have a PAGES_NAVBAR object',() => {
-		console.log(PAGES_NAVBAR);
 		expect(PAGES_NAVBAR).toBeDefined();
 	});
 	it('should have a PAGES_NAVBAR object with a path',() => {
@@ -16,8 +15,8 @@ describe('PAGES_NAVBAR', () => {
 	it('should have a PAGES_NAVBAR object with children',() => {
 		expect(PAGES_NAVBAR[0].children).toBeDefined();
 	});
-	it('should have a PAGES_NAVBAR object with 2 children',() => {
-	    expect(PAGES_NAVBAR[0].children.length).toEqual(3);
+	it('should have a PAGES_NAVBAR object with 4 children',() => {
+	    expect(PAGES_NAVBAR[0].children.length).toEqual(4);
 	});
 	it('should have a PAGES_NAVBAR object with children and a path of dashboard',() => {
 	    expect(PAGES_NAVBAR[0].children[0]).toEqual(jasmine.objectContaining({

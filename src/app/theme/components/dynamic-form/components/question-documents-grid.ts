@@ -1,3 +1,4 @@
+
 import { QuestionBase } from '../model/question-base';
 
 export class DocumentsGridQuestion extends QuestionBase<string> {
@@ -6,10 +7,10 @@ export class DocumentsGridQuestion extends QuestionBase<string> {
 	data: {}[] = [];
 	options: {} = {};
 
-	constructor(data = { options:{}, columns:[], data:[] }) {		
-		super(data.options, data.columns, data.data);
-		this.columns = data.columns;
-		this.data = data.data;
-		this.options = data.options;
+	constructor(options: {} = {}) {		
+		super(options);
+		this.columns = options['columns'];
+		this.data = options['data'];
+
 	}
 }

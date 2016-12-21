@@ -1,15 +1,10 @@
-<div class="form-main">
-	<div class="col-md-12 col-xs-12">
-		<dc-card>
-			<h1>
-				Request For Information
-			</h1>
-	      	<dynamic-form  
-	      		[questions]="questions" 
-	      		[formData]="formData" 
-	      		[isMultiColumn]=false 
-	      		(submitForm)="onSubmit($event)">	      		
-	      	</dynamic-form>
-		</dc-card>
-	</div>
+<div *ngIf="finished">
+	<dynamic-form  
+		[title]="'Request For Information'" 
+		[formData]="questionList | async" 
+		[questions]="componentQuestions | async" 
+		[isMultiColumn]=false 
+		(submitForm)="onSubmit($event)"	      		
+		(questionsChanged)="questionsChanged($event)">	      		
+	</dynamic-form>
 </div>

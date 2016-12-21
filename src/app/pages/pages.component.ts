@@ -1,15 +1,17 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { PAGES_MENU } from './pages.menu';
+import { PAGES_NAVBAR } from './pages.navbar';
 @Component({
 	selector: 'pages',
 	encapsulation: ViewEncapsulation.None,
 	styles: [],
 	template: `
-		<dc-sidebar></dc-sidebar>
-		<dc-page-top></dc-page-top>
-		<dc-navbar-top></dc-navbar-top>
+		<dc-sidebar [menu]="menu"></dc-sidebar>
+		<dc-page-top [navbar]="navbar"></dc-page-top>
+		<dc-navbar-top [navbar]="navbar"></dc-navbar-top>
 		<div class="al-main" >
 			<div class="al-content">
-				<dc-content-top></dc-content-top>
+				<dc-content-top [homeRoute]="homeRoute"></dc-content-top>
 				<router-outlet></router-outlet>
 			</div>
 		</div>
@@ -23,6 +25,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
 		`
 })
 export class Pages {
+	homeRoute: string = '/pages/dashboard'
+	menu: Array<any> = PAGES_MENU;
+	navbar: Array<any> = PAGES_NAVBAR;
 
 	constructor() {}
 

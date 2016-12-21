@@ -1,10 +1,9 @@
 import { 
-	Component, ElementRef, HostListener, ViewEncapsulation 
+	Component, ElementRef, HostListener, ViewEncapsulation, Input 
 } from '@angular/core';
 
 import { GlobalState } from '../../../global.state';
 import { layoutSizes } from '../../../theme';
-import { MENU } from '../../../../app/app.menu';
 import * as _ from 'lodash';
 
 @Component({
@@ -15,23 +14,22 @@ import * as _ from 'lodash';
 	templateUrl: 'sidebar.component.html'
 })
 export class Sidebar {
-
+	@Input() menu: Array<any> = [];
 	// here we declare which routes we want to use as a menu in our sidebar
-	public routes = _.cloneDeep(MENU); // we're creating a deep copy since we are going to change that object
+	public routes: Array<any> = []; 
 
 	public menuHeight:number;
 	public isMenuCollapsed:boolean = false;
 	public isMenuShouldCollapsed:boolean = false;
 
 
-	constructor(private elementRef:ElementRef, private state:GlobalState) {
+	constructor(private elementRef:ElementRef, private state:GlobalState) {}
 
+	public ngOnInit():void {
 		this.state.subscribe('menu.isCollapsed', (isCollapsed) => {
 			this.isMenuCollapsed = isCollapsed;
 		});
-	}
-
-	public ngOnInit():void {
+		this.routes = _.cloneDeep(this.menu)
 		if (this.shouldMenuCollapse()) {
 			this.menuCollapse();
 		}

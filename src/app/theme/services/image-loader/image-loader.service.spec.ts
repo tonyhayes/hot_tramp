@@ -7,7 +7,6 @@ describe('ImageLoaderService', () => {
 	  
   	//specs
 	it('should have a ImageLoaderService', () => {
-		console.log(il)
 		expect(il).toBeDefined();
 	});
 

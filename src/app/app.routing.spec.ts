@@ -4,11 +4,9 @@ import { routing, routes } from './app.routing';
 describe('app.routing', () => {
 
 	it('should have a routing object',() => {
-		console.log(routing);
 		expect(routing).toBeDefined();
 	});
 	it('should have a routes object',() => {
-		console.log(routes);
 		expect(routes).toBeDefined();
 	});
 	it('should have a routes object with path',() => {

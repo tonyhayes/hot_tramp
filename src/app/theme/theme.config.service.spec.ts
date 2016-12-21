@@ -6,7 +6,6 @@ describe('ThemeConfigService', () => {
 	const cp = new ThemeConfigService();
   //specs
 	it('should have a ThemeConfigService', () => {
-		console.log(cp)
 		expect(cp).toBeDefined();
 	});
 	it('should have basic theme', () => {

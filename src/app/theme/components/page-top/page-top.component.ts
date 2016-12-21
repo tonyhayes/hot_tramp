@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
 
 import { GlobalState } from '../../../global.state';
 
@@ -11,6 +11,7 @@ import { GlobalState } from '../../../global.state';
 })
 export class PageTop {
 
+	@Input() navbar: Array<any> = [];
 	public isScrolled:boolean = false;
 	public isMenuCollapsed:boolean = false;
 
@@ -23,6 +24,11 @@ export class PageTop {
 	public toggleMenu() {
 		this.isMenuCollapsed = !this.isMenuCollapsed;
 		this.state.notifyDataChanged('menu.isCollapsed', this.isMenuCollapsed);
+		return false;
+	}
+	public signOut() {
+		this.state.notifyDataChanged('logout', true);
+		// cancel the href
 		return false;
 	}
 

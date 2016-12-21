@@ -2,6 +2,7 @@ import {
   inject,
   TestBed
 } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 // Load the implementations that should be tested
 import { App } from './app.component';
@@ -14,7 +15,10 @@ import { ThemeConfigService } from './theme/theme.config.service';
 import { Auth } from './auth.service';
 
 describe('App', () => {
-  // provide our implementations or mocks to the dependency injector
+	let mockRouter = {
+	  	navigate: jasmine.createSpy('navigate')
+	}  
+	 // provide our implementations or mocks to the dependency injector
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       	AppState,
@@ -22,18 +26,16 @@ describe('App', () => {
       	GlobalState,
       	ImageLoaderService, ThemePreloader, ThemeSpinner,
       	HeartbeatService, ThemeConfig, ThemeConfigService,
-      	Auth
+      	Auth, { provide: Router, useValue: mockRouter }
     ]}));
 
-	it('should maintain a global state', inject([ App, GlobalState,  ImageLoaderService, ThemeSpinner, ThemeConfig, HeartbeatService, Auth], (app) => {
-		console.log(app.state);
+	it('should maintain a global state', inject([ App, GlobalState,  ImageLoaderService, ThemeSpinner, ThemeConfig, HeartbeatService, Auth, Router], (app) => {
 		expect(app.state).toBeDefined();
 		expect(app.state.data).toBeDefined();
 		expect(app.state.dataStream$).toBeDefined();
 		expect(app.state.subscriptions).toBeDefined();
 	}));
-	it('should have isMenuCollapsed = false', inject([ App, GlobalState,  ImageLoaderService, ThemeSpinner, ThemeConfig, HeartbeatService, Auth], (app) => {
-		console.log(app);
+	it('should have isMenuCollapsed = false', inject([ App, GlobalState,  ImageLoaderService, ThemeSpinner, ThemeConfig, HeartbeatService, Auth, Router], (app) => {
 		expect(app.imageLoader).toBeDefined();
 		expect(app.spinner).toBeDefined();
 		expect(app.isMenuCollapsed).toBeDefined();

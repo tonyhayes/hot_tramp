@@ -7,7 +7,6 @@ describe('ThemePreloader', () => {
 	  
   	//specs
 	it('should have a ThemePreloader', () => {
-		console.log(tp)
 		expect(tp).toBeDefined();
 	});
 

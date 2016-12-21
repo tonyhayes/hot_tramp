@@ -6,7 +6,7 @@ import { ChartistJsService } from './chartistJs.service';
 	moduleId: module.id,
 	selector: 'chartist-js',
 	encapsulation: ViewEncapsulation.None,
-	styles: [require('chartist/dist/chartist.css'), require('./chartistjs.scss')],
+	styles: [require('chartist/dist/chartist.css'), require('./chartistJs.scss')],
 	templateUrl: 'chartistJs.html',
 })
 

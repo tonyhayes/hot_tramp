@@ -41,7 +41,7 @@ import { GridOptions } from 'ag-grid/main';
 		}
 	`]
 })
-class MoodEditorComponent implements AgEditorComponent, AfterViewInit {
+export class MoodEditorComponent implements AgEditorComponent, AfterViewInit {
 	private params:any;
 
 	@ViewChild('container', {read: ViewContainerRef}) private container;
@@ -87,7 +87,7 @@ class MoodEditorComponent implements AgEditorComponent, AfterViewInit {
 	selector: 'mood-cell',
 	template: `<img width="20px" [src]="imgForMood" />`
 })
-class MoodRendererComponent implements AgRendererComponent {
+export class MoodRendererComponent implements AgRendererComponent {
 	private params:any;
 	private mood:string;
 	private imgForMood:string;
@@ -112,7 +112,7 @@ class MoodRendererComponent implements AgRendererComponent {
 	selector: 'numeric-cell',
 	template: `<input #input (keydown)="onKeyDown($event)" [(ngModel)]="value">`
 })
-class NumericEditorComponent implements AgEditorComponent, AfterViewInit {
+export class NumericEditorComponent implements AgEditorComponent, AfterViewInit {
 	private params:any;
 	private value:number;
 	private cancelBeforeStart:boolean = false;

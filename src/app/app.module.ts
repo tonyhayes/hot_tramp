@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { HttpModule }  from '@angular/http';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 import { Auth }              from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+
 /*
  * Auth0 helper library
  */
@@ -22,13 +24,24 @@ import { AppState, InteralStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { PagesModule } from './pages/pages.module';
 
+//Redux data management
+import { Store, StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import reducer from './reducers';
+import { QuestionActions } from './actions';
+import { QuestionService } from './services';
+import { QuestionEffects } from './effects';
 
 
 // Application wide providers
 const APP_PROVIDERS = [
 	AppState,
 	GlobalState,
-	Auth
+	QuestionService, 
+	QuestionActions, 
+	Auth,
+	AuthGuard
 ];
 
 type StoreType = {
@@ -52,6 +65,8 @@ type StoreType = {
     	NgaModule.forRoot(),
 		PagesModule,
 		routing,
+    	StoreModule.provideStore(reducer),
+    	EffectsModule.run(QuestionEffects),
 	 ],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,

@@ -1,28 +1,2065 @@
 {
-  	"heroes": [
-		{
-	  		"id": 1,
-	  		"name": "Magneto"
-		},
-		{
-	  		"id": 2,
-	  		"name": "Doctor Strange"
-		},
-		{
-	  		"id": 3,
-	  		"name": "Batman"
-		},
-		{
-	  		"id": 4,
-	  		"name": "aaa"
-		},
-		{
-	  		"id": 5,
-	  		"name": "bbb"
-		},
-		{
-	  		"id": 6,
-	  		"name": "ccc"
-		}
-  	]
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Magneto"
+    },
+    {
+      "id": 2,
+      "name": "Doctor Strange"
+    },
+    {
+      "id": 3,
+      "name": "Batman"
+    },
+    {
+      "id": 4,
+      "name": "aaa"
+    },
+    {
+      "id": 5,
+      "name": "bbb"
+    },
+    {
+      "id": 6,
+      "name": "tony"
+    }
+  ],
+  "projectmanagement": [
+    {
+      "0": {
+        "value": "8",
+        "key": "referenceNumber",
+        "label": "RFI number",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 0,
+        "controlType": "input",
+        "className": "",
+        "group": "1",
+        "groupColumns": "2-Column",
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "1": {
+        "value": "2016-12-01T23:13:03.031Z",
+        "key": "issuedDate",
+        "label": "Issued Date",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 1,
+        "controlType": "date",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "2": {
+        "value": "Seattle Central Library",
+        "key": "projectName",
+        "label": "Project",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 2,
+        "controlType": "input",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "3": {
+        "value": "200",
+        "key": "jobNumber",
+        "label": "Project Number",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 3,
+        "controlType": "input",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "4": {
+        "value": "Seattle Central Library\nUniversity Library\n5009 Roosevelt Way NE\nSeattle WA, 98105",
+        "key": "jobDescription",
+        "label": "Project Description",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 4,
+        "controlType": "textarea",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "5": {
+        "key": "sentTo",
+        "label": "To",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 5,
+        "controlType": "tag",
+        "className": "1-Column",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "options": [
+          {
+            "key": "thayes@dexterchaney.com",
+            "value": "Tony"
+          },
+          {
+            "key": "nsteier@dexterchaney.com",
+            "value": "Nick"
+          },
+          {
+            "key": "bneel@dexterchaney.com",
+            "value": "Bill"
+          },
+          {
+            "key": "scott@dexterchaney.com",
+            "value": "Scott"
+          }
+        ]
+      },
+      "6": {
+        "key": "sentCc",
+        "label": "Cc",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 6,
+        "controlType": "tag",
+        "className": "1-Column",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "options": [
+          {
+            "key": "thayes@dexterchaney.com",
+            "value": "Tony"
+          },
+          {
+            "key": "nsteier@dexterchaney.com",
+            "value": "Nick"
+          },
+          {
+            "key": "bneel@dexterchaney.com",
+            "value": "Bill"
+          },
+          {
+            "key": "scott@dexterchaney.com",
+            "value": "Scott"
+          }
+        ]
+      },
+      "7": {
+        "key": "responsibility",
+        "label": "Ball In Court",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Unassigned",
+        "order": 7,
+        "controlType": "bs-dropdown",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "options": [
+          {
+            "key": "tony",
+            "value": "Tony"
+          },
+          {
+            "key": "bill",
+            "value": "Bill"
+          },
+          {
+            "key": "nick",
+            "value": "Nick"
+          },
+          {
+            "key": "scott",
+            "value": "Scott"
+          },
+          {
+            "key": "unassigned",
+            "value": "Unassigned"
+          }
+        ]
+      },
+      "8": {
+        "value": null,
+        "key": "scheduledDeliveryDate",
+        "label": "Return Requested Date",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 8,
+        "controlType": "date",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "9": {
+        "value": "2016-12-12",
+        "key": "returnRequiredDate",
+        "label": "Return Required Date",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 9,
+        "controlType": "date",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "10": {
+        "key": "activity",
+        "label": "Current Action",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 10,
+        "controlType": "bs-dropdown",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "options": [
+          {
+            "key": "submitted",
+            "value": "Submitted"
+          },
+          {
+            "key": "review",
+            "value": "Awaiting Review"
+          },
+          {
+            "key": "returned",
+            "value": "Returned"
+          },
+          {
+            "key": "accepted",
+            "value": "Accepted"
+          },
+          {
+            "key": "rejected",
+            "value": "Rejected"
+          }
+        ]
+      },
+      "11": {
+        "value": "Shop Inspections for Structural Steel",
+        "key": "topic",
+        "label": "Topic",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 11,
+        "controlType": "textarea",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "12": {
+        "value": "02200 (Earthwork)",
+        "key": "subsection",
+        "label": "Spec Section",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 12,
+        "controlType": "bs-dropdown",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "options": [
+          {
+            "key": "02200",
+            "value": "02200 (Earthwork)"
+          },
+          {
+            "key": "01100",
+            "value": "01100 (Mobilization)"
+          },
+          {
+            "key": "02050",
+            "value": "02050 (Demolition)"
+          },
+          {
+            "key": "02660",
+            "value": "02660 (Water Distribtuion)"
+          },
+          {
+            "key": "03100",
+            "value": "03100 (Concrete Formwork)"
+          }
+        ]
+      },
+      "13": {
+        "key": "paragraph",
+        "label": "Paragraph",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 13,
+        "controlType": "textarea",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "14": {
+        "key": "drawingImpact",
+        "label": "Drawing Impact",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 14,
+        "controlType": "checkbox",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": "checkbox"
+      },
+      "15": {
+        "key": "costImpact",
+        "label": "Cost Impact",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 15,
+        "controlType": "checkbox",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": "checkbox"
+      },
+      "16": {
+        "key": "scheduleImpact",
+        "label": "Schedule Impact",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 16,
+        "controlType": "checkbox",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": "checkbox"
+      },
+      "17": {
+        "value": "Spec Sections 5120-4:1.4E, 01450-6:E1",
+        "key": "drawingReference",
+        "label": "Drawing Reference",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 17,
+        "controlType": "input",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "18": {
+        "key": "drawingDetail",
+        "label": "Drawing Detail",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 18,
+        "controlType": "input",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "19": {
+        "key": "externalId",
+        "label": "External Number",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 19,
+        "controlType": "input",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "20": {
+        "key": "discipline",
+        "label": "Discipline",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 20,
+        "controlType": "bs-dropdown",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "options": [
+          {
+            "key": "none",
+            "value": "None"
+          },
+          {
+            "key": "architectural",
+            "value": "Architectural"
+          },
+          {
+            "key": "civil",
+            "value": "Civil"
+          },
+          {
+            "key": "deadline",
+            "value": "Deadline"
+          },
+          {
+            "key": "electrical",
+            "value": "Electrical"
+          },
+          {
+            "key": "hvac",
+            "value": "HVAC"
+          },
+          {
+            "key": "landscape",
+            "value": "Landscape"
+          },
+          {
+            "key": "other",
+            "value": "Other"
+          },
+          {
+            "key": "plumbing",
+            "value": "Plumbing"
+          },
+          {
+            "key": "structural",
+            "value": "Structural"
+          }
+        ]
+      },
+      "21": {
+        "key": "priority",
+        "label": "Priority",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 21,
+        "controlType": "bs-dropdown",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "options": [
+          {
+            "key": "high",
+            "value": "High"
+          },
+          {
+            "key": "medium",
+            "value": "Medium"
+          },
+          {
+            "key": "low",
+            "value": "Low"
+          }
+        ]
+      },
+      "22": {
+        "key": "requestedBy",
+        "label": "Requested By",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 22,
+        "controlType": "datalist",
+        "className": "",
+        "group": "1",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "options": [
+          {
+            "key": "Tony",
+            "value": "Tony"
+          },
+          {
+            "key": "Nick",
+            "value": "Nick"
+          },
+          {
+            "key": "Bill",
+            "value": "Bill"
+          },
+          {
+            "key": "Scott",
+            "value": "Scott"
+          }
+        ]
+      },
+      "23": {
+        "key": "respondedBy",
+        "label": "Responded By",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 23,
+        "controlType": "datalist",
+        "className": "",
+        "group": "2",
+        "groupColumns": "1-Column",
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "options": [
+          {
+            "key": "Tony",
+            "value": "Tony"
+          },
+          {
+            "key": "Nick",
+            "value": "Nick"
+          },
+          {
+            "key": "Bill",
+            "value": "Bill"
+          },
+          {
+            "key": "Scott",
+            "value": "Scott"
+          }
+        ]
+      },
+      "24": {
+        "key": "respondedByDate",
+        "label": "Responded By Date",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 24,
+        "controlType": "date",
+        "className": "",
+        "group": "2",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "25": {
+        "key": "request",
+        "label": "Request",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 25,
+        "controlType": "textarea",
+        "className": "",
+        "group": "2",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "26": {
+        "key": "response",
+        "label": "Response",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 26,
+        "controlType": "textarea",
+        "className": "",
+        "group": "2",
+        "groupColumns": null,
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "type": ""
+      },
+      "27": {
+        "key": "relatedDocuments",
+        "label": "Related Documents",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 27,
+        "controlType": "smart-grid",
+        "className": "",
+        "group": 3,
+        "groupColumns": 1,
+        "hidden": false,
+        "columns": [
+          {
+            "key": "date",
+            "label": "Date"
+          },
+          {
+            "key": "logEntry",
+            "label": "Log Entry"
+          },
+          {
+            "key": "topic",
+            "label": "Topic"
+          },
+          {
+            "key": "direction",
+            "label": "Direction"
+          },
+          {
+            "key": "status",
+            "label": "Status"
+          }
+        ],
+        "data": [
+          {
+            "date": "10/11/2016",
+            "logEntry": "This is a Log Entry",
+            "topic": "A Really Long Topic",
+            "direction": "Some Sort of Direction",
+            "status": "Need another meeting"
+          },
+          {
+            "date": "10/17/2016",
+            "logEntry": "This is another Log Entry",
+            "topic": "A Topic",
+            "direction": "Pleave evaluate",
+            "status": "still considering"
+          }
+        ],
+        "options": {}
+      },
+      "28": {
+        "key": "status",
+        "label": "StatusFreak",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 28,
+        "controlType": "bs-dropdown",
+        "className": "",
+        "group": 4,
+        "groupColumns": "1-Column",
+        "hidden": false,
+        "columns": [],
+        "data": [],
+        "options": [
+          {
+            "key": "open",
+            "value": "Open"
+          },
+          {
+            "key": "closed",
+            "value": "Closed"
+          }
+        ]
+      },
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Doctor Strange"
+    },
+    {
+      "id": 3,
+      "name": "Batman"
+    },
+    {
+      "id": 4,
+      "name": "aaa"
+    },
+    {
+      "id": 5,
+      "name": "bbb"
+    },
+    {
+      "id": 6,
+      "name": "tony"
+    },
+    [
+      {
+        "value": "8",
+        "key": "referenceNumber",
+        "label": "RFI number",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 1,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "2016-11-23T16:59:31.129Z",
+        "key": "issuedDate",
+        "label": "Issued Date",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 2,
+        "controlType": "date",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "Seattle Central Library",
+        "key": "projectName",
+        "label": "Project",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 3,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "200",
+        "key": "jobNumber",
+        "label": "Project Number",
+        "required": true,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 4,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "Seattle Central Library\nUniversity Library\n5009 Roosevelt Way NE\nSeattle WA, 98105",
+        "key": "jobDescription",
+        "label": "Project Description",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 5,
+        "controlType": "textarea",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "sentTo",
+        "label": "To",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 6,
+        "controlType": "tag",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "thayes@dexterchaney.com",
+            "value": "Tony"
+          },
+          {
+            "key": "nsteier@dexterchaney.com",
+            "value": "Nick"
+          },
+          {
+            "key": "bneel@dexterchaney.com",
+            "value": "Bill"
+          },
+          {
+            "key": "scott@dexterchaney.com",
+            "value": "Scott"
+          }
+        ]
+      },
+      {
+        "key": "sentCc",
+        "label": "Cc",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 7,
+        "controlType": "tag",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "thayes@dexterchaney.com",
+            "value": "Tony"
+          },
+          {
+            "key": "nsteier@dexterchaney.com",
+            "value": "Nick"
+          },
+          {
+            "key": "bneel@dexterchaney.com",
+            "value": "Bill"
+          },
+          {
+            "key": "scott@dexterchaney.com",
+            "value": "Scott"
+          }
+        ]
+      },
+      {
+        "key": "responsibility",
+        "label": "Ball In Court",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Unassigned",
+        "order": 8,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": true,
+        "options": [
+          {
+            "key": "tony",
+            "value": "Tony"
+          },
+          {
+            "key": "bill",
+            "value": "Bill"
+          },
+          {
+            "key": "nick",
+            "value": "Nick"
+          },
+          {
+            "key": "scott",
+            "value": "Scott"
+          },
+          {
+            "key": "unassigned",
+            "value": "Unassigned"
+          }
+        ]
+      },
+      {
+        "value": null,
+        "key": "scheduledDeliveryDate",
+        "label": "Return Requested Date",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 9,
+        "controlType": "date",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "2016-12-12",
+        "key": "returnRequiredDate",
+        "label": "Return Required Date",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 9,
+        "controlType": "date",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "activity",
+        "label": "Current Action",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 9,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "submitted",
+            "value": "Submitted"
+          },
+          {
+            "key": "review",
+            "value": "Awaiting Review"
+          },
+          {
+            "key": "returned",
+            "value": "Returned"
+          },
+          {
+            "key": "accepted",
+            "value": "Accepted"
+          },
+          {
+            "key": "rejected",
+            "value": "Rejected"
+          }
+        ]
+      },
+      {
+        "value": "Shop Inspections for Structural Steel",
+        "key": "topic",
+        "label": "Topic",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 10,
+        "controlType": "textarea",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "02200 (Earthwork)",
+        "key": "subsection",
+        "label": "Spec Section",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 11,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "02200",
+            "value": "02200 (Earthwork)"
+          },
+          {
+            "key": "01100",
+            "value": "01100 (Mobilization)"
+          },
+          {
+            "key": "02050",
+            "value": "02050 (Demolition)"
+          },
+          {
+            "key": "02660",
+            "value": "02660 (Water Distribtuion)"
+          },
+          {
+            "key": "03100",
+            "value": "03100 (Concrete Formwork)"
+          }
+        ]
+      },
+      {
+        "key": "paragraph",
+        "label": "Paragraph",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 12,
+        "controlType": "textarea",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "drawingImpact",
+        "label": "Drawing Impact",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 13,
+        "controlType": "checkbox",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": "checkbox"
+      },
+      {
+        "key": "costImpact",
+        "label": "Cost Impact",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 14,
+        "controlType": "checkbox",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": "checkbox"
+      },
+      {
+        "key": "scheduleImpact",
+        "label": "Schedule Impact",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 15,
+        "controlType": "checkbox",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": "checkbox"
+      },
+      {
+        "value": "Spec Sections 5120-4:1.4E, 01450-6:E1",
+        "key": "drawingReference",
+        "label": "Drawing Reference",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 16,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "drawingDetail",
+        "label": "Drawing Detail",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 17,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "externalId",
+        "label": "External Number",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 18,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "discipline",
+        "label": "Discipline",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 19,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "none",
+            "value": "None"
+          },
+          {
+            "key": "architectural",
+            "value": "Architectural"
+          },
+          {
+            "key": "civil",
+            "value": "Civil"
+          },
+          {
+            "key": "deadline",
+            "value": "Deadline"
+          },
+          {
+            "key": "electrical",
+            "value": "Electrical"
+          },
+          {
+            "key": "hvac",
+            "value": "HVAC"
+          },
+          {
+            "key": "landscape",
+            "value": "Landscape"
+          },
+          {
+            "key": "other",
+            "value": "Other"
+          },
+          {
+            "key": "plumbing",
+            "value": "Plumbing"
+          },
+          {
+            "key": "structural",
+            "value": "Structural"
+          }
+        ]
+      },
+      {
+        "key": "priority",
+        "label": "Priority",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 20,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "high",
+            "value": "High"
+          },
+          {
+            "key": "medium",
+            "value": "Medium"
+          },
+          {
+            "key": "low",
+            "value": "Low"
+          }
+        ]
+      },
+      {
+        "key": "status",
+        "label": "Status",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 21,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "open",
+            "value": "Open"
+          },
+          {
+            "key": "closed",
+            "value": "Closed"
+          }
+        ]
+      },
+      {
+        "key": "request",
+        "label": "Request",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 22,
+        "controlType": "textarea",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "requestedBy",
+        "label": "Requested By",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 23,
+        "controlType": "datalist",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "Tony",
+            "value": "Tony"
+          },
+          {
+            "key": "Nick",
+            "value": "Nick"
+          },
+          {
+            "key": "Bill",
+            "value": "Bill"
+          },
+          {
+            "key": "Scott",
+            "value": "Scott"
+          }
+        ]
+      },
+      {
+        "key": "response",
+        "label": "Response",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 24,
+        "controlType": "textarea",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "respondedBy",
+        "label": "Responded By",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 25,
+        "controlType": "datalist",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "Tony",
+            "value": "Tony"
+          },
+          {
+            "key": "Nick",
+            "value": "Nick"
+          },
+          {
+            "key": "Bill",
+            "value": "Bill"
+          },
+          {
+            "key": "Scott",
+            "value": "Scott"
+          }
+        ]
+      },
+      {
+        "key": "respondedByDate",
+        "label": "Responded By Date",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 26,
+        "controlType": "date",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "relatedDocuments",
+        "label": "Related Documents",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 27,
+        "controlType": "smart-grid",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "columns": [
+          {
+            "key": "date",
+            "label": "Date"
+          },
+          {
+            "key": "logEntry",
+            "label": "Log Entry"
+          },
+          {
+            "key": "topic",
+            "label": "Topic"
+          },
+          {
+            "key": "direction",
+            "label": "Direction"
+          },
+          {
+            "key": "status",
+            "label": "Status"
+          }
+        ],
+        "data": [
+          {
+            "date": "10/11/2016",
+            "logEntry": "This is a Log Entry",
+            "topic": "A Really Long Topic",
+            "direction": "Some Sort of Direction",
+            "status": "Need another meeting"
+          },
+          {
+            "date": "10/17/2016",
+            "logEntry": "This is another Log Entry",
+            "topic": "A Topic",
+            "direction": "Pleave evaluate",
+            "status": "still considering"
+          }
+        ],
+        "options": {
+          "key": "relatedDocuments",
+          "order": 27,
+          "label": "Related Documents"
+        }
+      }
+    ],
+    [
+      {
+        "value": "8",
+        "key": "referenceNumber",
+        "label": "RFI number",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 1,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "2016-11-23T17:18:08.868Z",
+        "key": "issuedDate",
+        "label": "Issued Date",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 2,
+        "controlType": "date",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "Seattle Central Library",
+        "key": "projectName",
+        "label": "Project",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 3,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "200",
+        "key": "jobNumber",
+        "label": "Project Number",
+        "required": true,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 4,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "Seattle Central Library\nUniversity Library\n5009 Roosevelt Way NE\nSeattle WA, 98105",
+        "key": "jobDescription",
+        "label": "Project Description",
+        "required": false,
+        "readonly": true,
+        "placeholder": "Select...",
+        "order": 5,
+        "controlType": "textarea",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "sentTo",
+        "label": "To",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 6,
+        "controlType": "tag",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "thayes@dexterchaney.com",
+            "value": "Tony"
+          },
+          {
+            "key": "nsteier@dexterchaney.com",
+            "value": "Nick"
+          },
+          {
+            "key": "bneel@dexterchaney.com",
+            "value": "Bill"
+          },
+          {
+            "key": "scott@dexterchaney.com",
+            "value": "Scott"
+          }
+        ]
+      },
+      {
+        "key": "sentCc",
+        "label": "Cc",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 7,
+        "controlType": "tag",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "thayes@dexterchaney.com",
+            "value": "Tony"
+          },
+          {
+            "key": "nsteier@dexterchaney.com",
+            "value": "Nick"
+          },
+          {
+            "key": "bneel@dexterchaney.com",
+            "value": "Bill"
+          },
+          {
+            "key": "scott@dexterchaney.com",
+            "value": "Scott"
+          }
+        ]
+      },
+      {
+        "key": "responsibility",
+        "label": "Ball In Court",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Unassigned",
+        "order": 8,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": true,
+        "options": [
+          {
+            "key": "tony",
+            "value": "Tony"
+          },
+          {
+            "key": "bill",
+            "value": "Bill"
+          },
+          {
+            "key": "nick",
+            "value": "Nick"
+          },
+          {
+            "key": "scott",
+            "value": "Scott"
+          },
+          {
+            "key": "unassigned",
+            "value": "Unassigned"
+          }
+        ]
+      },
+      {
+        "value": null,
+        "key": "scheduledDeliveryDate",
+        "label": "Return Requested Date",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 9,
+        "controlType": "date",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "2016-12-12",
+        "key": "returnRequiredDate",
+        "label": "Return Required Date",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 9,
+        "controlType": "date",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "activity",
+        "label": "Current Action",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 9,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "submitted",
+            "value": "Submitted"
+          },
+          {
+            "key": "review",
+            "value": "Awaiting Review"
+          },
+          {
+            "key": "returned",
+            "value": "Returned"
+          },
+          {
+            "key": "accepted",
+            "value": "Accepted"
+          },
+          {
+            "key": "rejected",
+            "value": "Rejected"
+          }
+        ]
+      },
+      {
+        "value": "Shop Inspections for Structural Steel",
+        "key": "topic",
+        "label": "Topic",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 10,
+        "controlType": "textarea",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "value": "02200 (Earthwork)",
+        "key": "subsection",
+        "label": "Spec Section",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 11,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "02200",
+            "value": "02200 (Earthwork)"
+          },
+          {
+            "key": "01100",
+            "value": "01100 (Mobilization)"
+          },
+          {
+            "key": "02050",
+            "value": "02050 (Demolition)"
+          },
+          {
+            "key": "02660",
+            "value": "02660 (Water Distribtuion)"
+          },
+          {
+            "key": "03100",
+            "value": "03100 (Concrete Formwork)"
+          }
+        ]
+      },
+      {
+        "key": "paragraph",
+        "label": "Paragraph",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 12,
+        "controlType": "textarea",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "drawingImpact",
+        "label": "Drawing Impact",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 13,
+        "controlType": "checkbox",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": "checkbox"
+      },
+      {
+        "key": "costImpact",
+        "label": "Cost Impact",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 14,
+        "controlType": "checkbox",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": "checkbox"
+      },
+      {
+        "key": "scheduleImpact",
+        "label": "Schedule Impact",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 15,
+        "controlType": "checkbox",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": "checkbox"
+      },
+      {
+        "value": "Spec Sections 5120-4:1.4E, 01450-6:E1",
+        "key": "drawingReference",
+        "label": "Drawing Reference",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 16,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "drawingDetail",
+        "label": "Drawing Detail",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 17,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "externalId",
+        "label": "External Number",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 18,
+        "controlType": "input",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "discipline",
+        "label": "Discipline",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 19,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "none",
+            "value": "None"
+          },
+          {
+            "key": "architectural",
+            "value": "Architectural"
+          },
+          {
+            "key": "civil",
+            "value": "Civil"
+          },
+          {
+            "key": "deadline",
+            "value": "Deadline"
+          },
+          {
+            "key": "electrical",
+            "value": "Electrical"
+          },
+          {
+            "key": "hvac",
+            "value": "HVAC"
+          },
+          {
+            "key": "landscape",
+            "value": "Landscape"
+          },
+          {
+            "key": "other",
+            "value": "Other"
+          },
+          {
+            "key": "plumbing",
+            "value": "Plumbing"
+          },
+          {
+            "key": "structural",
+            "value": "Structural"
+          }
+        ]
+      },
+      {
+        "key": "priority",
+        "label": "Priority",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 20,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "high",
+            "value": "High"
+          },
+          {
+            "key": "medium",
+            "value": "Medium"
+          },
+          {
+            "key": "low",
+            "value": "Low"
+          }
+        ]
+      },
+      {
+        "key": "status",
+        "label": "Status",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 21,
+        "controlType": "bs-dropdown",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "open",
+            "value": "Open"
+          },
+          {
+            "key": "closed",
+            "value": "Closed"
+          }
+        ]
+      },
+      {
+        "key": "request",
+        "label": "Request",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 22,
+        "controlType": "textarea",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "requestedBy",
+        "label": "Requested By",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 23,
+        "controlType": "datalist",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "Tony",
+            "value": "Tony"
+          },
+          {
+            "key": "Nick",
+            "value": "Nick"
+          },
+          {
+            "key": "Bill",
+            "value": "Bill"
+          },
+          {
+            "key": "Scott",
+            "value": "Scott"
+          }
+        ]
+      },
+      {
+        "key": "response",
+        "label": "Response",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 24,
+        "controlType": "textarea",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "respondedBy",
+        "label": "Responded By",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 25,
+        "controlType": "datalist",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "options": [
+          {
+            "key": "Tony",
+            "value": "Tony"
+          },
+          {
+            "key": "Nick",
+            "value": "Nick"
+          },
+          {
+            "key": "Bill",
+            "value": "Bill"
+          },
+          {
+            "key": "Scott",
+            "value": "Scott"
+          }
+        ]
+      },
+      {
+        "key": "respondedByDate",
+        "label": "Responded By Date",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 26,
+        "controlType": "date",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "type": ""
+      },
+      {
+        "key": "relatedDocuments",
+        "label": "Related Documents",
+        "required": false,
+        "readonly": false,
+        "placeholder": "Select...",
+        "order": 27,
+        "controlType": "smart-grid",
+        "class": "",
+        "group": 0,
+        "groupColumns": "",
+        "hidden": false,
+        "columns": [
+          {
+            "key": "date",
+            "label": "Date"
+          },
+          {
+            "key": "logEntry",
+            "label": "Log Entry"
+          },
+          {
+            "key": "topic",
+            "label": "Topic"
+          },
+          {
+            "key": "direction",
+            "label": "Direction"
+          },
+          {
+            "key": "status",
+            "label": "Status"
+          }
+        ],
+        "data": [
+          {
+            "date": "10/11/2016",
+            "logEntry": "This is a Log Entry",
+            "topic": "A Really Long Topic",
+            "direction": "Some Sort of Direction",
+            "status": "Need another meeting"
+          },
+          {
+            "date": "10/17/2016",
+            "logEntry": "This is another Log Entry",
+            "topic": "A Topic",
+            "direction": "Pleave evaluate",
+            "status": "still considering"
+          }
+        ],
+        "options": {
+          "key": "relatedDocuments",
+          "order": 27,
+          "label": "Related Documents"
+        }
+      }
+    ]
+  ]
 }

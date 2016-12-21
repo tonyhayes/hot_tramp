@@ -10,7 +10,6 @@ describe('ThemeConfig', () => {
 	  
   	//specs
 	it('should have a BaThemeConfig', () => {
-		console.log(tc)
 		expect(tc).toBeDefined();
 	});
 

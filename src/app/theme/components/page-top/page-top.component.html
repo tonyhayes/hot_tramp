@@ -5,7 +5,7 @@
 	</a>
 	<a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
 
-	<dc-apps-dropdown></dc-apps-dropdown>
+	<dc-apps-dropdown [navbar]="navbar"></dc-apps-dropdown>
 
 	<div class="user-profile clearfix">
 		<div class="dropdown al-user-profile">
@@ -17,7 +17,7 @@
 				<li class="dropdown-item"><a routerLink="/profile" href><i class="fa fa-user"></i>Profile</a></li>
 				<li class="dropdown-item"><a routerLink="/project-management" href><i class="fa fa-puzzle-piece"></i>Project Management</a></li>
 				<li class="dropdown-item"><a href><i class="fa fa-cog"></i>Settings</a></li>
-				<li class="dropdown-item"><a href class="signout"><i class="fa fa-power-off"></i>Sign out</a></li>
+				<li class="dropdown-item"><a href (click)="signOut()" class="signout"><i class="fa fa-power-off"></i>Sign out</a></li>
 			</ul>
 		</div>
 <!--     <dc-msg-center></dc-msg-center>

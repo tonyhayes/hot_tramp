@@ -5,13 +5,11 @@ describe('GlobalState', () => {
 	const gs = new GlobalState();
   //specs
 	it('should create a GlobalState', () => {
-		console.log(gs)
 		expect(gs).toBeDefined();
 	});
 	it('should subscribe to an event', () => {
 		gs.subscribe('hero.isTony', (isTony) => {
 			this.isTonyYourHero = isTony;
-			console.log('gs subscribe event')
 		});
 		expect(gs.subscriptions.has('hero.isTony')).toBeTruthy();
 		gs.notifyDataChanged('hero.isTony', 'true');
