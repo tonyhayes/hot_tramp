@@ -3,9 +3,8 @@ import { Component } from '@angular/core';
 import { BasicTablesService } from '../../basicTables.service';
 
 @Component({
-  	moduleId: module.id,
   	selector: 'hover-table',
-  	templateUrl: 'hoverTable.html'
+  	templateUrl: './hoverTable.html'
 })
 export class HoverTable {
 

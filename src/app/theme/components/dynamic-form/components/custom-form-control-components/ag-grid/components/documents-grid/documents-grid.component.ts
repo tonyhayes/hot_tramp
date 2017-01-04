@@ -13,9 +13,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 //import 'ag-grid-enterprise/main';
 
 @Component({
-	moduleId: module.id,
 	selector: 'documents-grid',
-	templateUrl: 'documents-grid.component.html',
+	templateUrl: './documents-grid.component.html',
 	providers: [
 		{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DocumentsGridComponent), multi: true },
 	]

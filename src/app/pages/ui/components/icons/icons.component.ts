@@ -3,11 +3,10 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import {IconsService} from './icons.service';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'icons',
 	encapsulation: ViewEncapsulation.None,
-	styleUrls: ['icons.scss'],
-	templateUrl: 'icons.html',
+	styleUrls: ['./icons.scss'],
+	templateUrl: './icons.html',
 })
 export class Icons {
 

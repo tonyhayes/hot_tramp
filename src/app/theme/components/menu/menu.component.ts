@@ -7,11 +7,10 @@ import { MenuService } from './menu.service';
 import { GlobalState } from '../../../global.state';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-menu',
 	encapsulation: ViewEncapsulation.None,
-	styleUrls: ['menu.component.scss'],
-	templateUrl: 'menu.component.html',
+	styleUrls: ['./menu.component.scss'],
+	templateUrl: './menu.component.html',
 	providers: [MenuService]
 })
 export class Menu {

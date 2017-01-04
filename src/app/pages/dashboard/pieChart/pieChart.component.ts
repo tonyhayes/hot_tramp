@@ -5,11 +5,10 @@ import { PieChartService } from './pieChart.service';
 import './pieChart.loader.ts';
 
 @Component({
-	moduleId: module.id,
 	selector: 'pie-chart',
 	encapsulation: ViewEncapsulation.None,
-	styleUrls: ['pieChart.scss'],
-	templateUrl: 'pieChart.html'
+	styleUrls: ['./pieChart.scss'],
+	templateUrl: './pieChart.html'
 })
 // TODO: move easypiechart to component
 export class PieChart {

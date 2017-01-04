@@ -3,10 +3,9 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { GlobalState } from '../../../global.state';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-page-top',
-	styleUrls: [ 'page-top.component.scss' ],
-	templateUrl: 'page-top.component.html',
+	styleUrls: [ './page-top.component.scss' ],
+	templateUrl: './page-top.component.html',
 	encapsulation: ViewEncapsulation.None
 })
 export class PageTop {

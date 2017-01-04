@@ -1,0 +1,32 @@
+<h1>User Administration</h1>
+<div *ngIf="finished">
+	<div class="col-lg-12 col-md-12">
+		<dc-card title="User List" cardClass="with-scroll table-panel">				
+			<input class="form-control" placeholder="Search for..." [(ngModel)]="searchText" type="text" />
+			<div class="table-responsive">
+			  	<table class="table">
+					<tr>
+				  		<th>#</th>
+				  		<th>First Name</th>
+				  		<th>Last Name</th>
+				  		<th>Username</th>
+				  		<th>Email</th>
+				  		<th>Spectrum({{ getLicenseCount('spectrum') }})</th>
+				  		<th>PJ({{ getLicenseCount('pj') }})</th>
+				  		<th>Field({{ getLicenseCount('field') }})</th>
+					</tr>
+					<tr *ngFor="let user of filteredUserList">
+				  		<td>{{ user.id }}</td>
+				  		<td>{{ user.firstName }}</td>
+				  		<td>{{ user.lastName }}</td>
+				  		<td>{{ user.username }}</td>
+				  		<td>{{ user.email }}</td>
+				  		<td><input (change)="onCheck(user, 'spectrum')" type="checkbox"></td>
+				  		<td><input (change)="onCheck(user, 'pj')" type="checkbox"></td>
+				  		<td><input (change)="onCheck(user, 'field')" type="checkbox"></td>
+					</tr>
+			  	</table>
+			</div>
+		</dc-card>
+	</div>
+</div>

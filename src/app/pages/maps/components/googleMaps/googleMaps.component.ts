@@ -2,10 +2,9 @@ import { Component, ElementRef } from '@angular/core';
 import { GoogleMapsLoader } from './googleMaps.loader';
 
 @Component({
-	moduleId: module.id,
 	selector: 'google-maps',
-	styleUrls: ['googleMaps.scss'],
-	templateUrl: 'googleMaps.html',
+	styleUrls: ['./googleMaps.scss'],
+	templateUrl: './googleMaps.html',
 })
 export class GoogleMaps {
 

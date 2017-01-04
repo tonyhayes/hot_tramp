@@ -9,10 +9,9 @@ import { DragulaService } from 'ng2-dragula/ng2-dragula';
 
 
 @Component({
-	moduleId: module.id,
 	selector: 'dc-form-designer ',
-	styleUrls: ['form-designer.component.scss'],
-	templateUrl: 'form-designer.component.html',
+	styleUrls: ['./form-designer.component.scss'],
+	templateUrl: './form-designer.component.html',
 	providers: [ QuestionControlService ]
 })
 export class FormDesignerComponent implements OnInit {

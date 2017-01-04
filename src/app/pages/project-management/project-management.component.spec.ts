@@ -4,7 +4,7 @@ describe('ProjectManagement', () => {
 
   	const projectManagement = new ProjectManagement();
   	//specs
-  	it('should create userAdministration', () => {
+  	it('should create projectManagement', () => {
     	expect(projectManagement).toBeDefined();
   	});
 

@@ -40,4 +40,5 @@ export class GlobalState {
 			callback.call(null, data['data']);
 		});
 	}
+
 }

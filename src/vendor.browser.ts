@@ -25,8 +25,6 @@ import 'bootstrap-loader';
 import 'font-awesome-sass-loader';
 import 'lodash';
 import 'toastr';
-import 'localforage';
-import 'localforage-observable';
 
 if ('production' === ENV) {
   // Production

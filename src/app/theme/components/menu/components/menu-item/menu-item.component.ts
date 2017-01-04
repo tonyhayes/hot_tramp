@@ -3,11 +3,10 @@ import {
 } from '@angular/core';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-menu-item',
 	encapsulation: ViewEncapsulation.None,
-	styleUrls: ['menu-item.component.scss'],
-	templateUrl: 'menu-item.component.html'
+	styleUrls: ['./menu-item.component.scss'],
+	templateUrl: './menu-item.component.html'
 })
 export class MenuItem {
 

@@ -8,9 +8,9 @@ import './am-chart.component.loader';
 import { AmChartThemeService } from './am-chart-theme.service';
 
 @Component({
-  	moduleId: module.id,
+//  	moduleId: module.id,
 	selector: 'dc-am-chart',
-	templateUrl: 'am-chart.component.html',
+	templateUrl: './am-chart.component.html',
 	encapsulation: ViewEncapsulation.None,
 	providers: [ AmChartThemeService ],
 })

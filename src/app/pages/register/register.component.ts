@@ -3,11 +3,10 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators';
 
 @Component({
-  	moduleId: module.id,
   	selector: 'register',
   	encapsulation: ViewEncapsulation.None,
-  	styleUrls: ['register.scss'],
-  	templateUrl: 'register.html',
+  	styleUrls: ['./register.scss'],
+  	templateUrl: './register.html',
 })
 export class Register {
 

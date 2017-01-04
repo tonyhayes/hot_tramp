@@ -29,17 +29,17 @@ import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import reducer from './reducers';
-import { QuestionActions } from './actions';
-import { QuestionService } from './services';
-import { QuestionEffects } from './effects';
+import { QuestionActions, UserAdministrationActions } from './actions';
+import { QuestionService, UserAdministrationService } from './services';
+import { QuestionEffects, UserAdministrationEffects } from './effects';
 
 
 // Application wide providers
 const APP_PROVIDERS = [
 	AppState,
 	GlobalState,
-	QuestionService, 
-	QuestionActions, 
+	QuestionService, UserAdministrationService, 
+	QuestionActions, UserAdministrationActions,
 	Auth,
 	AuthGuard
 ];
@@ -67,6 +67,7 @@ type StoreType = {
 		routing,
     	StoreModule.provideStore(reducer),
     	EffectsModule.run(QuestionEffects),
+    	EffectsModule.run(UserAdministrationEffects),
 	 ],
 	providers: [ // expose our Services and Providers into Angular's dependency injection
 		ENV_PROVIDERS,

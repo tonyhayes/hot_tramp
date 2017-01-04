@@ -8,11 +8,10 @@ import { NavbarService } from './navbar.service';
 import { GlobalState } from '../../../global.state';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-navbar',
 	encapsulation: ViewEncapsulation.None,
-	styleUrls: ['navbar.component.scss'],
-	templateUrl: 'navbar.component.html',
+	styleUrls: ['./navbar.component.scss'],
+	templateUrl: './navbar.component.html',
   	providers: [NavbarService]
 })
 export class Navbar {

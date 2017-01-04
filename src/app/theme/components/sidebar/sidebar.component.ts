@@ -7,11 +7,10 @@ import { layoutSizes } from '../../../theme';
 import * as _ from 'lodash';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-sidebar',
 	encapsulation: ViewEncapsulation.None,
-	styleUrls: ['sidebar.component.scss'],
-	templateUrl: 'sidebar.component.html'
+	styleUrls: ['./sidebar.component.scss'],
+	templateUrl: './sidebar.component.html'
 })
 export class Sidebar {
 	@Input() menu: Array<any> = [];

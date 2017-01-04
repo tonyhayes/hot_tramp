@@ -3,11 +3,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { LineMapsService } from './lineMaps.service';
 
 @Component({
-  	moduleId: module.id,
   	selector: 'line-maps',
   	encapsulation: ViewEncapsulation.None,
-  	styleUrls: ['lineMaps.scss'],
-  	templateUrl: 'lineMaps.html'
+  	styleUrls: ['./lineMaps.scss'],
+  	templateUrl: './lineMaps.html'
 })
 export class LineMaps {
 

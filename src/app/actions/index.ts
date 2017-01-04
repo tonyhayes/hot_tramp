@@ -1,9 +1,11 @@
 import { QuestionActions } from './question.actions';
+import { UserAdministrationActions } from './user-administration.actions';
 
 export {
-    QuestionActions
+    QuestionActions,
+    UserAdministrationActions
 };
 
 export default [
-    QuestionActions
+    QuestionActions, UserAdministrationActions
 ];

@@ -14,12 +14,10 @@ import {
 import { Chartist } from './chartist-chart.component.loader.ts';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-chartist-chart',
 	encapsulation: ViewEncapsulation.None,
 	styles: [ require('chartist/dist/chartist.css'), require('./chartist-chart.component.scss') ],
-	templateUrl: 'chartist-chart.component.html',
-	providers: [],
+	templateUrl: './chartist-chart.component.html',
 })
 export class ChartistChart {
 

@@ -39,8 +39,6 @@ declare var AmCharts:any;
 declare var Chart:any;
 declare var Chartist:any;
 declare var toastr:any;
-declare var localforage:any;
-declare var localforageObservable:any;
 
 // support NodeJS modules without type definitions
 declare module '*';

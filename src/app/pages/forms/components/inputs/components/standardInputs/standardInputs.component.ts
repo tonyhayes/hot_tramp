@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  	moduleId: module.id,
   	selector: 'standard-inputs',
-  	templateUrl: 'standardInputs.html',
+  	templateUrl: './standardInputs.html',
 })
 export class StandardInputs {
 

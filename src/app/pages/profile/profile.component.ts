@@ -14,11 +14,10 @@ import { SpeechRecognitionService } from '../../theme/services/speech-recognitio
 
 
 @Component({
-	moduleId: module.id,
 	selector: 'profile',
 	encapsulation: ViewEncapsulation.None,
-	styleUrls: [ 'profile.component.scss' ],
-	templateUrl: 'profile.component.html',
+	styleUrls: [ './profile.component.scss' ],
+	templateUrl: './profile.component.html',
 //  	changeDetection: ChangeDetectionStrategy.OnPush,
 
 })

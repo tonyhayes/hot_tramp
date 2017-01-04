@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
 @Injectable()
 export class Auth {
   	// Configure Auth0
-	cid = "ti";
-	domain = "iu";
+	cid = "cJFdv8DnIcpezEpKqYWmLNMPm7hTEwaR";
+	domain = "dexchadev.auth0.com";
   	lock = new Auth0Lock(this.cid, this.domain, {
 			auth: {
 				params: {

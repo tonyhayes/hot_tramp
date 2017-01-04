@@ -3,9 +3,8 @@ import {
 } from '@angular/core';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-back-top',
-	styleUrls: [ 'back-top.component.scss' ],
+	styleUrls: [ './back-top.component.scss' ],
 	template: `
 		<i #backTop class="fa fa-angle-up back-top dc-back-top" title="Back to Top"></i>
 	`

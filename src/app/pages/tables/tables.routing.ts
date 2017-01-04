@@ -12,7 +12,6 @@ const routes: Routes = [
     component: Tables,
     children: [
       { path: 'basictables', component: BasicTables },
-      { path: 'smarttables', component: SmartTables },
       { path: 'richgrid', component: AgGrid2 }
     ]
   }

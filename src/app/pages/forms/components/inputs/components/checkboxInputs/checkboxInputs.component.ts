@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-	moduleId: module.id,
-  	selector: 'checkbox-inputs',
-  	templateUrl: 'checkboxInputs.html',
+  	selector: './checkbox-inputs',
+  	templateUrl: './checkboxInputs.html',
 })
 export class CheckboxInputs {
   	public checkboxModel = [{

@@ -3,10 +3,9 @@ import { Component, Input } from '@angular/core';
 import { GlobalState } from '../../../global.state';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-content-top',
-	styleUrls: ['content-top.component.scss'],
-	templateUrl: 'content-top.component.html',
+	styleUrls: ['./content-top.component.scss'],
+	templateUrl: './content-top.component.html',
 })
 export class ContentTop {
 

@@ -3,11 +3,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import './ckeditor.loader.ts';
 
 @Component({
-	moduleId: module.id,
 	selector: 'ckeditor-component',
 	encapsulation: ViewEncapsulation.None,
-	templateUrl: 'ckeditor.html',
-	styleUrls: ['ckeditor.scss']
+	templateUrl: './ckeditor.html',
+	styleUrls: ['./ckeditor.scss']
 })
 
 export class Ckeditor {

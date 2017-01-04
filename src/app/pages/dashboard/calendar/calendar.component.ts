@@ -3,11 +3,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { CalendarService } from './calendar.service';
 
 @Component({
-  	moduleId: module.id,
   	selector: 'calendar',
   	encapsulation: ViewEncapsulation.None,
-  	styleUrls: ['calendar.scss'],
-  	templateUrl: 'calendar.html'
+  	styleUrls: ['./calendar.scss'],
+  	templateUrl: './calendar.html'
 })
 export class Calendar {
 

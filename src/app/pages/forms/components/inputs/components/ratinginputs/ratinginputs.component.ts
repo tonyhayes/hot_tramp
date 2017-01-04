@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  	moduleId: module.id,
-  	selector: 'rating-inputs',
-  	templateUrl: 'ratinginputs.html'
+  	selector: './rating-inputs',
+  	templateUrl: './ratinginputs.html'
 })
 
 export class Rating {

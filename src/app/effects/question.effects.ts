@@ -15,19 +15,19 @@ export class QuestionEffects {
 
     @Effect() loadFormQuestions$ = this.update$
         .ofType(QuestionActions.LOAD_FORM_QUESTIONS)
-        .switchMap(() => this.svc.getFormQuestions())
+        .switchMap(endPoint => this.svc.getFormQuestions(endPoint))
         .map(questionComponents => this.actions.loadFormQuestionsSuccess(questionComponents));
 
     @Effect() loadQuestions$ = this.update$
         .ofType(QuestionActions.LOAD_QUESTIONS)
-        .switchMap(() => this.svc.getQuestions())
+        .switchMap(endPoint => this.svc.getQuestions(endPoint))
         .map(questions => this.actions.loadQuestionsSuccess(questions));
 
 
     @Effect() saveQuestions$ = this.update$
         .ofType(QuestionActions.SAVE_QUESTIONS)
         .map(action => action.payload)
-        .switchMap(questions => this.svc.saveQuestions(questions))
+        .switchMap((endPoint, questions) => this.svc.saveQuestions(endPoint, questions))
         .map(questions => this.actions.saveQuestionsSuccess(questions));
 
 

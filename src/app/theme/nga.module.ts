@@ -7,7 +7,6 @@ import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import { HttpModule }  from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SelectModule } from 'ng2-select/ng2-select';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { AgGridModule } from 'ag-grid-ng2/main';
 import { DragulaModule } from 'ng2-dragula';
 
@@ -32,7 +31,6 @@ import {
 	CounterInputComponent,
 	DropdownSelectComponent,
 	DatalistSelectComponent,
-	GridSmartComponent,
 	TagSelectComponent,
 	DocumentsGridComponent,
 	FormDesignerComponent,
@@ -61,7 +59,8 @@ import {
 	AppLogoPipe,
 	AppPicturePipe,
 	KameleonPicturePipe,
-	ProfilePicturePipe
+	ProfilePicturePipe,
+	NameSearchFilterPipe
 } from './pipes';
 
 import {
@@ -90,7 +89,6 @@ const NGA_COMPONENTS = [
 	DynamicFormQuestionComponent,
 	CounterInputComponent,
 	DropdownSelectComponent,
-	GridSmartComponent,
 	DocumentsGridComponent,
 	DatalistSelectComponent,
 	TagSelectComponent,
@@ -119,7 +117,8 @@ const NGA_PIPES = [
 	AppLogoPipe,
 	AppPicturePipe,
 	KameleonPicturePipe,
-	ProfilePicturePipe
+	ProfilePicturePipe,
+	NameSearchFilterPipe
 ];
 
 const NGA_SERVICES = [
@@ -151,8 +150,7 @@ const NGA_VALIDATORS = [
 		HttpModule,
 		NgbModule,
 		SelectModule,
-		Ng2SmartTableModule,
-		AgGridModule.withComponents(),
+		AgGridModule.withComponents([]),
 		DragulaModule
 
 	],

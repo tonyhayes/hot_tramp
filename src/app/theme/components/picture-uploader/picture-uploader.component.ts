@@ -5,10 +5,9 @@ import {
 import { Ng2Uploader } from 'ng2-uploader/ng2-uploader';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-picture-uploader',
-	styleUrls: [ 'picture-uploader.component.scss' ],
-	templateUrl: 'picture-uploader.component.html',
+	styleUrls: [ './picture-uploader.component.scss' ],
+	templateUrl: './picture-uploader.component.html',
 	providers: [ Ng2Uploader ]
 })
 export class PictureUploader {

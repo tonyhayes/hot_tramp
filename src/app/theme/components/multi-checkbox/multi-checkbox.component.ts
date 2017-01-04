@@ -2,9 +2,8 @@ import { Component, Input, Self } from '@angular/core';
 import { ControlValueAccessor, NgModel } from '@angular/forms';
 
 @Component({
-  	moduleId: module.id,
-	selector: 'dc-multi-checkbox[ngModel]',
-	templateUrl: 'multi-checkbox.component.html',
+ 	selector: 'dc-multi-checkbox[ngModel]',
+	templateUrl: './multi-checkbox.component.html',
 })
 export class MultiCheckbox implements ControlValueAccessor {
 	@Input() multiCheckboxClass:string;

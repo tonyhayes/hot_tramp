@@ -9,26 +9,26 @@ describe('QuestionActions', () => {
 	});
 
 	it('returns LOAD_QUESTIONS', () => {
-		expect(actions.loadQuestions().type).toEqual('[QuestionBase] Load questions');
+		expect(actions.loadQuestions(null).type).toEqual('[QuestionBase] Load questions');
 	});
 	it('returns LOAD_QUESTIONS_SUCCESS', () => {
 		expect(actions.loadQuestionsSuccess(questions).type).toEqual('[QuestionBase] Load questions Success');
 	});
 	it('returns LOAD_SAVED_QUESTIONS', () => {
-		expect(actions.loadSavedQuestions().type).toEqual('[QuestionBase] Load saved questions');
+		expect(actions.loadSavedQuestions(null).type).toEqual('[QuestionBase] Load saved questions');
 	});
 	it('returns LOAD_SAVED_QUESTIONS_SUCCESS', () => {
 		expect(actions.loadSavedQuestionsSuccess(questions).type).toEqual('[QuestionBase] Load saved questions Success');
 	});
 	it('returns LOAD_FORM_QUESTIONS', () => {
-		expect(actions.loadFormQuestions().type).toEqual('[QuestionBase] Load form questions');
+		expect(actions.loadFormQuestions(null).type).toEqual('[QuestionBase] Load form questions');
 	});
 	it('returns LOAD_FORM_QUESTIONS_SUCCESS', () => {
 		expect(actions.loadFormQuestionsSuccess(questions).type).toEqual('[QuestionBase] Load form questions Success');
 	});
 	it('returns SAVE_QUESTIONS', () => {
-		expect(actions.saveQuestions('tony').type).toEqual('[QuestionBase] Save questions');
-		expect(actions.saveQuestions('tony').payload).toEqual('tony');
+		expect(actions.saveQuestions(null, 'tony').type).toEqual('[QuestionBase] Save questions');
+		expect(actions.saveQuestions(null, 'tony').payload).toEqual('tony');
 	});
 	it('returns SAVE_QUESTIONS_SUCCESS', () => {
 		expect(actions.saveQuestionsSuccess('tony').type).toEqual('[QuestionBase] Save questions Success');

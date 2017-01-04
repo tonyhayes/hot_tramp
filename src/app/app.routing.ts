@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
   	{ path: '', redirectTo: 'pages', pathMatch: 'full' },
+  	{ path: 'user-administration', redirectTo: 'user-administration', pathMatch: 'full' },
   	{ path: '**', redirectTo: 'pages/dashboard' }
 ];
 

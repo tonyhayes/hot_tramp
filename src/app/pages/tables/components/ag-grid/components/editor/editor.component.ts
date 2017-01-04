@@ -170,9 +170,8 @@ export class NumericEditorComponent implements AgEditorComponent, AfterViewInit 
 }
 
 @Component({
-	moduleId: module.id,
 	selector: 'ag-editor-component',
-	templateUrl: 'editor.component.html'
+	templateUrl: './editor.component.html'
 })
 export class EditorComponent {
 	private gridOptions:GridOptions;

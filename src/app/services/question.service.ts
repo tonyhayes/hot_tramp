@@ -13,7 +13,6 @@ import {
     RadioQuestion,
     CheckboxQuestion,
     DateQuestion,
-    GridSmartQuestion,
     DocumentsGridQuestion,
     DatalistQuestion,
     TagSelectQuestion,
@@ -25,8 +24,8 @@ export class QuestionService {
 
     constructor (private http: Http) {}
 
-    getFormQuestions(): Observable<QuestionBase<any>[]> {
-        return this.http.get('/api/projectmanagement/1')
+    getFormQuestions(endPoint): Observable<QuestionBase<any>[]> {
+        return this.http.get(endPoint.payload)
         .map(res => res.json())
         .map((questions:  QuestionBase<any>[]) => {
             return this.createDynamicFormComponent(questions);
@@ -40,8 +39,8 @@ export class QuestionService {
         })
     }
 
-    getQuestions(): Observable<QuestionBase<any>[]> {
-        return this.http.get('/api/projectmanagement/1')
+    getQuestions(endPoint): Observable<QuestionBase<any>[]> {
+        return this.http.get(endPoint.payload)
         .map(res => res.json())
         .map((questions:  QuestionBase<any>[]) => {
             return this.createDynamicFormComponent(questions);
@@ -51,9 +50,9 @@ export class QuestionService {
         })
     }
 
-    saveQuestions(questions) {
+    saveQuestions(endPoint, questions) {
         questions.sort((a, b) => a.order - b.order);
-        return this.http.put('/api/projectmanagement/1', questions)
+        return this.http.put(endPoint.payload, questions)
             .map(res => res.json())
             .map((questions:  QuestionBase<any>[]) => {
                 return this.createDynamicFormComponent(questions);
@@ -94,7 +93,8 @@ export class QuestionService {
                     result.push(datalistQuestion);
                     break;
                 case 'smart-grid':
-                    const gridSmartQuestion = new GridSmartQuestion(question);
+                    const gridSmartQuestion = new DocumentsGridQuestion(question);
+//                    const gridSmartQuestion = new DocumentsGridQuestion(question);
                     result.push(gridSmartQuestion);
                     break;
                 case 'documents-grid':

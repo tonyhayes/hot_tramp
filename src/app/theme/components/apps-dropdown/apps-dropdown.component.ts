@@ -10,11 +10,10 @@ import { AppsDropdownService } from './apps-dropdown.service';
 import { GlobalState } from '../../../global.state';
 
 @Component({
-	moduleId: module.id,
 	selector: 'dc-apps-dropdown',
 	encapsulation: ViewEncapsulation.None,
-	styleUrls: [ 'apps-dropdown.component.scss' ],
-	templateUrl: 'apps-dropdown.component.html',
+	styleUrls: [ './apps-dropdown.component.scss' ],
+	templateUrl: './apps-dropdown.component.html',
 	providers: [ AppsDropdownService ],
 })
 export class AppsDropdown {

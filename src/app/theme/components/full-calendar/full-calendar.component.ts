@@ -5,9 +5,8 @@ import {
 import './full-calendar.component.loader.ts';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-full-calendar',
-	templateUrl: 'full-calendar.component.html',
+	templateUrl: './full-calendar.component.html',
 	encapsulation: ViewEncapsulation.None,
 })
 export class FullCalendar {

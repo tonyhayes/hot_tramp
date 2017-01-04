@@ -10,11 +10,10 @@ import { QuestionActions } from '../../actions';
 import { AppState } from '../../reducers';
 
 @Component({
-	moduleId: module.id,
 	selector: 'project-management',
 	encapsulation: ViewEncapsulation.None,
-	styleUrls: [ 'project-management.component.scss' ],
-	templateUrl: 'project-management.component.html',
+	styleUrls: [ './project-management.component.scss' ],
+	templateUrl: './project-management.component.html',
 //  	changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
@@ -35,12 +34,12 @@ export class ProjectManagement implements OnInit {
 
 	public getForm():void {
 
-		this.questionStore.dispatch(this.questionActions.loadQuestions());
+		this.questionStore.dispatch(this.questionActions.loadQuestions('/api/projectmanagement/1'));
 		this.componentQuestions = this.questionStore.select('questions');
 	    this.componentQuestions.subscribe(
 	        value => {
 	        	if(value.length){
-					this.questionStore.dispatch(this.questionActions.loadFormQuestions());
+					this.questionStore.dispatch(this.questionActions.loadFormQuestions('/api/projectmanagement/1'));
 					this.questionList = this.questionStore.select('formQuestions');
 					this.questionList.subscribe(v => console.log(v));
 	        		this.finished = true
@@ -55,7 +54,7 @@ export class ProjectManagement implements OnInit {
 		console.log(JSON.stringify(values));
 	}
 	public questionsChanged(questions):void {
-		this.questionStore.dispatch(this.questionActions.saveQuestions(questions));
+		this.questionStore.dispatch(this.questionActions.saveQuestions('/api/projectmanagement/1', questions));
 	}
 
 

@@ -3,9 +3,8 @@ import { Component } from '@angular/core';
 import { BasicTablesService } from '../../basicTables.service';
 
 @Component({
-  	moduleId: module.id,
   	selector: 'condensed-table',
-  	templateUrl: 'condensedTable.html'
+  	templateUrl: './condensedTable.html'
 })
 export class CondensedTable {
 

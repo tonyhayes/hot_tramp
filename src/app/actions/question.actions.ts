@@ -4,9 +4,10 @@ import { Action } from '@ngrx/store';
 @Injectable()
 export class QuestionActions {
     static LOAD_QUESTIONS = '[QuestionBase] Load questions';
-    loadQuestions(): Action {
+    loadQuestions(endPoint): Action {
         return {
-            type: QuestionActions.LOAD_QUESTIONS
+            type: QuestionActions.LOAD_QUESTIONS,
+            payload: endPoint
         };
     }
 
@@ -18,9 +19,10 @@ export class QuestionActions {
         };
     }
     static LOAD_SAVED_QUESTIONS = '[QuestionBase] Load saved questions';
-    loadSavedQuestions(): Action {
+    loadSavedQuestions(endPoint): Action {
         return {
-            type: QuestionActions.LOAD_SAVED_QUESTIONS
+            type: QuestionActions.LOAD_SAVED_QUESTIONS,
+            payload: endPoint
         };
     }
 
@@ -32,9 +34,10 @@ export class QuestionActions {
         };
     }
     static LOAD_FORM_QUESTIONS = '[QuestionBase] Load form questions';
-    loadFormQuestions(): Action {
+    loadFormQuestions(endPoint): Action {
         return {
-            type: QuestionActions.LOAD_FORM_QUESTIONS
+            type: QuestionActions.LOAD_FORM_QUESTIONS,
+            payload: endPoint
         };
     }
 
@@ -48,10 +51,10 @@ export class QuestionActions {
 
 
     static SAVE_QUESTIONS = '[QuestionBase] Save questions';
-    saveQuestions(questions): Action {
+    saveQuestions(endPoint, questions): Action {
         return {
             type: QuestionActions.SAVE_QUESTIONS,
-            payload: questions
+            payload: (endPoint, questions)
         };
     }
 

@@ -78,7 +78,7 @@ describe('question service', () => {
   		QuestionState[0].controlType = 'smart-grid'
 		const result = service.createDynamicFormComponent(QuestionState);
 		expect(result.length).toBe(1);
-		expect(result[0].controlType).toBe('smart-grid');
+		expect(result[0].controlType).toBe('documents-grid');
   	});
   	it('createDynamicFormComponent of type DocumentsGridQuestion', () => {
   		QuestionState[0].controlType = 'documents-grid'

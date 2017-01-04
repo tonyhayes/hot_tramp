@@ -3,11 +3,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FeedService } from './feed.service';
 
 @Component({
-	moduleId: module.id,
 	selector: 'feed',
 	encapsulation: ViewEncapsulation.None,
-	styleUrls: ['feed.scss'],
-	templateUrl: 'feed.html'
+	styleUrls: ['./feed.scss'],
+	templateUrl: './feed.html'
 })
 export class Feed {
 

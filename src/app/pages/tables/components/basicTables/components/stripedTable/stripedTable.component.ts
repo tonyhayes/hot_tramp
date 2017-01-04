@@ -3,9 +3,8 @@ import { Component } from '@angular/core';
 import { BasicTablesService } from '../../basicTables.service';
 
 @Component({
-  	moduleId: module.id,
   	selector: 'striped-table',
-  	templateUrl: 'stripedTable.html'
+  	templateUrl: './stripedTable.html'
 })
 export class StripedTable {
 

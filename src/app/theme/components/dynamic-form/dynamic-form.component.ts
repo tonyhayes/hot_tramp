@@ -3,10 +3,9 @@ import { FormGroup }                 from '@angular/forms';
 import { QuestionBase }              from './model/question-base';
 import { QuestionControlService }    from './question-control.service';
 @Component({
-	moduleId: module.id,
 	selector: 'dynamic-form',
-	styleUrls: ['dynamic-form.component.scss'],
-	templateUrl: 'dynamic-form.component.html',
+	styleUrls: ['./dynamic-form.component.scss'],
+	templateUrl: './dynamic-form.component.html',
 	providers: [ QuestionControlService ]
 })
 export class DynamicFormComponent implements OnInit {

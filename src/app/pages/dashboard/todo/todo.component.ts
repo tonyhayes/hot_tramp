@@ -4,11 +4,10 @@ import { ThemeConfigService } from '../../../theme';
 import { TodoService } from './todo.service';
 
 @Component({
-  	moduleId: module.id,
   	selector: 'todo',
   	encapsulation: ViewEncapsulation.None,
-  	styleUrls: ['todo.scss'],
-  	templateUrl: 'todo.html'
+  	styleUrls: ['./todo.scss'],
+  	templateUrl: './todo.html'
 })
 export class Todo {
   

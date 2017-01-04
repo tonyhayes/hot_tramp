@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title><%= webpackConfig.metadata.title %></title>
+  <title><%= htmlWebpackPlugin.options.title %></title>
 
-	<meta name="description" content="<%= webpackConfig.metadata.description %>">
+  <meta name="description" content="<%= htmlWebpackPlugin.options.metadata.description %>">
 
-	<% if (webpackConfig.htmlElements.headTags) { %>
-	<!-- Configured Head Tags  -->
-	<%= webpackConfig.htmlElements.headTags %>
-	<% } %>
+  <% if (webpackConfig.htmlElements.headTags) { %>
+  <!-- Configured Head Tags  -->
+  <%= webpackConfig.htmlElements.headTags %>
+  <% } %>
 
-	<!-- base url -->
-	<base href="<%= webpackConfig.metadata.baseUrl %>">
+  <!-- base url -->
+  <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
+
 
 </head>
 
 <body>
-	<app>
-	</app>
+<app>
+</app>
 
-	<div id="preloader">
-		<div></div>
-	</div>
+<div id="preloader">
+  <div></div>
+</div>
 
-	<% if (webpackConfig.metadata.isDevServer && webpackConfig.metadata.HMR !== true) { %>
-	<!-- Webpack Dev Server reload -->
-	<script src="/webpack-dev-server.js"></script>
-	<% } %>
+<% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
+<!-- Webpack Dev Server reload -->
+<script src="/webpack-dev-server.js"></script>
+<% } %>
+
 <!-- 	<script>
 		if ('serviceWorker' in navigator) {
 		  	navigator.serviceWorker.register('/sw.js').then(function(registration) {

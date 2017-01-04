@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { TreeModel } from 'ng2-tree';
 
 @Component({
-  	moduleId: module.id,
   	selector: 'tree-view',
-  	templateUrl: 'treeView.html',
+  	templateUrl: './treeView.html',
 })
 
 export class TreeView {

@@ -2,10 +2,9 @@ import { Component, ViewEncapsulation, Input } from '@angular/core';
 
 
 @Component({
-	moduleId: module.id,
 	selector: 'dc-navbar-top',
-	styleUrls: ['navbar-top.component.scss'],
-	templateUrl: 'navbar-top.component.html',
+	styleUrls: ['./navbar-top.component.scss'],
+	templateUrl: './navbar-top.component.html',
 	encapsulation: ViewEncapsulation.None
 })
 export class NavbarTop {

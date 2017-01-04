@@ -16,6 +16,7 @@ Admin template - taken from angularClass and ng2-Admin.
 5. From the browser - http://localhost:8080/
 
 
+# Prerequisites #
 Note the following is expected to be installed globally
 
 
@@ -25,9 +26,9 @@ Make sure you have Node version >= 5.0 and NPM >= 3
 
 Once you have those, you should install these globals with npm install --global:
 
-* webpack (npm install --global webpack)
+* webpack (npm install --global webpack)  -> Note for Windows: had to install local to project
 
-* webpack-dev-server (npm install --global webpack-dev-server)
+* webpack-dev-server (npm install --global webpack-dev-server)  -> Note for Windows: had to install local to project
 
 * karma (npm install --global karma-cli)
 

@@ -10,9 +10,8 @@ import RefData from '../refData';
 //import 'ag-grid-enterprise/main';
 
 @Component({
-	moduleId: module.id,
 	selector: 'rich-grid2',
-	templateUrl: 'rich-grid.component.html'
+	templateUrl: './rich-grid.component.html'
 })
 export class RichGridComponent2 {
 

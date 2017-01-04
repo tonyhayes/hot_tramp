@@ -2,10 +2,9 @@ import { Component, Input, Self } from '@angular/core';
 import { ControlValueAccessor, NgModel } from '@angular/forms';
 
 @Component({
-  	moduleId: module.id,
 	selector: 'dc-checkbox[ngModel]',
-	styleUrls: ['checkbox.component.scss'],
-	templateUrl: 'checkbox.component.html'
+	styleUrls: ['./checkbox.component.scss'],
+	templateUrl: './checkbox.component.html'
 })
 export class Checkbox implements ControlValueAccessor {
 	@Input() disabled:boolean;

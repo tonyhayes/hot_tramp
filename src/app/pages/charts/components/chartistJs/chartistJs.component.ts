@@ -3,11 +3,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { ChartistJsService } from './chartistJs.service';
 
 @Component({
-	moduleId: module.id,
 	selector: 'chartist-js',
 	encapsulation: ViewEncapsulation.None,
 	styles: [require('chartist/dist/chartist.css'), require('./chartistJs.scss')],
-	templateUrl: 'chartistJs.html',
+	templateUrl: './chartistJs.html',
 })
 
 export class ChartistJs {
