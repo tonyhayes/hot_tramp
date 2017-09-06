@@ -1,0 +1,54 @@
+@import '../../sass/conf/conf';
+.top-dropdown-menu.profile-dropdown {
+    width: 300px;
+	top: 54px;
+	right: -34px;
+}
+.user-profile {
+	float: right;
+//	min-width: 110px;
+	margin-top: 10px;
+}
+
+.al-user-profile {
+	float: right;
+	margin-right: 10px;
+	transition: all .15s ease-in-out;
+	padding: 0;
+	width: 24px;
+	height: 24px;
+	border: 0;
+	opacity: 1;
+	position: relative;
+ 	ul.profile-dropdown:after {
+    	bottom: 100%;
+    	right: 0;
+    	border: solid transparent;
+    	content: " ";
+    	height: 0;
+    	width: 0;
+    	position: absolute;
+    	pointer-events: none;
+    	border-color: rgba(255, 255, 255, 0);
+    	border-bottom-color: #fff;
+    	border-width: 10px;
+    	margin-right: 28px;
+  	}	
+  	a {
+		display: block;
+	}
+	img {
+		width: 45px;
+		height: 45px;
+		border-radius: 50%;
+	}
+}
+// @media (max-width: $resXXS) {
+// 	.user-profile{
+// 		min-width: 136px;
+// 	}
+
+// }
+.profile-toggle-link{
+	cursor: pointer;
+}

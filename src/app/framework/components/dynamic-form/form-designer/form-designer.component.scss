@@ -1,0 +1,68 @@
+@import '../../../sass/form';
+.btn-dynamic-form-designer {
+	position: relative;
+    top: 11px;
+    right: 160px;
+    z-index: 900;
+    color: $dc-button-text;
+    background-color: $dc-primary;
+    float: right;
+    text-transform: uppercase;
+}
+
+.container {
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+	margin-top: 15px;
+	margin-bottom: 15px;
+	min-height: 26px;
+	padding:	10px;
+}
+.modal-header {
+	color: $dc-button-text;
+	background-color: $dc-medium-grey;
+}
+.table-header {
+	background-color:$dc-light-medium-grey;
+	text-transform: uppercase;
+}
+
+.wrapper .row {
+	margin-top: 15px;
+}
+.question-compoment {
+	margin-top: 15px;
+}
+.group-container-drag{
+	min-height: 25px;
+}
+.dnd-drag-start {
+    -moz-transform:scale(0.8);
+    -webkit-transform:scale(0.8);
+    transform:scale(0.8);
+    opacity:0.7;
+    border: 2px dashed #000;
+}
+
+.dnd-drag-enter {
+    opacity:0.7;
+    border: 2px dashed #000;
+}
+
+.dnd-drag-over {
+    border: 2px dashed #000;
+}
+
+.dnd-sortable-drag {
+  	-moz-transform:scale(0.9);
+  	-webkit-transform:scale(0.9);
+  	transform:scale(0.9);
+  	opacity:0.7;
+  	border: 1px dashed #000;
+}
+
+.btn-new-report {
+    z-index: 900;
+    color: $dc-button-text;
+    background-color: $dc-primary;
+    text-transform: uppercase;
+}

@@ -1,0 +1,227 @@
+<button (click)="openformDesigner(content)"
+	type="button" 
+	class="btn btn-primary btn-dynamic-form-designer">
+	<i class="ion-wrench"></i>
+		{{ 'HEADING_DESIGNER' | dcTranslate }}
+</button>
+
+<ng-template #content let-c="close" let-d="dismiss">
+
+<div *ngIf="page == 1">
+	<div class="modal-header" data-backdrop="static">
+	   	<span class="card-title">{{ 'HEADING_FORM_DESIGNER' | dcTranslate }}</span>
+	</div>
+	<div class="modal-body" >
+		<h4>
+	        {{ 'MOVE_ITEMS_BETWEEN_LISTS_AND_CONTAINERS' | dcTranslate }} 
+		</h4>
+		<div class="wrapper">
+		    <div>
+		    	<div *ngIf="getFormData().length >1">
+			        {{ 'DRAG_CONTAINERS' | dcTranslate }} 
+			        <input type="checkbox" [(ngModel)]="dragOperation"/>		    		
+		    	</div>
+		        <div dnd-sortable-container 
+		        	[sortableData]="getFormData()" 
+		        	[dropZones]="['container-dropZone']"
+		        >
+		            <div class="container" 
+		                *ngFor="let formSection of getFormData(); let i = index"
+		                dnd-sortable 
+		                [sortableIndex]="i" 
+		                [dragEnabled]="dragOperation"
+		                [id]="formSection.group"
+		            >
+						<div>
+							{{ 'CARD_STYLE' | dcTranslate }}
+							<div class="row">
+								<div class="col-md-4" *ngFor="let item of groupColumnItems">
+									<label class="custom-radio nowrap">
+										<input type="checkbox" 
+											name="inlineRadioOptions" 
+											value="col-md-12" 
+											[checked]="formSection.groupColumns === item" 
+											(click)="formSection.groupColumns = item"
+										>
+										<span>
+											{{ item }}
+										</span>
+									</label>
+								</div>
+							</div>
+		    	<label class="custom-radio nowrap">
+			        <input type="checkbox" 											
+						[(ngModel)]="formSection.groupListStyle"
+					/>		    		
+					<span>
+			        	{{ 'GROUP_LIST_STYLE' | dcTranslate }} 
+					</span>
+		    	</label>
+
+
+							<div class="form-horizontal">
+								<div class="row">
+									<label  class="col-sm-2 form-control-label">
+										{{ 'CARD_TITLE' | dcTranslate }}
+									</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" [(ngModel)]="formSection.groupTitle">
+									</div>
+								</div>
+							</div>                
+						</div>                
+					   <div class="row">
+							<i class="ion-wrench" 
+								(click)="openFormSettings(formSection.group, content2)"
+							>                            
+							</i>                
+						</div>
+		                <div class="container"
+		                    dnd-sortable-container 
+		                    [sortableData]="formSection.fields" 
+		                    [dropZones]="['widget-dropZone']"
+	                    >
+		                    <div class="row">
+								<div *ngFor="let question of formSection.fields; let x = index"  
+									[id]="question.key" 
+									[className]="getQuestionClass(formSection.groupColumns, question.className)"
+	                                dnd-sortable [sortableIndex]="x" 
+	                                [dragEnabled]="!dragOperation && !formSection.groupListStyle"
+	                                [dragData]="question"
+								>
+									<df-question *ngIf="!question.hidden"
+									   	[question]="question" 
+										[form]="formGroup"								
+									>               
+									</df-question>
+								</div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary btn-dynamic-form" (click)="addGroup()">
+						{{ 'BUTTON_ADD_NEW_CARD' | dcTranslate }}
+				</button>
+				<button type="button" class="btn btn-default btn-dynamic-form" (click)="c('Close click')">
+					{{ 'BUTTON_CANCEL' | dcTranslate }}
+				</button>
+				<button type="button" class="btn btn-primary btn-dynamic-form" (click)="saveForm(); c('Save click')">
+					{{ 'BUTTON_OK' | dcTranslate }}
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div *ngIf="page == 2">
+	<div class="modal-header" data-backdrop="static">
+		<span class="card-title">{{ 'HEADING_FORM_DESIGNER' | dcTranslate }}</span>
+		<button type="button" 
+			class="btn btn-new-report" 
+			(click)="onAdd(formSection);"
+			>
+			<span>
+				<i class="ion-plus-round"></i>
+				{{ 'BUTTON_NEW_FIELD_REPORT' | dcTranslate }}
+			</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr class="table-header no-border">
+						<th class="col-md-3">{{ 'LABEL' | dcTranslate }}</th>
+						<th class="col-md-1">{{ 'HIDE' | dcTranslate }}</th>
+						<th class="col-md-2">{{ 'CLASS' | dcTranslate }}</th>
+						<th class="col-md-3">{{ 'PLACEHOLDER' | dcTranslate }}</th>
+						<th class="col-md-1">{{ 'REQ' | dcTranslate }}</th>
+						<th class="col-md-1">{{ 'READ' | dcTranslate }}</th>
+						<th class="col-md-1">{{ 'ACTION' | dcTranslate }}</th>
+					</tr>
+				</thead>
+				<tbody *ngFor="let formSection of getFormData()">
+						<tr *ngFor="let item of formSection.fields">
+							<td class="col-md-4" *ngIf="formSection.group == group">
+								<input [(ngModel)]="item.label" type="text" maxlength="20">
+							</td>             
+							<td class="col-md-1 dc-checkbox" *ngIf="formSection.group == group">
+								<input [(ngModel)]="item.hidden" type="checkbox" [disabled]="item.required">
+								<label><span><span></span></span></label>
+							</td>
+							 <td class="col-md-2" *ngIf="formSection.group == group">
+								<select [(ngModel)]="item.className">
+									<option value="1-Column">{{ '1_COLUMN' | dcTranslate }}</option>
+									<option value="2-Column">{{ '2_COLUMN' | dcTranslate }}</option>
+									<option value="3-Column">{{ '3_COLUMN' | dcTranslate }}</option>
+									<option value=""></option>
+								</select>                                                            
+							</td>
+							<td class="col-md-3" *ngIf="formSection.group == group">
+								<input [(ngModel)]="item.placeholder" type="text" maxlength="15">
+								
+							</td>             
+							<td class="col-md-1 dc-checkbox" *ngIf="formSection.group == group">
+								<input [ngModel]="item.required" type="checkbox" disabled=true>
+								<label><span><span></span></span></label>
+							</td>
+							<td class="col-md-1 dc-checkbox" *ngIf="formSection.group == group">
+								<input [ngModel]="item.readonly" type="checkbox" disabled=true>
+								<label><span><span></span></span></label>
+							</td>                
+							<td class="col-md-1" *ngIf="formSection.group == group">
+					  			<i class="ion-ios-trash pointer" 
+					  				(click)="onDelete(formSection, item)"
+					  				>
+							  	</i>
+							</td>             
+						</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default btn-dynamic-form float-right" (click)="closeFormAttributesForGroup()">
+			{{ 'BUTTON_CANCEL' | dcTranslate }}
+		</button>
+		<button type="button" class="btn btn-primary btn-dynamic-form float-right" (click)="saveFormAttributesForGroup()">
+			{{ 'BUTTON_OK' | dcTranslate }}
+		</button>
+	</div>
+</div>
+<div *ngIf="page == 3">
+	<div class="modal-header" data-backdrop="static">
+		<span class="card-title">{{ 'HEADING_FORM_DESIGNER' | dcTranslate }}</span>
+	</div>
+	<div class="modal-body">
+
+	<div>
+		<div class="dropdown">
+			<a class="dropdown-toggle" id="field-profile-dd" data-toggle="dropdown" aria-expanded="false">
+				{{ 'SELECT_FIELD_COMPONENT' | dcTranslate }}						
+			</a>
+			<ul class="dropdown-menu" aria-labelledby="field-profile-dd">
+				<li class="dropdown-item" *ngFor="let item of formComponents">
+						<span (click)="onSelect(formSection, item)">
+							{{ item.value }}						
+						</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default btn-dynamic-form float-right" (click)="closeAddFormAttributesForGroup()">
+			{{ 'BUTTON_CANCEL' | dcTranslate }}
+		</button>
+		<button type="button" class="btn btn-primary btn-dynamic-form float-right" (click)="saveAddFormAttributesForGroup()">
+			{{ 'BUTTON_OK' | dcTranslate }}
+		</button>
+	</div>
+</div>
+
+</ng-template>
+
+

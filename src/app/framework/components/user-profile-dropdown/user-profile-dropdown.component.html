@@ -1,0 +1,17 @@
+	<div class="user-profile clearfix">
+		<div class="dropdown al-user-profile">
+			<a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
+				<img src="{{ avatar || ('dropdownImage' | profilePicture) }}">
+			</a>
+			<ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
+				<li class="dropdown-item">
+					<a href (click)="signOut()" class="signout">
+						<i class="ion-log-out"></i>
+						<span>
+							{{ 'LOG_OFF' | dcTranslate }}						
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>

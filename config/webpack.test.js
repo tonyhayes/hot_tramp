@@ -18,6 +18,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
+const API_URL = process.env.API_URL = 'https://admin-api-dev.dexchadev.com/';
+const API_REST_URL = process.env.API_REST_URL = 'https://admin-api-dev.dexchadev.com/';
+const APP_TITLE = process.env.APP_TITLE = 'Spectrum';
+const APP_NAME = process.env.APP_NAME = 'ADMIN';
 
 /**
  * Webpack configuration
@@ -52,7 +56,7 @@ module.exports = function (options) {
 			/**
 			* Make sure root is src
 			*/
-			modules: [path.resolve(__dirname, 'src'), 'node_modules']
+			modules: [helpers.root('src'), 'node_modules']
 
 		},
 
@@ -114,17 +118,6 @@ module.exports = function (options) {
 				},
 
 				/**
-				* Json loader support for *.json files.
-				*
-				* See: https://github.com/webpack/json-loader
-				*/
-				{
-					test: /\.json$/,
-					loader: 'json-loader',
-					exclude: [helpers.root('src/index.html')]
-				},
-
-				/**
 				* Raw loader support for *.css files
 				* Returns file content as string
 				*
@@ -144,7 +137,7 @@ module.exports = function (options) {
 				{
 					test: /initial\.scss$/,
 					loader: ExtractTextPlugin.extract({
-						fallbackLoader: 'style-loader',
+						fallback: 'style-loader',
 						loader: 'css-loader!sass-loader'
 					})
 				},
@@ -199,7 +192,7 @@ module.exports = function (options) {
 					loader: 'istanbul-instrumenter-loader',
 					include: helpers.root('src'),
 					exclude: [
-						/\.(e2e|spec)\.ts$/,
+						/\.(e2e-spec|spec)\.ts$/,
 						/node_modules/
 					]
 				}
@@ -233,10 +226,16 @@ module.exports = function (options) {
 			new DefinePlugin({
 				'ENV': JSON.stringify(ENV),
 				'HMR': false,
+				'API_URL': JSON.stringify(API_URL),
+				'API_REST_URL': JSON.stringify(API_REST_URL),
+				'APP_NAME': JSON.stringify(APP_NAME),
 				'process.env': {
 					'ENV': JSON.stringify(ENV),
 					'NODE_ENV': JSON.stringify(ENV),
 					'HMR': false,
+		  			'API_URL': JSON.stringify(API_URL),
+		  			'API_REST_URL': JSON.stringify(API_REST_URL),
+		  			'APP_NAME': JSON.stringify(APP_NAME),
 				}
 			}),
 
@@ -249,7 +248,7 @@ module.exports = function (options) {
 			*/
 			new ContextReplacementPlugin(
 				// The (\\|\/) piece accounts for path separators in *nix and Windows
-				/angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+				/angular(\\|\/)core(\\|\/)@angular/,
 				helpers.root('src'), // location of your src
 				{
 					// your Angular Async Route paths relative to this root directory

@@ -1,13 +1,7 @@
 
-import { QuestionService } from './question.service';
-import { UserAdministrationService } from './user-administration.service';
+export { QuestionService } from './question.service';
+export { UserAdministrationService } from './user-administration.service';
+export { ProjectManagementService } from './project-management.service';
+export { MenuService } from './menu.service';
+export { WeatherService } from './weather.service';
 
-export {
-    QuestionService,
-    UserAdministrationService
-};
-
-export default [
-    QuestionService, UserAdministrationService
-   
-];

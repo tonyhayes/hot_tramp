@@ -1,0 +1,19 @@
+@import '../../../../../../framework/sass/form';
+.clear {
+	color: #000;
+	margin: 10px 5px 0px;
+	text-transform: uppercase;
+
+}
+
+.sig-container {
+  	border-style: dashed;
+  	border-width: 1px;
+  	margin-top: 5px;
+}
+
+.sig-container canvas {
+  	border-style: solid;
+  	border-width: 1px;
+}
+

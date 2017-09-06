@@ -1,10 +1,12 @@
-	<div *ngIf="finished">
-		<dynamic-form  
-			[title]="'User detail - page 2'" 
-			[formData]="questionList | async" 
-			[questions]="componentQuestions | async" 
-			[isMultiColumn]=false 
-			(submitForm)="onSubmit($event)"	      		
-			(questionsChanged)="questionsChanged($event)">	      		
-		</dynamic-form>
-	</div>
+<div *ngIf="finished">
+	<dynamic-form  
+		[title]="title" 
+		[questionList]="questions" 
+		[adminMode]=false	
+		[cardMode]=false	
+		[requiredIndicator]=true	
+		(cancelForm)="onCancel($event)"	
+		(submitForm)="onSubmit($event)"	
+		>      		
+	</dynamic-form>
+</div>

@@ -1,32 +1,91 @@
-<h1>User Administration</h1>
-<div *ngIf="finished">
 	<div class="col-lg-12 col-md-12">
-		<dc-card title="User List" cardClass="with-scroll table-panel">				
-			<input class="form-control" placeholder="Search for..." [(ngModel)]="searchText" type="text" />
-			<div class="table-responsive">
-			  	<table class="table">
-					<tr>
-				  		<th>#</th>
-				  		<th>First Name</th>
-				  		<th>Last Name</th>
-				  		<th>Username</th>
-				  		<th>Email</th>
-				  		<th>Spectrum({{ getLicenseCount('spectrum') }})</th>
-				  		<th>PJ({{ getLicenseCount('pj') }})</th>
-				  		<th>Field({{ getLicenseCount('field') }})</th>
-					</tr>
-					<tr *ngFor="let user of filteredUserList">
-				  		<td>{{ user.id }}</td>
-				  		<td>{{ user.firstName }}</td>
-				  		<td>{{ user.lastName }}</td>
-				  		<td>{{ user.username }}</td>
-				  		<td>{{ user.email }}</td>
-				  		<td><input (change)="onCheck(user, 'spectrum')" type="checkbox"></td>
-				  		<td><input (change)="onCheck(user, 'pj')" type="checkbox"></td>
-				  		<td><input (change)="onCheck(user, 'field')" type="checkbox"></td>
-					</tr>
-			  	</table>
+		<button *ngIf="licences.length" 
+			(click)="onAdd()"
+			type="button" 
+			class="btn btn-add-user"><i class="ion-plus-round"></i>
+				{{ 'BUTTON_ADD_USER' | dcTranslate }}
+		</button>
+		<span *ngIf="licences.length" 
+			(click)="onRefresh()"
+			class="btn btn-user-refresh"><i class="ion-android-refresh"></i>
+		</span>
+		<dc-card title="{{ 'USER_LIST' | dcTranslate }}" cardClass="with-scroll table-panel">
+						
+			<input class="form-control" 
+				placeholder="{{ 'PLACEHOLDER_SEARCH' | dcTranslate }}" 
+				[(ngModel)]="searchText" 
+				type="text" 
+			/>
+
+		  	<div class="row">
+		      	<div class="scrolling outer">
+		        	<div class="inner">
+						<div class="table-responsive">
+						  	<table class="table">
+								<tr class="table-header">
+							  		<th class="table-header-column-fixed">
+							  			<span>{{ 'NAME' | dcTranslate }}</span>
+							  		</th>
+							  		<th class="table-header-column-fixed">
+							  			<span>{{ 'EMAIL_LOGON' | dcTranslate }}</span>
+						  			</th>
+							  		<th class="table-header-column">
+							  			{{ 'VERIFIED' | dcTranslate }}
+						  			</th>
+							  		<th class="table-header-column" *ngFor="let license of applicationLicenseList">
+								  			{{ license.applicationId }}							  				
+							  			<span *ngIf="license.applicationId != 'Spectrum Administration'" >
+								  			({{ license.totalCount - license.licensesUsed }})					
+							  			</span>
+						  			</th>
+							  		<th class="table-header-column">
+							  			{{ 'LAST_LOGIN' | dcTranslate }}
+						  			</th>
+							  		<th class="table-header-column">
+							  			{{ 'ACTION' | dcTranslate }}
+						  			</th>
+								</tr>
+								<tr *ngFor="let user of filteredUserList" class="table-row">
+							  		<td class="table-row-column">
+							  			{{ user.name }}
+						  			</td>
+							  		<td class="table-row-column">
+							  			{{ user.email }}
+						  			</td>
+							  		<td class="table-left-border">
+							  			{{ getUserStatus(user) }}
+						  			</td>
+							  		<td *ngFor="let license of applicationLicenseList" class="dc-checkbox" >
+							  			<input [id]="user.email+license.applicationId" (change)="onCheck(user, license)" type="checkbox" [checked]="hasLicense(user.applications, license.applicationId)">
+							  			 <label for="user.email+license.applicationId"><span><span></span></span></label>
+						  			</td>
+							  		<td>
+							  			{{ user.lastLogin | date }}
+						  			</td>
+							  		<td>
+							  			<i class="ion-ios-trash pointer" (click)="onDeleteConfirm(user, dialogContent)"></i>
+						  			</td>
+								</tr>
+						  	</table>
+						</div>
+					</div>
+				</div>
 			</div>
 		</dc-card>
 	</div>
-</div>
+<ng-template #dialogContent let-c="close" let-d="dismiss">
+   <div class="modal-header" data-backdrop="static">
+        <h4 class="modal-title">{{ dialogTitle }}</h4>
+    </div>
+    <div class="modal-body">
+    	<div>{{ dialogBody }}</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-dynamic-form float-right" (click)="d('cancel')">
+            {{ 'BUTTON_CANCEL' | dcTranslate }}
+        </button>
+        <button type="button" class="btn btn-primary btn-dynamic-form float-right" (click)="c('ok')">
+            {{ 'BUTTON_OK' | dcTranslate }}
+        </button>
+    </div>
+</ng-template>

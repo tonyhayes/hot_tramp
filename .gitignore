@@ -63,3 +63,4 @@ npm-debug.log
 *.swp
 .hg
 .hgignore
+.awcache

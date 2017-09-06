@@ -32,13 +32,13 @@
  *
  */
 
-declare var jQuery:any;
-declare var GoogleMapsLoader:any;
+//declare var jQuery:any;
 declare var L:any;
-declare var AmCharts:any;
-declare var Chart:any;
-declare var Chartist:any;
 declare var toastr:any;
+interface JQuery {
+    slimScroll;
+}
+
 
 // support NodeJS modules without type definitions
 declare module '*';
@@ -49,6 +49,10 @@ declare var HMR: boolean;
 declare var System: SystemJS;
 declare var WS_URL: string;
 declare var WS_PORT: number;
+declare var API_URL: string;
+declare var API_REST_URL: string;
+declare var APP_TITLE: string;
+declare var APP_NAME: string;
 
 interface SystemJS {
 	import: (path?: string) => Promise<any>;
@@ -61,6 +65,10 @@ interface GlobalEnvironment {
 	System: SystemJS;
 	WS_URL;
 	WS_PORT;
+	API_URL;
+	API_REST_URL;
+	APP_TITLE;
+	APP_NAME;
 }
 
 interface Es6PromiseLoader {

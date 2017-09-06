@@ -1,0 +1,22 @@
+<div>
+    <div class="photo-upload btn btn-default clear">
+        <input #myInput class="upload" multiple="multiple" type="file" (change)="fileChangeListener($event)">
+        <span>{{ 'BUTTON_ADD_PHOTO' | dcTranslate }}</span>
+    </div>
+    <div class="row" *ngFor="let image of newImages">
+    	<dc-photo-field  
+            [data]=image.img 
+    		[meta]=image.meta 	    	
+    		(photoChange)="photoChange($event)"
+		>
+    	</dc-photo-field>     
+    </div>
+    <div class="row" *ngFor="let image of loadedImages">
+    	<dc-photo-field  
+    		[loadedImage]=image.img 
+    		[meta]=image.meta
+    		(photoChange)="photoChange($event)"
+		>
+    	</dc-photo-field>     
+	</div>
+</div>

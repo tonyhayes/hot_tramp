@@ -1,0 +1,55 @@
+@import '../../../../../../framework/sass/form';
+.clear {
+    border-color: #48A942;
+    border-width: 1px;
+    color: #48A942;
+    background: transparent;
+    margin: 10px 5px 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+    padding: 0.344rem 1rem;
+    font-size: 0.9rem;    
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    touch-action: manipulation;
+}
+.imgcrop{
+    margin-left: 15px;
+}
+.ng2-imgcrop canvas {
+    margin-bottom: 10px;
+}
+
+.ng2-imgcrop input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.custom-class {
+    border: 1px solid #C1C1C1;
+}
+
+.cropping {
+
+    border: 1px solid #000000;
+}
+.photo-upload {
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-upload input {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.001
+}

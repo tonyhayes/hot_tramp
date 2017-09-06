@@ -1,0 +1,64 @@
+@import '../../sass/form';
+
+
+.btn-dynamic-form {
+	color: #000;
+	margin: 10px 5px 0px;
+	text-transform: uppercase;
+
+}
+.radio-control{
+	margin-left: 0px;
+}
+
+.form-main {
+ 	.no-card-mode{
+		min-height: 290px;
+	}	
+	h1 {
+		text-transform: uppercase;
+	}
+	button.btn.btn-default {
+		border-color: $dc-green;
+    	margin-right: 10px;
+    	float: right;
+ 		&:focus {
+ 			border-color: $primary-bg;
+			-webkit-box-shadow: inset 0px 0px 20px -2px rgba(109,186,104,1);
+			-moz-box-shadow: inset 0px 0px 20px -2px rgba(109,186,104,1);
+			box-shadow: inset 0px 0px 20px -2px rgba(109,186,104,1);
+ 	    	outline: 0 none;
+    	}			
+    	&:disabled {
+    		background-color: $dc-light-grey;
+    		border-color: $dc-light-grey;    		
+    	}
+	}
+	button.btn.btn-primary {
+		color: #fff;
+    	float: right;
+    	&:disabled {
+    		background-color: $dc-light-grey;
+    		border-color: $dc-light-grey;    		
+    	}
+ 		&:focus {
+ 			border-color: $primary-bg;
+ 			box-shadow: 0 5px 5px $primary-bg inset, 0 0 10px $primary-bg;
+ 	    	outline: 0 none;
+    	}			
+	}
+	.listStyle-icon-positon {
+		position: absolute;
+		z-index: 999;
+	}
+
+	@media screen and (max-width: $resXS) {
+ 		.no-card-mode{
+			min-height: 350px;
+		}	
+	}
+
+
+
+
+}

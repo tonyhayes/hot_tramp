@@ -1,0 +1,97 @@
+<li *ngIf="!menuItem.hidden" 
+	[title]="menuItem.title" 
+	[ngClass]="{ 'al-sidebar-list-item': !child, 
+		'dc-sidebar-sublist-item': child, 
+		'selected': menuItem.selected && !menuItem.expanded, 
+		'with-sub-menu': menuItem.children, 
+		'dc-sidebar-item-expanded': menuItem.expanded }"
+		>
+
+	<a *ngIf="!menuItem.children && !menuItem.url &&!jobNumber" 
+		(mouseenter)="onHoverItem($event, item)" 
+		[routerLink]="menuItem.route.paths" 
+		class="al-sidebar-list-link"
+		>
+		<i *ngIf="menuItem.icon" class="{{ menuItem.icon }} pointer">
+		</i>
+		<span>
+			{{ menuItem.title | dcTranslate }}
+		</span>
+	</a>
+	<span *ngIf="!menuItem.children && !menuItem.url && jobNumber && !menuItem.header"
+		class="al-sidebar-list-link-child"
+	>
+		<a (mouseenter)="onHoverItem($event, item)" 
+			[routerLink]="menuItem.route.paths" 
+			[title]="'Date entered: ' + menuItem.title"
+			>
+			<span>
+				{{ menuItem.title | dcTranslate }}
+			</span>
+		</a>
+		<i *ngIf="menuItem.icon" [title]="menuItem.iconTitle" class="{{ menuItem.icon }} pointer" (click)="onChildIconClick(menuItem)"></i>
+	</span>
+
+	<a *ngIf="!menuItem.children && menuItem.url" 
+		(mouseenter)="onHoverItem($event, item)" 
+		[href]="menuItem.url" 
+		[target]="menuItem.target" 
+		class="al-sidebar-list-link"
+		>
+		<i *ngIf="menuItem.icon" class="{{ menuItem.icon }}"></i>
+		<span>
+			{{ menuItem.title | dcTranslate }}
+		</span>
+	</a>
+	<span *ngIf="menuItem.header && jobNumber"
+		class="al-sidebar-list-link">
+		<a 
+			href 
+			(mouseenter)="onHoverItem($event, item)" 
+			(click)="onToggleSubMenu($event, menuItem)" 
+			
+			>
+			<i *ngIf="menuItem.icon" class="{{ menuItem.icon }}"></i>
+			<span>
+				{{ menuItem.title | dcTranslate }}
+			</span>
+			<span *ngIf="menuItem.children && !menuItem.expanded">
+				({{ menuItem.children.length }})
+			</span>
+		</a>
+		<b class="ion-ios-plus pointer" 
+			[title]="menuItem.iconTitle"
+			[routerLink]="getPath(menuItem.route.paths, menuItem)" 
+			>
+		</b>
+	</span>
+	<a *ngIf="!menuItem.header && menuItem.children" 
+		href 
+		(mouseenter)="onHoverItem($event, item)" 
+		(click)="onToggleSubMenu($event, menuItem)" 
+		class="al-sidebar-list-link"
+		>
+		<i *ngIf="menuItem.icon" class="{{ menuItem.icon }}"></i>
+		<span>
+			{{ menuItem.title | dcTranslate }}
+		</span>
+		<b class="ion-ios-arrow-down" 
+			[ngClass]="{ 'ion-ios-arrow-up': menuItem.expanded }">				
+		</b>
+	</a>
+
+	<ul *ngIf="menuItem.children" 
+		class="al-sidebar-sublist" 
+		[ngClass]="{ 'slide-right': menuItem.slideRight }"
+		>
+		<dc-menu-item 
+			[menuItem]="subItem"
+		  	[child]="true"
+		  	[jobNumber]="jobNumber"
+		  	(itemHover)="onHoverItem($event)"
+		  	(toggleSubMenu)="onToggleSubMenu($event, subItem)"
+		  	(childIconClicked)="onChildIconClick(subItem)"
+		  	*ngFor="let subItem of menuItem.children">
+	  	</dc-menu-item>
+	</ul>
+</li>

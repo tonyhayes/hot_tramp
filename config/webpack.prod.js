@@ -6,32 +6,39 @@ const commonConfig = require('./webpack.common.js'); // the settings that are co
 /**
  * Webpack Plugins
  */
-const DedupePlugin = require('webpack/lib/optimize/DedupePlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const IgnorePlugin = require('webpack/lib/IgnorePlugin');
+const HashedModuleIdsPlugin = require('webpack/lib/HashedModuleIdsPlugin')
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const WebpackMd5Hash = require('webpack-md5-hash');
-const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
-const OfflinePlugin = require('offline-plugin');
+const OptimizeJsPlugin = require('optimize-js-plugin');
+//const OfflinePlugin = require('offline-plugin');
 
 /**
  * Webpack Constants
  */
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 7000;
 const WS_URL = process.env.WS_URL || 'localhost';
 const WS_PORT = process.env.WS_PORT || '8085';
+const API_URL = process.env.API_URL;
+const API_REST_URL = process.env.API_REST_URL;
+const APP_TITLE = process.env.APP_TITLE || 'Spectrum';
+const APP_NAME = process.env.APP_NAME || 'ADMIN';
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   	host: HOST,
   	port: PORT,
   	ENV: ENV,
   	HMR: false,
   	WS_URL: WS_URL,
-  	WS_PORT: WS_PORT
+  	WS_PORT: WS_PORT,
+  	API_URL: API_URL,
+  	API_REST_URL: API_REST_URL,
+  	APP_TITLE: APP_TITLE,
+  	APP_NAME: APP_NAME,
 });
 
 module.exports = function(env) {
@@ -45,7 +52,7 @@ module.exports = function(env) {
 		 * See: http://webpack.github.io/docs/configuration.html#devtool
 		 * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
 		 */
-		devtool: 'source-map',
+		devtool: 'inline-source-map',
 
 		/**
 		 * Options affecting the output of the compilation.
@@ -75,7 +82,7 @@ module.exports = function(env) {
 		   	*
 		   	* See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
 		   	*/
-		  	sourceMapFilename: '[name].[chunkhash].bundle.map',
+		  	sourceMapFilename: '[file].map',
 
 		  	/**
 		   	* The filename of non-entry chunks as relative path
@@ -83,9 +90,10 @@ module.exports = function(env) {
 		   	*
 		   	* See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
 		   	*/
-		  	chunkFilename: '[id].[chunkhash].chunk.js'
+		  	chunkFilename: '[name].[chunkhash].chunk.js'
 
 		},
+
 
 		/**
 		 * Add additional plugins to the compiler.
@@ -94,24 +102,16 @@ module.exports = function(env) {
 		 */
 		plugins: [
 
-		  	/**
-		   	* Plugin: WebpackMd5Hash
-		   	* Description: Plugin to replace a standard webpack chunkhash with md5.
-		   	*
-		   	* See: https://www.npmjs.com/package/webpack-md5-hash
-		   	*/
-		  	new WebpackMd5Hash(),
-
-		  	/**
-		   	* Plugin: DedupePlugin
-		   	* Description: Prevents the inclusion of duplicate code into your bundle
-		   	* and instead applies a copy of the function at runtime.
-		   	*
-		   	* See: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
-		   	* See: https://github.com/webpack/docs/wiki/optimization#deduplication
-		   	*/
-		  	// new DedupePlugin(), // see: https://github.com/angular/angular-cli/issues/1587
-
+  			/**
+        	* Webpack plugin to optimize a JavaScript file for faster initial load
+        	* by wrapping eagerly-invoked functions.
+        	*
+        	* See: https://github.com/vigneshshanmugam/optimize-js-plugin
+        	*/
+ 
+       		new OptimizeJsPlugin({
+         		sourceMap: false
+       		}),
 		  	/**
 		   	* Plugin: DefinePlugin
 		   	* Description: Define free variables.
@@ -127,12 +127,20 @@ module.exports = function(env) {
 				'HMR': METADATA.HMR,
 				'WS_URL': JSON.stringify(METADATA.WS_URL),
 				'WS_PORT': METADATA.WS_PORT,
+				'API_URL': JSON.stringify(METADATA.API_URL),
+				'API_REST_URL': JSON.stringify(METADATA.API_REST_URL),
+				'APP_TITLE': JSON.stringify(METADATA.APP_TITLE),
+				'APP_NAME': JSON.stringify(METADATA.APP_NAME),
 				'process.env': {
 			  		'ENV': JSON.stringify(METADATA.ENV),
 			  		'NODE_ENV': JSON.stringify(METADATA.ENV),
 			  		'HMR': METADATA.HMR,
 			  		'WS_URL': JSON.stringify(METADATA.WS_URL),
 			  		'WS_PORT': METADATA.WS_PORT,
+		  			'API_URL': JSON.stringify(METADATA.API_URL),
+		  			'API_REST_URL': JSON.stringify(METADATA.API_REST_URL),
+		  			'APP_TITLE': JSON.stringify(METADATA.APP_TITLE),
+		  			'APP_NAME': JSON.stringify(METADATA.APP_NAME),
 				}
 		  	}),
 
@@ -161,6 +169,7 @@ module.exports = function(env) {
 
 
 		        beautify: false, //prod
+				sourceMap: true,
 		        output: {
 		          	comments: false
 		        },
@@ -180,7 +189,6 @@ module.exports = function(env) {
 		          	join_vars: true,
 		          	negate_iife: false // we need this for lazy v8
 		        },
-		        comments: false //prod
 		    }),
 
 		  	/**
@@ -198,6 +206,7 @@ module.exports = function(env) {
         		/zone\.js(\\|\/)dist(\\|\/)long-stack-trace-zone/,
         		helpers.root('config/empty.js')
       		),
+      		new HashedModuleIdsPlugin(),
 	      // AoT
 	      // new NormalModuleReplacementPlugin(
 	      //   /@angular(\\|\/)upgrade/,
@@ -262,7 +271,7 @@ module.exports = function(env) {
 	          		output: { path :  './' }, //This has to be './' and not your output folder.
 	          		sassLoader: {
 	            		includePaths: [path.resolve(__dirname, 'src', 'scss')]
-	          		}
+	          		},
  
 
           			/**
@@ -289,14 +298,22 @@ module.exports = function(env) {
 
 
 			// it always better if OfflinePlugin is the last plugin added
-			new OfflinePlugin({
-				caches: 'all',
-			  	updateStrategy: 'all',
-				version: 'v2', 
-			})
+			// new OfflinePlugin({
+			// 	caches: 'all',
+			//   	updateStrategy: 'all',
+			// 	version: 'v2', 
+			// })
 
 		],
 
+		/**
+		* Disable performance hints
+		*
+		* See: https://github.com/a-tarasyuk/rr-boilerplate/blob/master/webpack/dev.config.babel.js#L41
+		*/
+		performance: {
+			hints: false
+		},
 
 
 		/*

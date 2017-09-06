@@ -27,7 +27,7 @@ export class QuestionEffects {
     @Effect() saveQuestions$ = this.update$
         .ofType(QuestionActions.SAVE_QUESTIONS)
         .map(action => action.payload)
-        .switchMap((endPoint, questions) => this.svc.saveQuestions(endPoint, questions))
+        .switchMap(arr => this.svc.saveQuestions(arr))
         .map(questions => this.actions.saveQuestionsSuccess(questions));
 
 

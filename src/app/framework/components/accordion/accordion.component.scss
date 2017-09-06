@@ -1,0 +1,63 @@
+.dc-accordion .dc-accordion-item {
+	border-bottom: 1px solid #E0E0E0;
+	overflow: hidden;
+	padding: 10px 0;
+}
+
+.dc-accordion dc-accordion-item:first-child .dc-accordion-item {
+	border-top: 1px solid #E0E0E0;
+}
+
+.dc-accordion .dc-accordion-item-head a {
+	color: #000000;
+	cursor: pointer;
+	display: block;
+}
+
+.dc-accordion .dc-accordion-item .dc-accordion-item-head a .ion-chevron-right {
+	display: block;
+	float: right;
+	height: 16px;
+	position: relative;
+	transform: rotate(90deg);
+	transition: 0.8s transform;
+	width: 16px;
+}
+
+.dc-accordion .dc-accordion-item.is-collapsed .dc-accordion-item-head a .ion-chevron-right {
+	transform: rotate(0);
+}
+
+.dc-accordion .dc-accordion-item-head a .ion-chevron-right:after {
+	background: #000000;
+	height: 100%;
+	left: 50%;
+	position: absolute;
+	top: 0;
+	width: 1px;
+}
+
+.dc-accordion .dc-accordion-item-head a .ion-chevron-right:after {
+	transform: rotate(90deg);
+}
+
+.dc-accordion .dc-accordion-item .dc-accordion-item-body {
+	height: 0;
+	overflow: hidden;
+	transition: 0.7s height;
+}
+
+.dc-accordion .dc-accordion-item .dc-accordion-item-body .inner {
+	padding: 10px 0 0 0;
+}
+
+.hideScrollBar{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  margin-right: 14px;
+  padding-right: 28px; /*This would hide the scroll bar of the right. To be sure we hide the scrollbar on every browser, increase this value*/
+  padding-bottom: 15px; /*This would hide the scroll bar of the bottom if there is one*/
+}
+
+

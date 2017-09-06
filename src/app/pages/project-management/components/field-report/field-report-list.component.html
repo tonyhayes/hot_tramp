@@ -1,0 +1,137 @@
+<div *ngIf="finished" class="col-lg-12 col-md-12">
+	<button 
+		(click)="onAdd()"
+		type="button" 
+		class="btn btn-new-report"><i class="ion-plus-round"></i>
+			{{ 'BUTTON_NEW_FIELD_REPORT' | dcTranslate }}
+	</button>
+	<span *ngIf="itemsList.length" 
+		(click)="onRefresh()"
+		class="btn btn-user-refresh"><i class="ion-android-refresh"></i>
+	</span>
+	<dc-card title="{{ 'FIELD_REPORTING' | dcTranslate }}" cardClass="with-scroll table-panel">						
+        <div>
+            <dc-accordion [multiple]="false">
+                <dc-accordion-item  
+                	*ngFor="let item of itemsList" [itemName]="item.statusType"
+                >
+                    <dc-accordion-item-head>
+                    	{{item.title}} ({{item.jobs.length}})
+                    	<span *ngIf="item.alerts" class="header-alert-count">
+                    		({{item.alerts}})
+                    	</span>
+                	</dc-accordion-item-head>
+                    <dc-accordion-item-body >
+				        <div class="table-responsive table-hover">
+				            <table class="table">
+				                <thead>
+				                    <tr class="table-header no-border">
+				                        <th>{{ 'ACTION' | dcTranslate }}</th>
+				                        <th class="pointer" (click)="sort('jobCode')">
+				                        	{{ 'JOB' | dcTranslate }}
+								  			<span>
+									  			<i [ngClass]="{'ion-ios-reorder': column != 'jobCode', 
+                        							'ion-ios-arrow-up': (column == 'jobCode' && !isDesc), 
+                        							'ion-ios-arrow-down': (column == 'jobCode' && isDesc) }"
+    											>
+									  			</i>										 
+								  			</span>
+			                        	</th>
+				                        <th class="pointer" (click)="sort('forDay')">
+				                        	{{ 'DATE' | dcTranslate }}
+								  			<span>
+									  			<i [ngClass]="{'ion-ios-reorder': column != 'forDay', 
+                        							'ion-ios-arrow-up': (column == 'forDay' && !isDesc), 
+                        							'ion-ios-arrow-down': (column == 'forDay' && isDesc) }"
+    											>
+									  			</i>										 
+								  			</span>
+			                        	</th>
+				                        <th class="pointer" (click)="sort('jobDescription')"> 
+				                        	{{ 'DESCRIPTION' | dcTranslate }}
+								  			<span>
+									  			<i [ngClass]="{'ion-ios-reorder': column != 'jobDescription', 
+                        							'ion-ios-arrow-up': (column == 'jobDescription' && !isDesc), 
+                        							'ion-ios-arrow-down': (column == 'jobDescription' && isDesc) }"
+    											>
+									  			</i>										 
+								  			</span>
+			                        	</th>
+				                        <th class="pointer" (click)="sort('nextActioneeName')">
+				                        	{{ 'SEND_TO' | dcTranslate }}
+								  			<span>
+									  			<i [ngClass]="{'ion-ios-reorder': column != 'nextActioneeName', 
+                        							'ion-ios-arrow-up': (column == 'nextActioneeName' && !isDesc), 
+                        							'ion-ios-arrow-down': (column == 'nextActioneeName' && isDesc) }"
+    											>
+									  			</i>										 
+								  			</span>
+			                        	</th>
+				                    </tr>
+				                </thead>
+				                <tbody>
+			                        <tr *ngFor="let job of item.jobs | orderBy: { property: column, direction: direction }" 
+			                        	[class.table-active]="activeAccordionItem.id == job.id"
+			                        >
+								  		<td>
+								  			<span>
+									  			<i [title]="'TOOLTIP_EDIT' | dcTranslate" class="ion-edit action-icon-padding" 
+									  				(click)="onMenuChange(job, dialogContent)">
+									  			</i>										 
+								  			</span>
+								  			<span *ngIf="job.status =='Open'">
+									  			<i [title]="'HEADING_SUBMIT_FIELD_REPORT' | dcTranslate" class="ion-paper-airplane action-icon-padding" 
+									  				(click)="onSend(job, dialogContent)"
+									  				>
+									  			</i>
+								  			</span>
+								  			<span *ngIf="job.status =='Open'">
+						  						<i [title]="'HEADING_DELETE_FIELD_REPORT' | dcTranslate" class="ion-ios-trash action-icon-padding" 
+						  							(click)="onDelete(job, dialogContent)"
+						  							>
+						  						</i>
+								  			</span>
+							  			</td>
+								  		<td (click)="onMenuChange(job, dialogContent)">
+								  			<span>
+								  				{{ job.jobCode }}
+								  			</span>
+							  			</td>
+								  		<td (click)="onMenuChange(job, dialogContent)">
+								  			{{ job.forDay | date }}
+							  			</td>
+								  		<td (click)="onMenuChange(job, dialogContent)">
+								  			{{ job.jobDescription }}
+							  			</td>
+								  		<td (click)="onMenuChange(job, dialogContent)">
+								  			{{ job.nextActioneeName }}
+							  			</td>
+
+			                        </tr>
+				                </tbody>
+				            </table>
+				        </div>
+                    </dc-accordion-item-body>
+                </dc-accordion-item>
+            </dc-accordion>
+        </div>		
+	</dc-card>
+</div>
+
+<ng-template #dialogContent let-c="close" let-d="dismiss">
+   <div id="dc-modal-field-report-list" class="modal-header" data-backdrop="static">
+        <h4 class="modal-title">{{ dialogTitle }}</h4>
+    </div>
+    <div class="modal-body">
+    	<div>{{ dialogBody }}</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-dynamic-form float-right" (click)="d('cancel')">
+            {{ 'BUTTON_CANCEL' | dcTranslate }}
+        </button>
+        <button type="button" class="btn btn-primary btn-dynamic-form float-right" (click)="c('ok')">
+            {{ 'BUTTON_OK' | dcTranslate }}
+        </button>
+    </div>
+</ng-template>
+

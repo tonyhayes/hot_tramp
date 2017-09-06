@@ -1,0 +1,36 @@
+<div>
+	<div class="row">
+		<button *ngIf="loadedImage || data.image" type="button" 
+			class="btn btn-default remove" 
+			(click)="clear()">
+			{{ 'BUTTON_REMOVE' | dcTranslate }}
+		</button>
+	</div>
+    <div class="row" *ngIf="!loadedImage" [hidden]="!data.image">     
+	    <img-cropper class="imgcrop"
+	    	#cropper 
+	    	[image]="data" 
+	    	[settings]="cropperSettings" 
+	    	(onCrop)="cropped($event)">
+	    </img-cropper>
+	    <span class="ng2-img-crop-result" *ngIf="data.image" >
+	        <img [src]="data.image" 
+	        [width]="croppedWidth" 
+	        [height]="croppedHeight">
+	    </span>
+    </div>
+    <div *ngIf="loadedImage" class="row">     
+		<div class="imgcrop">
+	        <img [src]="loadedImage" 
+	        [width]="cropperSettings.height" 
+	        [height]="cropperSettings.width">	    
+		</div>
+    </div>
+    <div class="row" *ngIf="this.meta.dateTime" class="imgcrop">
+	    	{{dateTime}}
+    </div>	    
+    <div class="row" *ngIf="this.meta.gpsInfo" class="imgcrop">
+    	{{meta.gpsInfo.latGeoCode}} &nbsp;
+    	{{meta.gpsInfo.longGeoCode}}
+    </div>	    
+</div>

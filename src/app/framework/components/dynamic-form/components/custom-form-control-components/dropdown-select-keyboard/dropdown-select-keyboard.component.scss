@@ -1,0 +1,43 @@
+@import '../../../../../../framework/sass/form';
+.open-dropdown-button {
+    border-color: #48A942;
+    border-width: 1px;
+    color: #48A942;
+    background: transparent;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.1s ease;
+    padding: 0.344rem 1rem;
+    font-size: 0.9rem;    
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.dropdown-input {
+    position: relative;
+    overflow: hidden;
+}
+
+.dropdown-input input {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.001
+}
+
+.form-control {
+    height: 50px;
+    font-size: 14px;
+}
+.list-group-item {
+    z-index: 500;
+}

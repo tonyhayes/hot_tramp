@@ -1,7 +1,8 @@
 // Load the implementations that should be tested
 import { routing } from './project-management.routing';
+import {} from 'jasmine'
 
-describe('project.routing', () => {
+describe('user.routing', () => {
 
 	it('should have a routing object',() => {
 		expect(routing).toBeDefined();

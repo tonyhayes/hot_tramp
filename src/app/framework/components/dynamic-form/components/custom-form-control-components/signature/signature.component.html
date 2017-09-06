@@ -1,0 +1,17 @@
+
+<div (window:resize)="beResponsive()">
+	<div *ngIf="!signatureImage" class="row">
+  		<button type="button" class="btn btn-default clear" (click)="sigs.first.clear()">{{ 'BUTTON_CLEAR' | dcTranslate }}</button>
+	</div>
+
+	<div *ngIf="signatureImage">
+		<img [src]="signatureImage">
+	</div>	
+
+  	<div *ngIf="!signatureImage" class="row sig-container" #sigContainer1>
+
+		<div>
+	  		<signature-field [form]=form [question]=question></signature-field>
+		</div>
+  	</div>
+</div>

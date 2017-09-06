@@ -15,19 +15,22 @@ const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlElementsPlugin = require('./html-elements-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-
+const ngcWebpack = require('ngc-webpack');
+//const PreloadWebpackPlugin = require('preload-webpack-plugin');
 /*
  * Webpack Constants
  */
 const HMR = helpers.hasProcessFlag('hot');
 const AOT = helpers.hasNpmFlag('aot');
 const METADATA = {
-	title: 'Dashboard',
-	description: 'Angular 2 and Bootstrap 4 Template',
-	baseUrl: '/', 
-	isDevServer: helpers.isWebpackDevServer()
+	title: process.env.APP_TITLE || 'Demo',
+	description: 'Angular 4 and Bootstrap 4 Template',
+	baseUrl: '/#', 
+	isDevServer: helpers.isWebpackDevServer(),
+	HMR: HMR
 };
 
 /*
@@ -88,45 +91,56 @@ module.exports = function (options) {
 		*/
 		module: {
 			rules: [
-				{
-				  	test: /\.ts$/,
-				  	loader: 'string-replace-loader',
-				  	query: {
-						search: /(System|SystemJS)(.*[\n\r]\s*\.|\.)import\((.+)\)/g,
-						replace: '$1.import($3).then(mod => (mod.__esModule && mod.default) ? mod.default : mod)'
-				  	},
-				  	include: [helpers.root('src')],
-				  	enforce: 'pre'
-				},
-
-				/*
-				 * Typescript loader support for .ts and Angular 2 async routes via .async.ts
-				 * Replace templateUrl and stylesUrl with require()
-				 *
-				 * See: https://github.com/s-panferov/awesome-typescript-loader
-				 * See: https://github.com/TheLarkInn/angular2-template-loader
-				 */
-				{
-				  	test: /\.ts$/,
-					use: [
-						'@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
-						'awesome-typescript-loader?{configFileName: "tsconfig.webpack.json"}',
-						'angular2-template-loader',
-						'angular-router-loader?loader=system&genDir=compiled/src/app&aot=' + AOT
-				  	],
-				  	exclude: [/\.(spec|e2e)\.ts$/]
-				},
-
-				/*
-				 * Json loader support for *.json files.
-				 *
-				 * See: https://github.com/webpack/json-loader
-				 */
-				{
-				  	test: /\.json$/,
-				  	use: 'json-loader'
-				},
-
+		        /*
+		         * Typescript loader support for .ts
+		         *
+		         * Component Template/Style integration using `angular2-template-loader`
+		         * Angular 2 lazy loading (async routes) via `ng-router-loader`
+		         *
+		         * `ng-router-loader` expects vanilla JavaScript code, not TypeScript code. This is why the
+		         * order of the loader matter.
+		         *
+		         * See: https://github.com/s-panferov/awesome-typescript-loader
+		         * See: https://github.com/TheLarkInn/angular2-template-loader
+		         * See: https://github.com/shlomiassaf/ng-router-loader
+		         */
+		        {
+		          	test: /\.ts$/,
+		          	use: [
+		            	{
+		              	loader: '@angularclass/hmr-loader',
+		              	options: {
+		                	pretty: !isProd,
+		                	prod: isProd
+		              	}
+		            },
+		            { // MAKE SURE TO CHAIN VANILLA JS CODE, I.E. TS COMPILATION OUTPUT.
+		              	loader: 'ng-router-loader',
+		              	options: {
+		                	loader: 'async-import',
+		                	genDir: 'compiled',
+		                	aot: AOT
+		              	}
+		            },
+		            {
+		              	loader: 'awesome-typescript-loader',
+		              	options: {
+		                	configFileName: 'tsconfig.webpack.json',
+		                	useCache: !isProd
+		              	}
+		            },
+		            {
+              			loader: 'ngc-webpack',
+           				options: {
+                 			disable: !AOT,
+               			}
+             		},
+             		{		              	
+             			loader: 'angular2-template-loader'
+		            }
+		          ],
+		          exclude: [/\.(spec|e2e-spec)\.ts$/]
+		        },
 				/*
 				 * to string and css loader support for *.css files
 				 * Returns file content as string
@@ -134,9 +148,8 @@ module.exports = function (options) {
 				 */
 				{
 				  	test: /\.css$/,
-				  	// loaders: ['to-string-loader', 'css-loader']
-				  	use: ['to-string-loader', 'css-loader']
-		//          use: ['raw-loader']
+				  	use: ['to-string-loader', 'css-loader'],
+				  	exclude: [helpers.root('src', 'styles')]
 				},
 
 				{
@@ -148,8 +161,8 @@ module.exports = function (options) {
 				{
 				  	test: /initial\.scss$/,
 				  	loader: ExtractTextPlugin.extract({
-						fallbackLoader: 'style-loader',
-						loader: 'css-loader!sass-loader'
+						fallback: 'style-loader',
+						use: 'css-loader!sass-loader'
 				  	})
 				},
 
@@ -231,14 +244,18 @@ module.exports = function (options) {
 			new CommonsChunkPlugin({
 				name: 'vendor',
 				chunks: ['main'],
-				minChunks: module => /node_modules\//.test(module.resource)
+				minChunks: module => /node_modules/.test(module.resource)
 			}),
 	  		// Specify the correct order the scripts will be injected in
 	  		new CommonsChunkPlugin({
 				name: ['polyfills', 'vendor'].reverse()
 	  		}),
 
-
+      		new CommonsChunkPlugin({
+         		name: ['manifest'],
+         		minChunks: Infinity,
+       		}),
+  		  
 	  		/**
 	   		* Plugin: ContextReplacementPlugin
 	   		* Description: Provides context to Angular's use of System.import
@@ -248,7 +265,7 @@ module.exports = function (options) {
 	   		*/
 	  		new ContextReplacementPlugin(
 				// The (\\|\/) piece accounts for path separators in *nix and Windows
-				/angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
+				/angular(\\|\/)core(\\|\/)@angular/,
 				helpers.root('src') // location of your src
 	  		),
 
@@ -265,7 +282,7 @@ module.exports = function (options) {
 				{ from: 'src/meta'}
 	  		]),
 
-		  /*
+      		/*
 		   * Plugin: HtmlWebpackPlugin
 		   * Description: Simplifies creation of HTML files to serve your webpack bundles.
 		   * This is especially useful for webpack bundles that include a hash in the filename
@@ -280,7 +297,41 @@ module.exports = function (options) {
 				metadata: METADATA,
 				inject: 'head'
 		  	}),
+      		/*
+       		* Plugin: PreloadWebpackPlugin
+       		* Description: Preload is a web standard aimed at improving
+       		* performance and granular loading of resources.
+       		*
+       		* See: https://github.com/GoogleChrome/preload-webpack-plugin
+       		*/
+      		// new PreloadWebpackPlugin({
+        // 		rel: 'preload',
+        // 		as: 'script',
+        // 		include: ['polyfills', 'vendor', 'main'].reverse(),
+        // 		fileBlacklist: ['.css', '.map']
+      		// }),
+      		// new PreloadWebpackPlugin({
+        // 		rel: 'prefetch',
+        // 		as: 'script',
+        // 		include: 'asyncChunks'
+      		// }),
 
+
+      		/*
+      		* Plugin: HtmlWebpackPlugin
+      		* Description: Simplifies creation of HTML files to serve your webpack bundles.
+      		* This is especially useful for webpack bundles that include a hash in the filename
+      		* which changes every compilation.
+      		*
+      		* See: https://github.com/ampedandwired/html-webpack-plugin
+      		*/
+      		new HtmlWebpackPlugin({
+        		template: 'src/index.html',
+        		title: METADATA.title,
+        		chunksSortMode: 'dependency',
+        		metadata: METADATA,
+        		inject: 'body'
+      		}),
 		  /*
 		   * Plugin: ScriptExtHtmlWebpackPlugin
 		   * Description: Enhances html-webpack-plugin functionality
@@ -289,11 +340,14 @@ module.exports = function (options) {
 		   * See: https://github.com/numical/script-ext-html-webpack-plugin
 		   */
 		  	new ScriptExtHtmlWebpackPlugin({
-				defaultAttribute: 'defer'
+	       		sync: /polyfill|vendor/,
+	       		defaultAttribute: 'async',
+	       		preload: [/polyfill|vendor|main/],
+	       		prefetch: [/chunk/],
+        		defaultAttribute: 'defer',
 		  	}),
-
 		  /*
-		   * Plugin: HtmlHeadConfigPlugin
+		   * Plugin: HtmlElementsPlugin
 		   * Description: Generate html tags based on javascript maps.
 		   *
 		   * If a publicPath is set in the webpack output configuration, it will be automatically added to
@@ -343,29 +397,50 @@ module.exports = function (options) {
 				Util: "exports-loader?Util!bootstrap/js/dist/util"
 			}),
 
-			// Fix Angular 2
-	  		new NormalModuleReplacementPlugin(
-				/facade(\\|\/)async/,
-				helpers.root('node_modules/@angular/core/src/facade/async.js')
-	  		),
-	  		new NormalModuleReplacementPlugin(
-				/facade(\\|\/)collection/,
-				helpers.root('node_modules/@angular/core/src/facade/collection.js')
-	  		),
-	  		new NormalModuleReplacementPlugin(
-				/facade(\\|\/)errors/,
-				helpers.root('node_modules/@angular/core/src/facade/errors.js')
-	  		),
-	  		new NormalModuleReplacementPlugin(
-				/facade(\\|\/)lang/,
-				helpers.root('node_modules/@angular/core/src/facade/lang.js')
-	  		),
-	  		new NormalModuleReplacementPlugin(
-				/facade(\\|\/)math/,
-				helpers.root('node_modules/@angular/core/src/facade/math.js')
-	  		)
+     		new ngcWebpack.NgcWebpackPlugin({
+ 				/**
+          		* If false the plugin is a ghost, it will not perform any action.
+          		* This property can be used to trigger AOT on/off depending on your build target (prod, staging etc...)
+          		*
+          		* The state can not change after initializing the plugin.
+          		* @default true
+          		*/
+         		disabled: !AOT,
+         		tsConfig: helpers.root('tsconfig.webpack.json'),
+        		/**
+         		* A path to a file (resource) that will replace all resource referenced in @Components.
+         		* For each `@Component` the AOT compiler compiles it creates new representation for the templates (html, styles)
+         		* of that `@Components`. It means that there is no need for the source templates, they take a lot of
+         		* space and they will be replaced by the content of this resource.
+         		*
+         		* To leave the template as is set to a falsy value (the default).
+         		*
+         		* TIP: Use an empty file as an overriding resource. It is recommended to use a ".js" file which
+         		* usually has small amount of loaders hence less performance impact.
+         		*
+         		* > This feature is doing NormalModuleReplacementPlugin for AOT compiled resources.
+         		*
+         		* ### resourceOverride and assets
+         		* If you reference assets in your styles/html that are not inlined and you expect a loader (e.g. url-loader)
+         		* to copy them, don't use the `resourceOverride` feature as it does not support this feature at the moment.
+         		* With `resourceOverride` the end result is that webpack will replace the asset with an href to the public
+         		* assets folder but it will not copy the files. This happens because the replacement is done in the AOT compilation
+         		* phase but in the bundling it won't happen (it's being replaced with and empty file...)
+         		*
+         		* @default undefined
+         		*/
+//         		resourceOverride: helpers.root('config/resource-override.js')
+       		}),
 
-				/*
+     		/**
+        	* Plugin: InlineManifestWebpackPlugin
+        	* Inline Webpack's manifest.js in index.html
+        	*
+        	* https://github.com/szrenwei/inline-manifest-webpack-plugin
+        	*/
+       		new InlineManifestWebpackPlugin(),
+      		      				
+			/*
 
 				While writing your code, you may have already added many code split points to load stuff on demand. 
 				After compiling you might notice that there are too many chunks that are too small - 
@@ -376,7 +451,7 @@ module.exports = function (options) {
 				--note this destorys the ability to debug - so it will only be on for demo's and production
 			*/
 //      	new webpack.optimize.LimitChunkCountPlugin({maxChunks: 1})
-
+ 
 		],
 
 		/*

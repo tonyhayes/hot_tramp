@@ -1,61 +1,86 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { FormGroup }       						from '@angular/forms';
+import { Router, NavigationEnd } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
-
-import 'rxjs/add/operator/let';
-import { ChangeDetectionStrategy } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { QuestionActions } from '../../actions';
-import { AppState } from '../../reducers';
+import { PROJECT_MANAGEMENT_MENU } from './project-management.menu';
+import { PROJECT_MANAGEMENT_NAVBAR } from './project-management.navbar';
+import { FIELD_MENU } from './field-report-list.menu';
+import { GlobalState } from '../../global.state';
+import { TranslateService } from '../../translate';
+import { Util } from '../../framework/helpers/util';
+import { MenuService } from '../../services';
+import { Auth } from '../../auth.service';
 
 @Component({
 	selector: 'project-management',
-	encapsulation: ViewEncapsulation.None,
 	styleUrls: [ './project-management.component.scss' ],
 	templateUrl: './project-management.component.html',
-//  	changeDetection: ChangeDetectionStrategy.OnPush,
+//	encapsulation: ViewEncapsulation.None,
 
 })
 export class ProjectManagement implements OnInit {
 
-	public questionList: Observable<any>;
-	public questionListClone: Observable<any>;
-	public componentQuestions: Observable<any>;
+	menu: Array<any> = PROJECT_MANAGEMENT_MENU;
+	fieldMenu: Array<any> = FIELD_MENU
 
-	public submitted:boolean = false;
-  	private anyErrors: boolean;
-  	public finished: boolean;
+	fieldMenuRoutes;
+	navbar: Array<any> = PROJECT_MANAGEMENT_NAVBAR;
+	homeRoute: string = '/project-management/dashboard';
+	
 
-	constructor( private questionActions: QuestionActions, private questionStore: Store<AppState> ) {}
+	constructor( private router: Router, private state:GlobalState, private translate: TranslateService, private service:MenuService, private auth: Auth) {}
+
 	ngOnInit() {
-		this.getForm();		
-	}
+		// ensure user information is loaded into memory
+		// fyi - the user information comes from auth0 and not from a dc data source.
+		const userInfo = this.auth.getUserFromLocalStorage();
+		this.fieldMenuRoutes = this.service.convertRoutesToMenus(this.fieldMenu);
+		//ensure unnessasry elements are removed
+		Util.removeDomNuisances();
+		this.state.notifyDataChanged('menu.activeLink', {title: this.translate.instant('PROJECT_MANAGEMENT')});				
+        this.state.subscribe('menu.resetMenu', (evt) => {
+       		this.state.notifyDataChanged('menu.replaceMenu', PROJECT_MANAGEMENT_MENU);                
+        });
+        this.state.subscribe('menu.changeComponentMenu', (menu) => {
+        	this.fieldMenu[0]['children'] = menu;
+			this.fieldMenuRoutes = this.service.convertRoutesToMenus(this.fieldMenu);
+        });
+        this.state.subscribe('menu.componentMenuAddChild', (childObj) => {
+        	if(!childObj){
+        		return
+        	}
+        	this.fieldMenu = this.service.resetChildExpandedFlag(this.fieldMenu);
+        	const path = `/project-management/${childObj.reportPath}`
+			this.fieldMenu = this.service.addChildItem(
+				this.fieldMenu, 
+				path, 
+				childObj.title,
+				childObj.sortField,
+				childObj.categoryId,
+				childObj.attributeCount,
+				childObj.expandCategory
+			);
+			this.fieldMenuRoutes = this.service.convertRoutesToMenus(this.fieldMenu);
+        });
+        this.state.subscribe('menu.componentMenuRemoveChild', (childObj) => {
+        	if(!childObj){
+        		return
+        	}
+        	const path = `/project-management/${childObj.reportPath}`
+			this.fieldMenu = this.service.removeChildItem(this.fieldMenu, path);
+			this.fieldMenuRoutes = this.service.convertRoutesToMenus(this.fieldMenu);
+        });
+		//register a route change listener on main component and scroll to top on route changes.
+        this.router.events.subscribe((evt) => {
+            if (!(evt instanceof NavigationEnd)) {
+                return;
+            }
+			jQuery('html, body').animate({scrollTop:0}, {duration:1000});
+        });
+    	this.router.navigate([this.homeRoute]);
 
-	public getForm():void {
-
-		this.questionStore.dispatch(this.questionActions.loadQuestions('/api/projectmanagement/1'));
-		this.componentQuestions = this.questionStore.select('questions');
-	    this.componentQuestions.subscribe(
-	        value => {
-	        	if(value.length){
-					this.questionStore.dispatch(this.questionActions.loadFormQuestions('/api/projectmanagement/1'));
-					this.questionList = this.questionStore.select('formQuestions');
-					this.questionList.subscribe(v => console.log(v));
-	        		this.finished = true
-	        	}
-	        },
-	        error => this.anyErrors = true,
-	        
-	    );
 	}
-
-	public onSubmit(values:FormGroup):void {
-		console.log(JSON.stringify(values));
-	}
-	public questionsChanged(questions):void {
-		this.questionStore.dispatch(this.questionActions.saveQuestions('/api/projectmanagement/1', questions));
-	}
-
+    ngOnDestroy():void {
+        this.state.notify('menu.componentMenuClose', true);                
+    }
 
 }

@@ -1,51 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+  		<meta charset="utf-8">
+  		<meta http-equiv="x-ua-compatible" content="ie=edge">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  		<title><%= htmlWebpackPlugin.options.title %></title>
 
-  <meta name="description" content="<%= htmlWebpackPlugin.options.metadata.description %>">
+  		<meta name="description" content="<%= htmlWebpackPlugin.options.metadata.description %>">
 
-  <% if (webpackConfig.htmlElements.headTags) { %>
-  <!-- Configured Head Tags  -->
-  <%= webpackConfig.htmlElements.headTags %>
-  <% } %>
+  		<% if (webpackConfig.htmlElements.headTags) { %>
+  			<!-- Configured Head Tags  -->
+  			<%= webpackConfig.htmlElements.headTags %>
+  		<% } %>
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
+  		<!-- base url -->
+  		<base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
+ 		
+ 		<%= htmlWebpackPlugin.files.webpackManifest %>
 
-  <!-- base url -->
-  <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
+	</head>
+
+	<body>
+		<app>
+		</app>
+
+		<div id="preloader">
+  			<div></div>
+		</div>
+
+	<% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
+		<!-- Webpack Dev Server reload -->
+		<script src="/webpack-dev-server.js"></script>
+	<% } %>
+
+	<link
+		href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic'
+		rel='stylesheet' type='text/css'
+	>
 
 
-</head>
-
-<body>
-<app>
-</app>
-
-<div id="preloader">
-  <div></div>
-</div>
-
-<% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
-<!-- Webpack Dev Server reload -->
-<script src="/webpack-dev-server.js"></script>
-<% } %>
-
-<!-- 	<script>
-		if ('serviceWorker' in navigator) {
-		  	navigator.serviceWorker.register('/sw.js').then(function(registration) {
-		    	// Registration was successful
-		    	console.log('ServiceWorker registration successful with scope: ', registration.scope);
-		  	}).catch(function(err) {
-		    	// registration failed :(
-		    	console.log('ServiceWorker registration failed: ', err);
-		  	});
-		}
-    </script>
- -->    <link
-    href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic'
-    rel='stylesheet' type='text/css'>
-</body>
+	</body>
 </html>

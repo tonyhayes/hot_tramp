@@ -1,116 +1,105 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
-import { UserBase } from '../pages/user-administration';
+import { Response }          from '@angular/http';
+import { AuthHttp } from 'angular2-jwt';
+import * as toastr from 'toastr';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/publish';
+import 'rxjs/add/observable/of';
+import { UserBase, LicenseBase, Application } from '../pages/user-administration';
+import { GlobalState } from '../global.state';
 
 @Injectable()
 export class UserAdministrationService {
+	protected usersUrl : string =  'users/';
+   	protected licensesUrl : string =  'licenses/';
+  	private user:UserBase ; 
 
+	constructor (private authHttp: AuthHttp, private state: GlobalState) {}
 
-	constructor (private http: Http) {}
-
-
-	getUsers(endPoint): Observable<any> {
-		return this.http.get(endPoint.payload)
-		.map(res => res.json())
-		.map((questions) => {
-			return {
-				users:
-					[
-						{
-							id: 1,
-							firstName: 'Claddich',
-							lastName: 'Roman',
-							username: 'claddich',
-							email: 'claddich@crynore.com',
-							applications: ['Spectrum', 'PJ', 'Field'],
-
-						},
-						{
-							id: 2,
-							firstName: 'Jerry',
-							lastName: 'Garcia',
-							username: 'jg',
-							email: 'jerry@gratefuldead.com',
-							applications: ['Spectrum', 'Field'],
-
-						},
-						{
-							id: 3,
-							firstName: 'Ida',
-							lastName: 'Lupino',
-							username: 'ides of march',
-							email: 'lupino@tedious.com',
-							applications: [],
-
-						},
-						{
-							id: 4,
-							firstName: 'Larry',
-							lastName: 'Crowne',
-							username: 'crowne',
-							email: 'crowne@wonder.com',
-							applications: ['Field'],
-
-						},
-						{
-							id: 5,
-							firstName: 'Harry',
-							lastName: 'Potter',
-							username: 'wizard',
-							email: 'harry@hp.com',
-							applications: ['Spectrum'],
-
-						},
-						{
-							id: 6,
-							firstName: 'Tony',
-							lastName: 'Hayes',
-							username: 'tony',
-							email: 'thayes@dc.com',
-							applications: ['PJ'],
-
-						},
-						{
-							id: 7,
-							firstName: 'Jackie',
-							lastName: 'Brown',
-							username: 'jb',
-							email: 'jb@toomuchtoosoon.com',
-							applications: ['Spectrum'],
-
-						},
-					],
-				licences:
-					[
-						{
-							id: 1,
-							application: 'Spectrum',
-							count: 3
-						},
-						{
-							id: 2,
-							application: 'PJ',
-							count: 2
-						},
-						{
-							id: 3,
-							application: 'Field',
-							count: 1
-						},
-					]
-			};
-
-		})
+	getBaseUrl(): string {
+        return this.state.getCurrent('app.API_REST_URL');
 	}
 
-	saveUsers(endPoint, questions) {
-		questions.sort((a, b) => a.order - b.order);
-		return this.http.put(endPoint.payload, questions)
+	getUsers(): Observable<UserBase[]> {
+		return this.authHttp.get(this.getBaseUrl() + this.usersUrl)
 			.map(res => res.json())
-		}
+			.map((users: UserBase[]) => {
+				return users
+			})
+	    	.catch(error => {
+	    		console.log('catch')
+	    		return Observable.of(error.json())
+	    	})
+	}
+	addUser(user:UserBase): Observable<any> {
+		return this.authHttp.post(this.getBaseUrl() + this.usersUrl, user)
+			.map(res => res.json())
+			.map((user: UserBase) => {
+				return {response: user}
+			})
+        	.catch(error => {
+        		console.log('catch')
+        		return Observable.of(error.json())
+        	})
+	}
+	deleteUser(user:UserBase): Observable<any> {
+		return this.authHttp.delete(this.getBaseUrl() + this.usersUrl + user.userId)
+			.map(res => res.json())
+			.map((message: string) => {
+				message = "delete successful";
+				return {response: message}
+			})
+        	.catch(error => {
+        		console.log('catch')
+        		return Observable.of(error.json())
+        	})
+	}
+	getUser():UserBase {
+		return this.user
+	}
+	getLicenses(): Observable<Application[]> {
+		return this.authHttp.get(this.getBaseUrl() + this.licensesUrl)
+			.map(res => res.json())
+			.map((licenses:LicenseBase) => {
+				return  licenses.applications;
+			})
+        	.catch(error => {
+        		console.log('catch')
+        		return Observable.of(error.json())
+        	})
 
+	}
 
+	saveUsers(user:UserBase) {
+		const endpoint = this.getBaseUrl() + this.usersUrl + user.userId + '/applications/'
+		return this.authHttp.post(endpoint, {applications: user.applications})
+			.map(res => res.json())
+        	.catch(error => {
+        		console.log('catch')
+        		return Observable.of(error.json())
+        	})
+	}
+	addUserLicense(license:any[]) {
+		const endpoint = this.getBaseUrl() + this.usersUrl + license[0] + '/applications/'+ license[1]
+		return this.authHttp.post(endpoint, {})
+			.map(res => res.json())
+        	.catch(error => {
+        		console.log('catch')
+        		return Observable.of(error.json())
+        	})
+	}
+	removeUserLicense(license:any[]) {
+		const endpoint = this.getBaseUrl() + this.usersUrl + license[0] + '/applications/'+ license[1]
+		return this.authHttp.delete(endpoint)
+			.map(res => res.json())
+        	.catch(error => {
+        		console.log('catch')
+        		return Observable.of(error.json())
+        	})
+	}
+	saveUser(user:UserBase):UserBase {
+			return this.user = user;
+	}
 
 }

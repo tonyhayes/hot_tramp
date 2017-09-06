@@ -1,0 +1,152 @@
+<dc-form-designer *ngIf="adminMode"
+	[questions]="questions" 
+	[formData]="formData"				
+	[formGroup]="formList[0]"				
+	(formDesignChanged)="formDesignChanged($event)"
+	> 
+</dc-form-designer>
+
+<div class="form-main">
+	<div class="col-md-12 col-xs-12">
+		<dc-card title="{{ title }}" cardClass="with-scroll table-panel">
+			<div *ngFor="let form of formList; let i = index">
+				<form 
+					[formGroup]="form"
+					focusInput
+
+					>
+					<div *ngIf="cardMode == 'accordion'">
+		            	<dc-accordion [multiple]="false">
+							<dc-accordion-item *ngFor="let formSection of formData"> 
+			                    <dc-accordion-item-head>
+			                    	{{formSection.groupTitle}}
+		                    	</dc-accordion-item-head>
+		                    	<dc-accordion-item-body>
+									<div class="row">
+										<div *ngFor="let question of formSection.fields; let idx = index" 
+											class="form-group"> 
+											<i *ngIf="question.allowDelete" 
+												class="ion-ios-trash listStyle-icon-positon" 								
+												(click)="onDeleteGroup(form, formSection, question)" 
+											>
+			
+											</i>
+											<i *ngIf="idx == 0 && formSection.groupListStyle" 
+												class="ion-ios-plus listStyle-icon-positon" 								
+												(click)="onAddGroup(form, formSection)" 
+											>
+			
+											</i>
+ 											<df-question *ngIf="!question.hidden"
+												[className]="getQuestionClass(formSection.groupColumns, question.className, question.key)"
+												[question]="question" 
+												[form]="form"
+												[readOnly]=readOnly
+												[requiredIndicator]="requiredIndicator"
+												>				
+											</df-question>
+										</div>
+									</div>
+								</dc-accordion-item-body>
+							</dc-accordion-item>
+						</dc-accordion>
+					</div>	
+					<div *ngIf="cardMode == true ||  cardMode == 'card'">
+						<dc-card *ngFor="let formSection of formData"> 
+							<div class="row">
+								<div *ngFor="let question of formSection.fields; let idx = index" 
+									class="form-group"> 
+									<i *ngIf="question.allowDelete" 
+										class="ion-ios-trash listStyle-icon-positon" 								
+										(click)="onDeleteGroup(form, formSection, question)" 
+									>
+	
+									</i>
+									<i *ngIf="idx == 0 && formSection.groupListStyle" 
+										class="ion-ios-plus listStyle-icon-positon" 								
+										(click)="onAddGroup(form, formSection)" 
+									>
+	
+									</i>
+									<df-question *ngIf="!question.hidden"
+										[className]="getQuestionClass(formSection.groupColumns, question.className, question.key)"
+										[question]="question" 
+										[form]="form"
+										[readOnly]=readOnly
+										[requiredIndicator]="requiredIndicator" 
+										>				
+									</df-question>
+								</div>
+							</div>
+						</dc-card>
+					</div>	
+					<div *ngIf="!cardMode || cardMode == 'none'" class="no-card-mode">
+						<div *ngFor="let formSection of formData"> 
+							<div class="row">
+								<div *ngFor="let question of formSection.fields; let idx = index" 
+									[className]="getQuestionClass(formSection.groupColumns, question.className)"
+									> 
+									<i *ngIf="question.allowDelete" 
+										class="ion-ios-trash listStyle-icon-positon" 								
+										(click)="onDeleteGroup(form, formSection, question)" 
+									>
+	
+									</i>
+									<i *ngIf="idx == 0 && formSection.groupListStyle" 
+										class="ion-ios-plus listStyle-icon-positon" 								
+										(click)="onAddGroup(form, formSection)" 
+									>
+	
+									</i>
+									<df-question *ngIf="!question.hidden"										
+										[question]="question" 
+										[requiredIndicator]="requiredIndicator" 
+										[form]="form"
+										[readOnly]=readOnly
+										>				
+									</df-question>
+								</div>
+							</div>
+						</div>
+					</div>	
+					<div *ngIf="!readOnly" class="form-group row">
+						<div *ngIf="formList.length == i + 1" class="col-sm-12">
+							<button 
+								[disabled]="!areFormsValid()"
+								(click)="onSubmit()" 
+								type="submit" 
+								class="btn btn-primary btn-dynamic-form"
+								>
+									{{ 'BUTTON_OK' | dcTranslate }}
+							</button>
+							<button 								
+								(click)="onCancel()" 
+								type="button" 
+								class="btn btn-default btn-dynamic-form"
+								>
+									{{ 'BUTTON_CANCEL' | dcTranslate }}
+							</button>
+							<button *ngIf="listStyle"								
+								(click)="onAdd()" 
+								type="button" 
+								class="btn btn-default btn-dynamic-form"
+								>
+									{{ 'BUTTON_NEW_FORM' | dcTranslate }}
+							</button>
+						</div>
+						<div *ngIf="formList.length != i + 1" class="col-sm-12">
+							<button								
+								(click)="onDelete(form, i)" 
+								type="button" 
+								class="btn btn-default btn-dynamic-form"
+								>
+									{{ 'BUTTON_DELETE_FORM' | dcTranslate }}
+							</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</dc-card>
+	</div>
+</div>
+

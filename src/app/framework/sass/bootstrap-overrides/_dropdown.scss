@@ -1,0 +1,13 @@
+.dropdown-item {
+  line-height: 1;
+  &:hover{
+  	background-color: #e7e7ef;
+  } 
+  &:focus{
+  	background-color: #e7e7ef;
+  } 
+}
+
+.dropdown-menu {
+  font-size: inherit;
+}

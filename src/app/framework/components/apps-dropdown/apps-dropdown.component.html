@@ -1,0 +1,15 @@
+<div class="dropdown external-app-link" *ngIf="navbarItems.length">
+  	<a class="dropdown-toggle" id="external-app-link-dd"data-toggle="dropdown" aria-expanded="false">
+   		<i class="ion-link" aria-hidden="true"></i>
+  	</a>
+  	<div class="dropdown-menu external-link-dropdown-menu" aria-labelledby="external-app-link-dd">
+  		<span *ngFor="let item of navbarItems">
+	    	<a *ngIf="item.url" class="dropdown-item" [href]="item.url" [target]="item.target"> 
+	    		{{ item.title | dcTranslate }} 
+	    	</a>
+	    	<a *ngIf="!item.url" class="dropdown-item" [routerLink]="item.route.paths"> 
+	    		{{item.title | dcTranslate }} 
+	    	</a> 			
+  		</span>
+  	</div>
+</div>

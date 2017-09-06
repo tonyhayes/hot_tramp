@@ -1,0 +1,13 @@
+<div *ngIf="finished">
+	<dynamic-form 
+		[title]="title" 
+		[questionList]="questions" 
+		[adminMode]=false	
+		[cardMode]=false	
+		[requiredIndicator]=true	
+		(cancelForm)="onCancel($event)"	
+		(submitForm)="onSubmit($event)"	
+		>      		
+	</dynamic-form>
+
+</div>

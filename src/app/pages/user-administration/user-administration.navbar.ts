@@ -2,29 +2,17 @@ export const ADMIN_NAVBAR = [
 	{
 		path: 'pages',
 		children: [
-			{
-				path: 'dashboard',
-				data: {
-					navbar: {
-						title: 'Dashboard',
-						icon: 'ion-android-home',
-						selected: true,
-						order: 0
-					}
-				}
-			},
-			{
-				path: '',
-				data: {
-					navbar: {
-						title: 'External Link',
-						url: 'http://www.dexterchaney.com/',
-						icon: 'ion-android-exit',
-						order: 100,
-						target: '_blank'
-					}
-				}
-			}
+			// {
+			// 	path: 'user-administration',
+			// 	data: {
+			// 		navbar: {
+			// 			title: 'USER_ADMINISTRATION',
+			// 			icon: 'ion-person-stalker',
+			// 			selected: true,
+			// 			order: 10
+			// 		}
+			// 	}
+			// },
 		]
 	}
 ];

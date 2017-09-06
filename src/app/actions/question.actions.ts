@@ -51,10 +51,10 @@ export class QuestionActions {
 
 
     static SAVE_QUESTIONS = '[QuestionBase] Save questions';
-    saveQuestions(endPoint, questions): Action {
+    saveQuestions(arr:Array<any>): Action {
         return {
             type: QuestionActions.SAVE_QUESTIONS,
-            payload: (endPoint, questions)
+            payload: arr
         };
     }
 

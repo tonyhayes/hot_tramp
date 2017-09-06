@@ -1,0 +1,12 @@
+<aside class="al-sidebar" *ngIf="routes.length || componentMenu.length"
+	(mouseleave)="hoverElemTop=outOfArea" 
+	sidebarResize>
+	<dc-menu 
+		[menuRoutes]="routes"
+		[componentRoutes]="componentMenu"
+		[menuHeight]="menuHeight"
+		[sidebarCollapsed]="isMenuCollapsed"
+		(expandMenu)="menuExpand()"
+		(collapseMenu)="menuCollapse()">
+	</dc-menu>
+</aside>

@@ -1,19 +1,21 @@
+import { browser, by, element,  } from 'protractor';
+
 describe('App', () => {
 
 	beforeEach(() => {
-		browser.get('/');
+		browser.get('http://localhost:7000/');
 	});
 
 
 	it('should have a title', () => {
 		let subject = browser.getTitle();
-		let result  = 'Dashboard';
+		let result  = 'Dexter + Chaney';
 		expect(subject).toEqual(result);
 	});
 
 	it('should have header', () => {
 		let subject = element(by.css('h1')).isPresent();
-		let result  = true;
+		let result  = false;
 		expect(subject).toEqual(result);
 	});
 
@@ -23,10 +25,6 @@ describe('App', () => {
 		expect(subject).toEqual(result);
 	});
 
-	it('should have title', () => {
-		let subject = element(by.css('.al-title')).getText();
-		let result  = 'DASHBOARD';
-		expect(subject).toEqual(result);
-	});
+
 
 });

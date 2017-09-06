@@ -1,0 +1,12 @@
+@import '../../sass/conf/conf';
+
+.sidebar-job{
+//	position: absolute;
+	margin-left: 18px;
+//    display: inline-block;	
+    color: $sidebar-text;
+    width: $sidebar-width;
+    &.job-hide {
+    	opacity: 0;
+    }
+}

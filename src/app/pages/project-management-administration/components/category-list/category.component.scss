@@ -1,0 +1,50 @@
+@import '../../../../framework/sass/table';
+@import '../../../../framework/sass/form';
+.btn-new-report {
+	position: relative;
+    top: 12px;
+    right: 12px;
+    z-index: 900;
+    color: $dc-button-text;
+    background-color: $dc-primary;
+    float: right;
+    text-transform: uppercase;
+}
+.btn-user-refresh {
+    position: relative;
+    top: 12px;
+    right: 12px;
+    z-index: 900;
+    color: $dc-button-text;
+    cursor: hand;
+    float: right;
+//    background-color: $dc-medium-grey;
+}
+.header-alert-count {
+	color: $danger
+}
+.table-active, .danger, .info {
+	box-shadow:3px 5px 6px -4px rgba(0,0,0,0.8);	
+}
+
+td i:not(:first-child) {
+	padding-left: 6px;
+}
+.dc-checkbox {
+    input[type=checkbox]:disabled + label > span,
+    input[type=radio   ]:disabled + label > span{
+        opacity: 0.9;
+        border           : 0.0625em solid rgb(192,192,192);
+        background       : rgb(255,255,255);
+        color            : rgb(1,2,1);
+    }
+    input[type=checkbox]:checked:disabled + label > span:before{
+        color       : rgb(1,2,1);
+    }
+    input[type=radio]:checked:disabled + label > span > span{
+        border           : 0.0625em solid rgb(115,153,77);
+        background       : rgb(1,2,1);
+    }
+
+}
+

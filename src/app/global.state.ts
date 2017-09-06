@@ -25,6 +25,25 @@ export class GlobalState {
 			});
 		}
 	}
+	notify(event, value) {
+
+		this.data[event] = value;
+
+		this.data.next({
+			event: event,
+			data: this.data[event]
+		});		
+	}
+	notifyAndForget(event, value) {
+
+		this.data[event] = value;
+
+		this.data.next({
+			event: event,
+			data: this.data[event]
+		});	
+		this.data[event] = null;	
+	}
 
 	subscribe(event: string, callback: Function) {
 		let subscribers = this.subscriptions.get(event) || [];
@@ -39,6 +58,10 @@ export class GlobalState {
 		subscribers.forEach((callback) => {
 			callback.call(null, data['data']);
 		});
+	}
+	
+	getCurrent(event: any) {
+		return this.data[event];;
 	}
 
 }

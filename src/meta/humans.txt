@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  dexterchaney.com
+
+# THANKS
+
+  <name>
+  Core Development Team
+
+# TECHNOLOGY COLOPHON
+
+  HTML5, CSS3, Bootstrap
+  Angular, TypeScript, Webpack

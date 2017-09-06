@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
+import { AuthHttp } from 'angular2-jwt';
+import * as toastr from 'toastr';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 import { 
     QuestionBase,
     BsDropdownQuestion, 
+    DropdownKeyboardQuestion, 
     DropdownQuestion, 
     TextboxQuestion, 
     TextareaQuestion, 
@@ -13,131 +17,72 @@ import {
     RadioQuestion,
     CheckboxQuestion,
     DateQuestion,
+    TimeQuestion,
     DocumentsGridQuestion,
     DatalistQuestion,
     TagSelectQuestion,
-} from '../theme/components/dynamic-form';
+    SignatureQuestion,
+    VideoQuestion,
+    PhotoQuestion,
+    PhotosQuestion,
+    NotesQuestion,
+    WeatherUndergroundQuestion
+} from '../framework/components/dynamic-form';
+import { GlobalState } from '../global.state';
 
 @Injectable()
 export class QuestionService {
 
 
-    constructor (private http: Http) {}
+    constructor (private http: Http, private state: GlobalState) {}
+    getBaseUrl(): string {
+        return this.state.getCurrent('app.API_REST_URL');
+    }
 
     getFormQuestions(endPoint): Observable<QuestionBase<any>[]> {
         return this.http.get(endPoint.payload)
         .map(res => res.json())
         .map((questions:  QuestionBase<any>[]) => {
-            return this.createDynamicFormComponent(questions);
+            return questions;
 
         })
-        .map((sortedQuestions:  QuestionBase<any>[]) => {
-            return this.groupDynamicFormComponents(sortedQuestions);
-        })
-        .map((groupedQuestions:  QuestionBase<any>[]) => {
-            return this.createDynamicForm(groupedQuestions);
-        })
+        .catch(this.handleError)
     }
 
     getQuestions(endPoint): Observable<QuestionBase<any>[]> {
         return this.http.get(endPoint.payload)
         .map(res => res.json())
         .map((questions:  QuestionBase<any>[]) => {
-            return this.createDynamicFormComponent(questions);
+            return questions;
         })
-        .map((sortedQuestions:  QuestionBase<any>[]) => {
-            return this.groupDynamicFormComponents(sortedQuestions);
-        })
+        .catch(this.handleError)
     }
 
-    saveQuestions(endPoint, questions) {
+    saveQuestions(arr:Array<any>) {
+        const endPoint =arr[0];
+        const questions =arr[1];
         questions.sort((a, b) => a.order - b.order);
-        return this.http.put(endPoint.payload, questions)
+        return this.http.put(endPoint, questions)
             .map(res => res.json())
             .map((questions:  QuestionBase<any>[]) => {
-                return this.createDynamicFormComponent(questions);
+                return questions;
             })
+            .catch(this.handleError)
         }
 
-    createDynamicFormComponent(questions: QuestionBase<any>[]):QuestionBase<any>[]  {
-        const result: QuestionBase<any>[] = [];
-        Object.keys(questions).forEach( (key) => {
-            let question = questions[key];
-            switch(question.controlType) {
-                case 'input':
-                    const inputQuestion = new InputQuestion(question);
-                    result.push(inputQuestion);
-                    break;
-                case 'date':
-                    const dateQuestion = new DateQuestion(question);
-                    result.push(dateQuestion);
-                    break;
-                case 'textarea':
-                    const textareaQuestion = new TextareaQuestion(question);
-                    result.push(textareaQuestion);
-                    break;
-                case 'tag':
-                    const tagSelectQuestion = new TagSelectQuestion(question);
-                    result.push(tagSelectQuestion);
-                    break;
-                case 'bs-dropdown':
-                    const bsDropdownQuestion = new BsDropdownQuestion(question);
-                    result.push(bsDropdownQuestion);
-                    break;
-                case 'checkbox':
-                    const checkboxQuestion = new CheckboxQuestion(question);
-                    result.push(checkboxQuestion);
-                    break;
-                case 'datalist':
-                    const datalistQuestion = new DatalistQuestion(question);
-                    result.push(datalistQuestion);
-                    break;
-                case 'smart-grid':
-                    const gridSmartQuestion = new DocumentsGridQuestion(question);
-//                    const gridSmartQuestion = new DocumentsGridQuestion(question);
-                    result.push(gridSmartQuestion);
-                    break;
-                case 'documents-grid':
-                    const documentsGridQuestion = new DocumentsGridQuestion(question);
-                    result.push(documentsGridQuestion);
-                    break;
-            }
-        });
-        return result.sort((a, b) => a.order - b.order);
+
+    private handleError (error: Response | any) {
+        let errMsg: string;
+        if (error instanceof Response) {
+              const body = error.json() || '';
+              const err = body.error || JSON.stringify(body);
+              errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+        } else {
+              errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        toastr.error(errMsg);
+        return Observable.throw(errMsg);
     }
 
-    groupDynamicFormComponents(questions: QuestionBase<any>[]):QuestionBase<any>[]  {
-        let firstGroup = true;
-        let groupNumber = 0;
-        questions.forEach(question =>{
-            if (!question.groupColumns && firstGroup){
-                ++groupNumber;
-            }
-            firstGroup = false;
-            if (question.groupColumns){
-               ++groupNumber;
-            }
-            question.group = groupNumber;
-        });
-        return questions;
-    }
-
-    createDynamicForm(groupedQuestions: QuestionBase<any>[]){
-        //FIXME???? needs to be in a util - used in 2 places!!
-        const formData = [];
-        const groups = {};
-        //create form sections from the sorted questions
-        groupedQuestions.forEach(question =>{
-            //create a card for the first item
-            if (question.groupColumns){
-                groups[question.group] = { group: question.group, groupColumns: question.groupColumns, fields:[] };
-            }
-            groups[question.group].fields.push(question);
-        });
-        Object.keys(groups).forEach( (key) => {
-            let group = groups[key];
-            formData.push(group);
-        })
-        return formData;
-    }
 }

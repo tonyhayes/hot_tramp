@@ -15,13 +15,8 @@ describe('ADMIN_NAVBAR', () => {
 	it('should have a ADMIN_NAVBAR object with children',() => {
 		expect(ADMIN_NAVBAR[0].children).toBeDefined();
 	});
-	it('should have a ADMIN_NAVBAR object with 2 children',() => {
-	    expect(ADMIN_NAVBAR[0].children.length).toEqual(2);
-	});
-	it('should have a ADMIN_NAVBAR object with children and a path of dashboard',() => {
-	    expect(ADMIN_NAVBAR[0].children[0]).toEqual(jasmine.objectContaining({
-	      path: "dashboard"
-	    }));
+	it('should have a ADMIN_NAVBAR object with 0 children',() => {
+	    expect(ADMIN_NAVBAR[0].children.length).toEqual(0);
 	});
 
 });

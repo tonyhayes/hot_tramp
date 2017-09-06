@@ -1,0 +1,33 @@
+
+  	<ul id="al-sidebar-list" 
+  		class="al-sidebar-list" 
+  		dcSlimScroll [slimScrollOptions]="{height: menuHeight}"
+  		(mouseleave)="hoverElemTop=outOfArea"
+  		>  		
+    	<dc-menu-item
+	    	[menuItem]="item"
+	    	(itemHover)="hoverItem($event)"
+	    	(toggleSubMenu)="toggleSubMenu($event)"
+	    	(childIconClicked)="onChildIconClick($event)"
+	    	*ngFor="let item of menuRouteItems"> 
+    	</dc-menu-item>
+    	<span *ngIf="componentMenu">
+			<div class="sidebar-job" [ngClass]="{'job-hide': componentMenu && sidebarCollapsed }">
+				<span>{{ jobNumber }}</span>		 	
+				<span>{{ jobDate | date }}</span>		 	
+			</div>
+	    	<dc-menu-item
+		    	[menuItem]="item"
+		    	[jobNumber]="jobNumber"
+		    	[jobId]="jobId"
+		    	(itemHover)="hoverItem($event)"
+		    	(toggleSubMenu)="toggleSubMenuWithHeader($event)"
+		    	(childIconClicked)="onChildIconClick($event)"
+		    	*ngFor="let item of menuComponentItems">
+	    	</dc-menu-item>
+    	</span>
+  	</ul>
+  	<div class="sidebar-hover-elem" 
+  		[ngStyle]="{top: hoverElemTop + 'px', height: hoverElemHeight + 'px'}"
+       	[ngClass]="{'show-hover-elem': showHoverElem }">
+   </div>

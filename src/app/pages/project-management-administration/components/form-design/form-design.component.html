@@ -1,0 +1,15 @@
+<div class="col-lg-12 col-md-12">
+	<div *ngIf="finished">
+		<dynamic-form 
+			[title]="title" 
+			[questionList]="questions" 
+			[adminMode]=true	
+			[cardMode]=false	
+			[requiredIndicator]=true	
+			(cancelForm)="onCancel($event)"	
+			(submitForm)="onSubmit($event)"
+			(questionsChanged)="onQuestionsChanged($event)"	
+			>      		
+		</dynamic-form>
+	</div>
+</div>

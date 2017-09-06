@@ -1,10 +1,28 @@
-<div *ngIf="finished">
-	<dynamic-form  
-		[title]="'Request For Information'" 
-		[formData]="questionList | async" 
-		[questions]="componentQuestions | async" 
-		[isMultiColumn]=false 
-		(submitForm)="onSubmit($event)"	      		
-		(questionsChanged)="questionsChanged($event)">	      		
-	</dynamic-form>
+<div class="project-management">
+	<dc-sidebar 
+		[menu]="menu"
+		[componentMenu]="fieldMenuRoutes"
+		>			
+	</dc-sidebar>
+	<dc-page-top 
+		[homeRoute]="homeRoute" 
+		[navbar]="navbar" 
+		[hideMenuToggle]="false" 
+		>			
+	</dc-page-top>
+	<dc-navbar-top 
+		[navbar]="navbar">			
+	</dc-navbar-top>
+	<div class="al-main" >
+		<div class="al-content">
+			<dc-content-top 
+				[homeRoute]="homeRoute"
+				[hideBreadCrumbs]="true"
+				>
+			</dc-content-top>
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+
 </div>
+<dc-back-top position="200"></dc-back-top>

@@ -1,7 +1,6 @@
 # Admin panel framework based on Angular 2, Bootstrap 4 and Webpack
 
-
-Admin template - taken from angularClass and ng2-Admin.
+taken from angularClass. https://github.com/AngularClass/angular-starter
 
 # Project setup #
 
@@ -13,7 +12,7 @@ Admin template - taken from angularClass and ng2-Admin.
 
 4. npm start
 
-5. From the browser - http://localhost:8080/
+5. From the browser - http://localhost:7000/
 
 
 # Prerequisites #
@@ -24,7 +23,7 @@ Download and install nodejs
 
 Make sure you have Node version >= 5.0 and NPM >= 3
 
-Once you have those, you should install these globals with npm install --global:
+Once you have those, you should install these globals with npm install --global (it seems like you may not need these as globals, so try installing locally first):
 
 * webpack (npm install --global webpack)  -> Note for Windows: had to install local to project
 

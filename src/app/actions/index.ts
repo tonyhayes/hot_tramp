@@ -1,11 +1,5 @@
-import { QuestionActions } from './question.actions';
-import { UserAdministrationActions } from './user-administration.actions';
+export { QuestionActions } from './question.actions';
+export { UserAdministrationActions } from './user-administration.actions';
+export { ProjectManagementActions } from './project-management.actions';
+export { WeatherActions } from './weather.actions';
 
-export {
-    QuestionActions,
-    UserAdministrationActions
-};
-
-export default [
-    QuestionActions, UserAdministrationActions
-];

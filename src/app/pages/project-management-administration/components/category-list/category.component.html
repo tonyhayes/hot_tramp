@@ -1,0 +1,75 @@
+	<div class="col-lg-12 col-md-12">
+	<button 
+		(click)="onAdd()"
+		type="button" 
+		class="btn btn-new-report"><i class="ion-plus-round"></i>
+			{{ 'BUTTON_NEW_FIELD_REPORT' | dcTranslate }}
+	</button>
+	<span 
+		(click)="onRefresh()"
+		class="btn btn-user-refresh"><i class="ion-android-refresh"></i>
+	</span>
+	<dc-card title="{{ 'HEADING_CATEGORIES' | dcTranslate }}" cardClass="with-scroll table-panel">						
+						
+			<input class="form-control" 
+				placeholder="{{ 'PLACEHOLDER_SEARCH' | dcTranslate }}" 
+				[(ngModel)]="searchText" 
+				type="text" 
+			/>
+
+		  	<div class="row">
+						<div class="table-responsive table-hover">
+						  	<table class="table">
+								<tr class="table-header no-border">
+							  		<th>
+							  			<span>{{ 'NAME' | dcTranslate }}</span>
+							  		</th>
+							  		<th>
+							  			<span>{{ 'DESCRIPTION' | dcTranslate }}</span>
+						  			</th>
+							  		<th>
+							  			<span>{{ 'LIST_STYLE' | dcTranslate }}</span>
+						  			</th>
+							  		<th>
+							  			{{ 'ACTION' | dcTranslate }}
+						  			</th>
+								</tr>
+								<tr *ngFor="let category of filteredList" >
+							  		<td (click)="onEdit(category, dialogContent)">
+							  			{{ category.name }}
+						  			</td>
+							  		<td (click)="onEdit(category, dialogContent)">
+							  			{{ category.description }}
+						  			</td>
+							  		<td class="dc-checkbox">
+							  			<input [id]="category.name"  type="checkbox" [checked]="category.listStyle" disabled="true">
+							  			 <label for="category.name"><span><span></span></span></label>
+						  			</td>
+							  		<td>
+							  			<i class="ion-edit pointer" 
+							  				(click)="onEdit(category, dialogContent)">
+							  			</i>										 
+							  			<i class="ion-ios-trash pointer" (click)="onDeleteConfirm(category, dialogContent)"></i>
+						  			</td>
+								</tr>
+						  	</table>
+						</div>
+			</div>
+		</dc-card>
+	</div>
+<ng-template #dialogContent let-c="close" let-d="dismiss">
+   <div class="modal-header" data-backdrop="static">
+        <h4 class="modal-title">{{ dialogTitle }}</h4>
+    </div>
+    <div class="modal-body">
+    	<div>{{ dialogBody }}</div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-dynamic-form float-right" (click)="d('cancel')">
+            {{ 'BUTTON_CANCEL' | dcTranslate }}
+        </button>
+        <button type="button" class="btn btn-primary btn-dynamic-form float-right" (click)="c('ok')">
+            {{ 'BUTTON_OK' | dcTranslate }}
+        </button>
+    </div>
+</ng-template>

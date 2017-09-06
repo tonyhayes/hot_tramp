@@ -1,0 +1,10 @@
+
+<quill-editor 
+	[(ngModel)]="value" 
+  	[readOnly]="readonly"  
+  	[modules]="{ toolbar: toolbarOptions }"
+  	(onContentChanged)="logChange($event);" 
+  	(onSelectionChanged)="logSelection($event);"
+  	>  		
+</quill-editor>
+

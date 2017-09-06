@@ -1,0 +1,26 @@
+<div class="project-management-administration">
+	<dc-sidebar 
+		[menu]="menu">			
+	</dc-sidebar>
+	<dc-page-top 
+		[homeRoute]="homeRoute" 
+		[navbar]="navbar" 
+		[hideMenuToggle]="true" 
+		>			
+	</dc-page-top>
+	<dc-navbar-top 
+		[navbar]="navbar">			
+	</dc-navbar-top>
+	<div class="al-main" >
+		<div class="al-content">
+			<dc-content-top 
+				[homeRoute]="homeRoute"
+				[hideBreadCrumbs]="true"
+				>
+			</dc-content-top>	
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+
+</div>
+<dc-back-top position="200"></dc-back-top>

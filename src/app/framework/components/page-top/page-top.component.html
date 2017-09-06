@@ -1,0 +1,19 @@
+<div *ngIf="homeRoute" class="page-top clearfix" dcScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)"
+		 [ngClass]="{ scrolled: isScrolled }">
+	<span *ngIf="!hideMenuToggle">		
+		<a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
+	</span>
+	<a [routerLink]="homeRoute" class="al-logo clearfix">        
+		<img src="{{ ( 'logo_lg' | appLogo: 'svg' ) }}">
+	</a>
+
+	<dc-apps-dropdown [navbar]="navbar"></dc-apps-dropdown>
+	<dc-user-profile-dropdown [avatar]="avatar"></dc-user-profile-dropdown>
+</div>
+<div *ngIf="!homeRoute" class="page-top clearfix" dcScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)"
+		 [ngClass]="{ scrolled: isScrolled }">
+	<a class="al-logo clearfix">        
+		<img src="{{ ( 'logo_lg' | appLogo: 'svg' ) }}">
+	</a>
+
+</div>

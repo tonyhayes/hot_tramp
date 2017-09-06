@@ -1,0 +1,13 @@
+@import '../../../../framework/sass/form';
+
+
+.btn-new-report {
+	position: relative;
+    top: 43px;
+    right: 33px;
+    z-index: 900;
+    color: $dc-button-text;
+    background-color: $dc-primary;
+    float: right;
+    text-transform: uppercase;
+}

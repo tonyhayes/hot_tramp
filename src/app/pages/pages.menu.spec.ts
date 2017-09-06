@@ -1,5 +1,6 @@
 // Load the implementations that should be tested
 import { PAGES_MENU } from './pages.menu';
+import {} from 'jasmine'
 
 describe('PAGES_MENU', () => {
 
@@ -15,17 +16,12 @@ describe('PAGES_MENU', () => {
 	it('should have a PAGES_menu object with children',() => {
 		expect(PAGES_MENU[0].children).toBeDefined();
 	});
-	it('should have a PAGES_menu object with 10 children',() => {
-	    expect(PAGES_MENU[0].children.length).toEqual(10);
+	it('should have a PAGES_menu object with 1 children',() => {
+	    expect(PAGES_MENU[0].children.length).toEqual(1);
 	});
-	it('should have a PAGES_menu object with children and a path of dashboard',() => {
+	it('should have a PAGES_menu object with children and a path of user-administration',() => {
 	    expect(PAGES_MENU[0].children[0]).toEqual(jasmine.objectContaining({
-	      	path: "dashboard"
-	    }));
-	});
-	it('should have a PAGES_menu object with children and a path of tables',() => {
-	    expect(PAGES_MENU[0].children[5]).toEqual(jasmine.objectContaining({
-	      	path: "tables"
+	      	path: "user-administration"
 	    }));
 	});
 

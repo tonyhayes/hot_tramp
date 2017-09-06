@@ -1,0 +1,18 @@
+<div class="logged-out">
+	<dc-page-top 
+	>			
+	</dc-page-top>
+	<div class="al-main" >
+		<div class="al-content">
+			<span>
+				{{ 'LOGGED_OFF' | dcTranslate }}						
+			</span>
+		</div>
+	</div>
+	<button 
+		(click)="onLogBackIn()"
+		type="button" 
+		class="btn btn-primary btn-log-in"><i class="ion-log-in"></i>
+			{{ 'BUTTON_LOG_IN' | dcTranslate }}
+	</button>
+</div>

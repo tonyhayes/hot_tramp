@@ -1,4 +1,26 @@
-@import "theme/theme";
+@import "./framework/theme";
+.main {
+	position: relative;
+	top: 0;
+}
+
+.error-container {
+	&.routed {
+  		position: relative;
+		max-width: 100%;
+	}
+}
+.error-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+.error-actions {
+	margin-top:15px;
+	margin-bottom:15px;
+}
+.error-actions .btn { 
+	margin-right:10px; 
+}
 .toast-title {
 	font-weight: bold;
 }

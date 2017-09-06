@@ -1,0 +1,14 @@
+<div>
+	<button type="button" 
+		class="btn btn-default clear" 
+		(click)="onObservation()">
+		{{ 'BUTTON_WEATHER_REPORT' | dcTranslate }}
+	</button>
+    <div class="row observation" *ngIf="observation">
+    	{{ 'CONDITION' | dcTranslate }}: {{ observation.current_observation.weather }}&#44;    
+    	{{ 'TEMP' | dcTranslate }}: {{ observation.current_observation.temperature_string }}&#44;     
+    	{{ 'RH' | dcTranslate }}: {{ observation.current_observation.relative_humidity }}&#44;   
+    	{{ 'WIND' | dcTranslate }}: {{ observation.current_observation.wind_string }}&#44; 
+    	{{ 'PRECIP' | dcTranslate }}: {{ observation.current_observation.precip_today_string }}&#44;    
+    </div>
+</div>

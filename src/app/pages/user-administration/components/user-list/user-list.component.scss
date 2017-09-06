@@ -1,1 +1,109 @@
-@import '../../../../theme/sass/form';
+@import '../../../../framework/sass/form';
+
+.btn-add-user {
+	position: relative;
+    top: 6px;
+    right: 6px;
+    z-index: 900;
+    color: $dc-button-text;
+    background-color: $dc-primary;
+    float: right;
+}
+.btn-user-refresh {
+	position: relative;
+    top: 6px;
+    right: 6px;
+    z-index: 900;
+    color: $dc-button-text;
+    cursor: hand;
+    float: right;
+//    background-color: $dc-medium-grey;
+}
+
+.pointer {
+	cursor: pointer;
+}
+@media screen and (min-width: $resM) {
+	.scrolling { 
+		th, td {
+			&:first-child{
+				position: absolute;
+				left: 0;
+				max-width: 200px;
+				line-height: 48px;		
+  				white-space: nowrap;
+  				overflow: hidden;
+  				text-overflow: ellipsis;
+			}
+			&:nth-child(2){
+				position: absolute;
+				left: 200px;
+				max-width: 200px;		
+				line-height: 48px;		
+  				white-space: nowrap;
+  				overflow: hidden;
+  				text-overflow: ellipsis;
+			}
+		}
+
+	}
+	.outer {
+		position: relative;
+		width: 100%;
+	}
+	.inner {
+		overflow-x: auto;
+		overflow-y: visible;
+		margin-left: 400px;
+	}
+}
+
+@media screen and (min-width: 1233px) {
+	.scrolling { 
+		th, td {
+			&:first-child{
+				line-height: 32px;		
+  				white-space: nowrap;
+  				overflow: hidden;
+  				text-overflow: ellipsis;
+			}
+			&:nth-child(2){
+				line-height: 32px;		
+ 				white-space: nowrap;
+  				overflow: hidden;
+  				text-overflow: ellipsis;
+			}
+		}
+
+		.table-row-column{
+			padding-top: 9px;
+		}
+	}
+
+}@media screen and (min-width: 1477px) {
+	.scrolling { 
+		th, td {
+			&:first-child{
+				line-height: 18px;		
+  				white-space: nowrap;
+  				overflow: hidden;
+  				text-overflow: ellipsis;
+			}
+			&:nth-child(2){
+				line-height: 18px;		
+ 				white-space: nowrap;
+  				overflow: hidden;
+  				text-overflow: ellipsis;
+			}
+		}
+
+		.table-row-column{
+			padding-top: 9px;
+		}
+	}
+
+}
+
+
+
+

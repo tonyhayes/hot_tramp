@@ -1,0 +1,19 @@
+@import '../../framework/sass/form';
+
+.page-not-found {
+	position: relative;
+	top: -66px;
+}
+
+.routed{	 
+	display: none;	
+}
+
+.btn-log {
+  	position:absolute;
+  	top:50%;
+  	left:50%;
+  	-ms-transform: translateX(-50%) translateY(-50%);
+  	-webkit-transform: translate(-50%,-50%);
+  	transform: translate(-50%,-50%);
+}
